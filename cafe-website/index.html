@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a77f72',
+                            600: '#8a655b',
+                            700: '#6f524a',
+                            800: '#5a433d',
+                            900: '#4a3b32',
+                        },
+                        cream: '#F5E6CA',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-coffee-50 text-coffee-900 font-sans min-h-screen">
+
+    <!-- Navbar / Hamburger -->
+    <button id="menu-btn" class="fixed top-4 left-4 z-50 p-2 bg-coffee-800 text-cream rounded-md shadow-lg hover:bg-coffee-700 transition-colors" aria-label="Toggle Menu">
+        <i data-lucide="menu"></i>
+    </button>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-coffee-900 text-cream shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-6 pt-20">
+            <h2 class="text-2xl font-bold mb-8 text-center border-b border-coffee-700 pb-4">Kafe Menü</h2>
+            <nav>
+                <ul class="space-y-4">
+                    <li><a href="#/" class="nav-link block py-2 px-4 rounded hover:bg-coffee-800 transition-colors">Ana Sayfa</a></li>
+                    <li><a href="#/about" class="nav-link block py-2 px-4 rounded hover:bg-coffee-800 transition-colors">Hakkında</a></li>
+                    <li><a href="#/support" class="nav-link block py-2 px-4 rounded hover:bg-coffee-800 transition-colors">Destek</a></li>
+                    <li><a href="#/contact" class="nav-link block py-2 px-4 rounded hover:bg-coffee-800 transition-colors">İletişim</a></li>
+                    <li><a href="#/locations" class="nav-link block py-2 px-4 rounded hover:bg-coffee-800 transition-colors">Şube Konumları</a></li>
+                    <li><a href="#/menu" class="nav-link block py-2 px-4 rounded hover:bg-coffee-800 transition-colors">Menü İçerikleri</a></li>
+                    <li><a href="#/prices" class="nav-link block py-2 px-4 rounded hover:bg-coffee-800 transition-colors">Fiyatlar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="transition-all duration-300">
+
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="flex flex-col items-center justify-center min-h-screen p-4 text-center">
+                <div class="mb-6 animate-bounce">
+                    <i data-lucide="coffee" class="w-16 h-16 text-coffee-800"></i>
+                </div>
+                <h1 class="text-5xl font-bold mb-4 text-coffee-900">Kahve Dünyası</h1>
+                <p class="text-xl mb-8 text-coffee-700 max-w-md">
+                    En taze kahve çekirdekleri ve lezzetli atıştırmalıklarla gününüze keyif katın.
+                </p>
+                <div class="rounded-lg overflow-hidden shadow-2xl max-w-2xl w-full">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Coffee Table" class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Page -->
+        <div id="menu" class="page">
+            <div class="min-h-screen pt-20 px-4 md:px-12">
+                <h1 class="text-4xl font-bold text-center mb-12 text-coffee-900">Menü İçerikleri</h1>
+                <div id="menu-list" class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Prices Page -->
+        <div id="prices" class="page">
+            <div class="min-h-screen pt-20 px-4 flex flex-col items-center">
+                <h1 class="text-4xl font-bold text-coffee-900 mb-8">Fiyat Listesi</h1>
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden w-full max-w-2xl">
+                    <table class="w-full">
+                        <thead class="bg-coffee-200">
+                            <tr>
+                                <th class="py-3 px-6 text-left text-coffee-800">Ürün</th>
+                                <th class="py-3 px-6 text-right text-coffee-800">Fiyat</th>
+                            </tr>
+                        </thead>
+                        <tbody id="price-list">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generic Pages -->
+        <div id="about" class="page">
+            <div class="min-h-screen pt-20 px-4 flex flex-col items-center">
+                <h1 class="text-4xl font-bold text-coffee-900 mb-6">Hakkımızda</h1>
+                <p class="max-w-2xl text-lg text-coffee-700 text-center">
+                    1990 yılından beri en kaliteli kahve çekirdeklerini sizler için özenle seçiyor ve kavuruyoruz.
+                </p>
+            </div>
+        </div>
+
+        <div id="contact" class="page">
+             <div class="min-h-screen pt-20 px-4 flex flex-col items-center">
+                <h1 class="text-4xl font-bold text-coffee-900 mb-6">İletişim</h1>
+                <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+                    <p class="mb-4 text-coffee-800"><strong>Adres:</strong> Kahve Sokak No: 1</p>
+                    <p class="mb-4 text-coffee-800"><strong>Telefon:</strong> 0212 123 45 67</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="locations" class="page">
+             <div class="min-h-screen pt-20 px-4 flex flex-col items-center">
+                <h1 class="text-4xl font-bold text-coffee-900 mb-8">Şube Konumları</h1>
+                <ul class="space-y-4 w-full max-w-md">
+                    <li class="bg-white p-4 rounded shadow">Beşiktaş</li>
+                    <li class="bg-white p-4 rounded shadow">Kadıköy</li>
+                    <li class="bg-white p-4 rounded shadow">Nişantaşı</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="support" class="page">
+             <div class="min-h-screen pt-20 px-4 flex flex-col items-center">
+                <h1 class="text-4xl font-bold text-coffee-900 mb-6">Destek</h1>
+                <p>Bize yazın...</p>
+                <form class="w-full max-w-md bg-white p-6 rounded-lg shadow-md mt-4">
+                    <input type="text" placeholder="Adınız" class="w-full p-2 border border-coffee-300 rounded mb-4">
+                    <button class="w-full bg-coffee-600 text-white p-2 rounded">Gönder</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
