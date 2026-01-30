@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Keyfi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#FFF3E0] text-gray-800 font-sans h-screen flex overflow-hidden">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full transition-transform duration-300 ease-in-out bg-[#4E342E] text-[#FFF3E0] w-64 z-50 p-6 shadow-lg flex flex-col">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-2xl font-bold tracking-wide">Kafe Menü</h2>
+            <button id="close-menu" class="text-[#FFF3E0] focus:outline-none hover:text-white transition">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <nav class="flex-1">
+            <ul class="space-y-4">
+                <li><a href="#home" class="block hover:bg-[#3E2723] hover:text-white transition-colors text-lg menu-link font-medium py-3 px-4 rounded"><i class="fas fa-home mr-3 w-6 text-center"></i>Ana Sayfa</a></li>
+                <li><a href="#about" class="block hover:bg-[#3E2723] hover:text-white transition-colors text-lg menu-link font-medium py-3 px-4 rounded"><i class="fas fa-info-circle mr-3 w-6 text-center"></i>Hakkında</a></li>
+                <li><a href="#support" class="block hover:bg-[#3E2723] hover:text-white transition-colors text-lg menu-link font-medium py-3 px-4 rounded"><i class="fas fa-life-ring mr-3 w-6 text-center"></i>Destek</a></li>
+                <li><a href="#contact" class="block hover:bg-[#3E2723] hover:text-white transition-colors text-lg menu-link font-medium py-3 px-4 rounded"><i class="fas fa-envelope mr-3 w-6 text-center"></i>İletişim</a></li>
+                <li><a href="#locations" class="block hover:bg-[#3E2723] hover:text-white transition-colors text-lg menu-link font-medium py-3 px-4 rounded"><i class="fas fa-map-marker-alt mr-3 w-6 text-center"></i>Şube Konumları</a></li>
+                <li><a href="#menu" class="block hover:bg-[#3E2723] hover:text-white transition-colors text-lg menu-link font-medium py-3 px-4 rounded"><i class="fas fa-coffee mr-3 w-6 text-center"></i>Menü İçerikleri</a></li>
+                <li><a href="#prices" class="block hover:bg-[#3E2723] hover:text-white transition-colors text-lg menu-link font-medium py-3 px-4 rounded"><i class="fas fa-tag mr-3 w-6 text-center"></i>Fiyatlar</a></li>
+            </ul>
+        </nav>
+        <div class="mt-auto pt-6 border-t border-gray-600 text-sm text-center text-gray-400">
+            &copy; 2023 Kafe Keyfi
+        </div>
+    </aside>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 transition-opacity duration-300"></div>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col h-full relative">
+        <!-- Header / Hamburger Button -->
+        <header class="absolute top-0 left-0 w-full p-6 z-30 flex items-center">
+            <button id="hamburger-menu" class="text-[#4E342E] focus:outline-none bg-[#FFF3E0]/90 p-3 rounded-full shadow-md hover:bg-white transition transform hover:scale-105">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </header>
+
+        <!-- Main View Area -->
+        <main id="app" class="flex-1 overflow-y-auto w-full">
+            <!-- Content injected via JS -->
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
