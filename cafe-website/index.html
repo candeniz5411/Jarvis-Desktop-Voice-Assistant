@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Molası</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            light: '#D2B48C',
+                            DEFAULT: '#8B4513',
+                            dark: '#3E2723', // Darker brown
+                        },
+                        cream: '#FFFDD0', // Cream color
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-cream text-coffee-dark font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-coffee-dark text-cream p-4 fixed w-full z-50 shadow-md flex items-center">
+        <button id="menu-btn" class="focus:outline-none mr-4">
+            <!-- Hamburger Icon -->
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <h1 class="text-2xl font-bold tracking-widest uppercase cursor-pointer" onclick="renderPage('home')">Kahve Molası</h1>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee text-cream z-40 transform -translate-x-full shadow-lg pt-20">
+        <nav class="flex flex-col space-y-2 p-4">
+            <button class="nav-link block w-full text-left py-2 px-4 hover:bg-coffee-dark rounded transition" data-page="about">Hakkında</button>
+            <button class="nav-link block w-full text-left py-2 px-4 hover:bg-coffee-dark rounded transition" data-page="support">Destek</button>
+            <button class="nav-link block w-full text-left py-2 px-4 hover:bg-coffee-dark rounded transition" data-page="contact">İletişim</button>
+            <button class="nav-link block w-full text-left py-2 px-4 hover:bg-coffee-dark rounded transition" data-page="locations">Şube Konumları</button>
+            <button class="nav-link block w-full text-left py-2 px-4 hover:bg-coffee-dark rounded transition" data-page="menu">Menü İçerikleri</button>
+            <button class="nav-link block w-full text-left py-2 px-4 hover:bg-coffee-dark rounded transition" data-page="prices">Fiyatlar</button>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-grow pt-24 p-6 container mx-auto max-w-4xl">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
