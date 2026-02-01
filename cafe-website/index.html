@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-cream text-brown font-sans antialiased h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-brown-dark text-cream p-4 fixed w-full z-20 shadow-md flex items-center justify-between">
+        <button id="menu-btn" class="text-2xl focus:outline-none">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="text-xl font-bold tracking-wider">KAFE</div>
+        <div class="w-6"></div> <!-- Spacer for centering if needed, or just empty -->
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brown-light text-cream transform -translate-x-full transition-transform duration-300 z-40 shadow-lg pt-16">
+        <nav class="flex flex-col p-4 space-y-4">
+            <a href="#home" class="sidebar-link text-lg hover:text-white border-b border-brown-dark pb-2">Ana Sayfa</a>
+            <a href="#about" class="sidebar-link text-lg hover:text-white border-b border-brown-dark pb-2">Hakkında</a>
+            <a href="#support" class="sidebar-link text-lg hover:text-white border-b border-brown-dark pb-2">Destek</a>
+            <a href="#contact" class="sidebar-link text-lg hover:text-white border-b border-brown-dark pb-2">İletişim</a>
+            <a href="#locations" class="sidebar-link text-lg hover:text-white border-b border-brown-dark pb-2">Şube Konumları</a>
+            <a href="#menu" class="sidebar-link text-lg hover:text-white border-b border-brown-dark pb-2">Menü İçerikleri</a>
+            <a href="#prices" class="sidebar-link text-lg hover:text-white border-b border-brown-dark pb-2">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-grow pt-20 p-6 overflow-y-auto">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
