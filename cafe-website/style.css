@@ -1,0 +1,41 @@
+:root {
+    --color-brown-dark: #3E2723;
+    --color-brown-light: #8B4513;
+    --color-cream: #FFFDD0;
+    --color-white: #FFFFFF;
+}
+
+body {
+    background-color: var(--color-cream);
+    color: var(--color-brown-dark);
+}
+
+/* Backgrounds */
+.bg-cream { background-color: var(--color-cream); }
+.bg-brown-dark { background-color: var(--color-brown-dark); }
+.bg-brown-light { background-color: var(--color-brown-light); }
+
+/* Text Colors */
+.text-cream { color: var(--color-cream); }
+.text-brown { color: var(--color-brown-dark); }
+.text-brown-dark { color: var(--color-brown-dark); }
+.text-brown-light { color: var(--color-brown-light); }
+
+/* Border Colors */
+.border-brown-dark { border-color: var(--color-brown-dark); }
+.border-brown-light { border-color: var(--color-brown-light); }
+
+/* Custom Scrollbar for a nice touch */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-brown-light);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brown-dark);
+}
