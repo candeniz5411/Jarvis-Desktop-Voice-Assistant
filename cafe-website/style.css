@@ -1,0 +1,37 @@
+:root {
+    --color-coffee: #8B4513;
+    --color-coffee-dark: #3E2723;
+    --color-cream: #FFFDD0;
+}
+
+body {
+    background-color: var(--color-cream);
+    color: var(--color-coffee-dark);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(139, 69, 19, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-coffee);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-coffee-dark);
+}
+
+/* Sidebar Transition Utilities if needed beyond Tailwind */
+.sidebar-open {
+    transform: translateX(0);
+}
+
+.sidebar-closed {
+    transform: translateX(-100%);
+}
