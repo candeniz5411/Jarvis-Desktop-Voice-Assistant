@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Keyfi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            light: '#D7CCC8',
+                            DEFAULT: '#8B4513',
+                            dark: '#3E2723',
+                        },
+                        cream: '#FFFDD0',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream text-coffee-dark font-sans antialiased h-screen flex overflow-hidden">
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-coffee-dark text-cream transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col shadow-2xl">
+        <div class="p-6 border-b border-coffee flex justify-between items-center bg-coffee">
+            <h2 class="text-2xl font-bold tracking-wider">Menü</h2>
+            <button id="close-sidebar" class="text-cream focus:outline-none lg:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-6">
+            <ul class="space-y-1">
+                <li><a href="#home" class="block py-3 px-6 hover:bg-coffee transition duration-200 border-l-4 border-transparent hover:border-cream">Ana Sayfa</a></li>
+                <li><a href="#about" class="block py-3 px-6 hover:bg-coffee transition duration-200 border-l-4 border-transparent hover:border-cream">Hakkında</a></li>
+                <li><a href="#support" class="block py-3 px-6 hover:bg-coffee transition duration-200 border-l-4 border-transparent hover:border-cream">Destek</a></li>
+                <li><a href="#contact" class="block py-3 px-6 hover:bg-coffee transition duration-200 border-l-4 border-transparent hover:border-cream">İletişim</a></li>
+                <li><a href="#locations" class="block py-3 px-6 hover:bg-coffee transition duration-200 border-l-4 border-transparent hover:border-cream">Şube Konumları</a></li>
+                <li><a href="#menu" class="block py-3 px-6 hover:bg-coffee transition duration-200 border-l-4 border-transparent hover:border-cream">Menü İçerikleri</a></li>
+                <li><a href="#prices" class="block py-3 px-6 hover:bg-coffee transition duration-200 border-l-4 border-transparent hover:border-cream">Fiyatlar</a></li>
+            </ul>
+        </nav>
+        <div class="p-4 bg-coffee text-center text-xs opacity-80">
+            <p>&copy; 2023 Kafe Keyfi</p>
+        </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col h-screen w-full relative bg-cream">
+
+        <!-- Header -->
+        <header class="bg-coffee text-cream shadow-md p-4 flex items-center justify-between z-10 h-16">
+            <div class="flex items-center">
+                <button id="hamburger-btn" class="mr-4 p-1 rounded hover:bg-coffee-dark focus:outline-none transition duration-200">
+                    <!-- Hamburger Icon -->
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <div class="flex items-center gap-2" onclick="window.location.hash='#home'" style="cursor: pointer;">
+                    <span class="text-2xl">☕</span>
+                    <h1 class="text-xl md:text-2xl font-bold tracking-wide">Kafe Keyfi</h1>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Content Area -->
+        <main id="app" class="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth relative">
+            <!-- Content will be injected here by app.js -->
+        </main>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
