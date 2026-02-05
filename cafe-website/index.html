@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Keyfi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFDD0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3E2723;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-[#FFFDD0] text-[#3E2723] font-sans antialiased overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full p-4 z-50 flex items-center bg-[#FFFDD0]/90 backdrop-blur-sm shadow-sm border-b border-[#3E2723]/10">
+        <button id="menu-btn" class="p-2 focus:outline-none hover:bg-[#3E2723]/10 rounded-full transition-colors" aria-label="Menüyü Aç">
+            <!-- Hamburger Icon -->
+            <svg class="w-8 h-8 text-[#3E2723]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="ml-4 font-serif font-bold text-2xl tracking-wider text-[#3E2723] cursor-pointer" onclick="window.location.hash='home'">KAFE KEYFİ</div>
+    </nav>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300 opacity-0"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-[#3E2723] text-[#FFFDD0] transform -translate-x-full transition-transform duration-300 ease-in-out z-50 shadow-2xl pt-6 flex flex-col">
+        <div class="px-6 mb-8 flex justify-between items-center">
+            <h2 class="text-2xl font-serif font-bold border-b border-[#FFFDD0]/30 pb-2 flex-grow">Menü</h2>
+            <button id="close-sidebar-btn" class="text-[#FFFDD0] hover:bg-[#FFFDD0]/20 p-2 rounded-full transition-colors ml-2" aria-label="Menüyü Kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 flex flex-col space-y-1 px-4">
+            <a href="#about" class="nav-link block py-3 px-4 hover:bg-[#FFFDD0]/10 rounded-lg transition-colors text-lg">Hakkında</a>
+            <a href="#support" class="nav-link block py-3 px-4 hover:bg-[#FFFDD0]/10 rounded-lg transition-colors text-lg">Destek</a>
+            <a href="#contact" class="nav-link block py-3 px-4 hover:bg-[#FFFDD0]/10 rounded-lg transition-colors text-lg">İletişim</a>
+            <a href="#locations" class="nav-link block py-3 px-4 hover:bg-[#FFFDD0]/10 rounded-lg transition-colors text-lg">Şube Konumları</a>
+            <a href="#menu" class="nav-link block py-3 px-4 hover:bg-[#FFFDD0]/10 rounded-lg transition-colors text-lg font-medium">Menü İçerikleri</a>
+            <a href="#prices" class="nav-link block py-3 px-4 hover:bg-[#FFFDD0]/10 rounded-lg transition-colors text-lg font-medium">Fiyatlar</a>
+        </nav>
+        <div class="p-6 text-sm opacity-50 text-center">
+            &copy; 2023 Kafe Keyfi
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="content" class="flex-grow pt-28 px-4 sm:px-8 pb-12 max-w-5xl mx-auto w-full transition-all duration-300">
+        <!-- Content will be loaded here by app.js -->
+        <div class="text-center mt-10">
+            <div class="animate-pulse bg-[#3E2723]/20 h-8 w-64 mx-auto rounded mb-4"></div>
+            <div class="animate-pulse bg-[#3E2723]/10 h-64 w-full rounded-lg"></div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
