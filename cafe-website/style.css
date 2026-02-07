@@ -1,0 +1,41 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FFFDD0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #795548;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3E2723;
+}
+
+/* Sidebar Active State */
+#sidebar.active {
+    transform: translateX(0);
+}
+
+/* Overlay Active State */
+#overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Base Styles */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Link Hover Effect */
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
