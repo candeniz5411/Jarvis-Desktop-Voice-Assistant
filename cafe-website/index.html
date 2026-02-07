@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Keyfi - Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            light: '#D7CCC8',
+                            medium: '#795548',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream font-sans text-coffee-dark min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-coffee-dark text-cream p-4 shadow-lg fixed w-full top-0 z-50 flex items-center justify-between">
+        <div class="flex items-center">
+            <button id="hamburger-btn" class="text-2xl mr-4 focus:outline-none hover:text-coffee-light transition-colors">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="text-2xl font-serif font-bold tracking-wide">Kahve Keyfi</h1>
+        </div>
+        <div class="hidden md:block">
+            <span class="text-sm italic">Her yudumda mutluluk...</span>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-cream transform -translate-x-full transition-transform duration-300 ease-in-out z-40 shadow-2xl pt-20">
+        <nav class="flex flex-col p-6 space-y-4">
+            <a href="#home" class="sidebar-link hover:text-coffee-light text-lg transition-colors border-b border-coffee-medium pb-2"><i class="fas fa-home w-8"></i> Ana Sayfa</a>
+            <a href="#about" class="sidebar-link hover:text-coffee-light text-lg transition-colors border-b border-coffee-medium pb-2"><i class="fas fa-info-circle w-8"></i> Hakkında</a>
+            <a href="#menu" class="sidebar-link hover:text-coffee-light text-lg transition-colors border-b border-coffee-medium pb-2"><i class="fas fa-coffee w-8"></i> Menü İçerikleri</a>
+            <a href="#prices" class="sidebar-link hover:text-coffee-light text-lg transition-colors border-b border-coffee-medium pb-2"><i class="fas fa-tag w-8"></i> Fiyatlar</a>
+            <a href="#locations" class="sidebar-link hover:text-coffee-light text-lg transition-colors border-b border-coffee-medium pb-2"><i class="fas fa-map-marker-alt w-8"></i> Şube Konumları</a>
+            <a href="#support" class="sidebar-link hover:text-coffee-light text-lg transition-colors border-b border-coffee-medium pb-2"><i class="fas fa-headset w-8"></i> Destek</a>
+            <a href="#contact" class="sidebar-link hover:text-coffee-light text-lg transition-colors border-b border-coffee-medium pb-2"><i class="fas fa-envelope w-8"></i> İletişim</a>
+        </nav>
+    </aside>
+
+    <!-- Overlay (for closing sidebar) -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-grow pt-20 px-4 pb-8 max-w-7xl mx-auto w-full">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-dark text-cream text-center p-4 mt-auto">
+        <p>&copy; 2023 Kahve Keyfi. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
