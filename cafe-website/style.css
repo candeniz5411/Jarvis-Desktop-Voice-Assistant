@@ -1,0 +1,52 @@
+/* Custom Styles */
+
+body {
+    background-color: #FFFDD0; /* Cream fallback */
+    color: #3E2723; /* Coffee Dark fallback */
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Sidebar Animation */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-visible {
+    transform: translateX(0) !important;
+}
+
+/* Overlay Logic */
+#overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.overlay-visible {
+    display: block !important;
+}
+
+/* Menu Item Hover Effect */
+.menu-item {
+    transition: transform 0.2s;
+}
+
+.menu-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Customization */
+.btn-primary {
+    background-color: #3E2723;
+    color: #FFFDD0;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #5D4037;
+}

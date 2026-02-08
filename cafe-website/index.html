@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            light: '#D7CCC8',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-body bg-cream text-coffee-dark min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-coffee-dark text-cream p-4 flex justify-between items-center shadow-md relative z-50">
+        <button id="menu-toggle" class="text-2xl hover:text-white transition-colors">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h1 class="font-heading text-2xl font-bold">KAFE LEZZET</h1>
+        <div class="w-8"></div> <!-- Spacer for centering -->
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-cream transform -translate-x-full transition-transform duration-300 ease-in-out z-40 pt-20 shadow-lg">
+        <nav class="flex flex-col gap-4 p-6">
+            <a href="#home" class="nav-link text-lg hover:text-white transition-colors" onclick="closeSidebar()">Anasayfa</a>
+            <a href="#about" class="nav-link text-lg hover:text-white transition-colors" onclick="closeSidebar()">Hakkında</a>
+            <a href="#menu" class="nav-link text-lg hover:text-white transition-colors" onclick="closeSidebar()">Menü İçerikleri</a>
+            <a href="#prices" class="nav-link text-lg hover:text-white transition-colors" onclick="closeSidebar()">Fiyatlar</a>
+            <a href="#locations" class="nav-link text-lg hover:text-white transition-colors" onclick="closeSidebar()">Şube Konumları</a>
+            <a href="#contact" class="nav-link text-lg hover:text-white transition-colors" onclick="closeSidebar()">İletişim</a>
+            <a href="#support" class="nav-link text-lg hover:text-white transition-colors" onclick="closeSidebar()">Destek</a>
+        </nav>
+    </aside>
+
+    <!-- Overlay for sidebar -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30" onclick="closeSidebar()"></div>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-grow p-4 md:p-8 container mx-auto max-w-4xl">
+        <!-- Content will be injected here via app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-dark text-cream p-4 text-center mt-auto">
+        <p>&copy; 2023 Kafe Lezzet. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
