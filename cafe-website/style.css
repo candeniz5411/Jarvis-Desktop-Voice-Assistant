@@ -1,0 +1,54 @@
+/* Custom Scrollbar for Sidebar */
+#sidebar nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+#sidebar nav::-webkit-scrollbar-track {
+    background: #3E2723;
+}
+
+#sidebar nav::-webkit-scrollbar-thumb {
+    background-color: #5D4037;
+    border-radius: 3px;
+}
+
+/* Sidebar Transition */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Overlay Transition */
+#sidebar-overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Base Font Settings */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #FFFDD0; /* Cream background */
+    color: #3E2723; /* Dark Brown Text */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Ensure smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Utility for hiding scrollbar on body when sidebar is open */
+body.overflow-hidden {
+    overflow: hidden;
+}
+
+/* Animation Utilities */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
