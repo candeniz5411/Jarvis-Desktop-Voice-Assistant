@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            light: '#5D4037',
+                            cream: '#FFFDD0',
+                            white: '#FFFFFF',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-coffee-cream font-sans text-coffee-dark antialiased">
+
+    <!-- Mobile Header -->
+    <header class="fixed top-0 left-0 w-full p-4 z-50 flex items-center justify-between pointer-events-none">
+        <button id="menu-btn" class="pointer-events-auto text-coffee-dark hover:text-coffee-light focus:outline-none bg-coffee-cream/80 p-2 rounded-md shadow-sm backdrop-blur-sm">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="pointer-events-auto bg-coffee-cream/80 px-4 py-1 rounded-full backdrop-blur-sm shadow-sm absolute left-1/2 transform -translate-x-1/2">
+             <span class="text-xl md:text-2xl font-serif font-bold text-coffee-dark flex items-center gap-2">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 001-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                Kahve Dükkanı
+             </span>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300 opacity-0"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-coffee-cream transform -translate-x-full transition-transform duration-300 ease-in-out z-50 shadow-2xl flex flex-col">
+        <div class="p-6 border-b border-coffee-light flex justify-between items-center">
+            <h2 class="text-2xl font-serif font-bold">Menü</h2>
+            <button id="close-btn" class="focus:outline-none hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-2">
+                <li><a href="#home" class="block py-3 px-6 hover:bg-coffee-light transition-colors duration-200">Ana Sayfa</a></li>
+                <li><a href="#about" class="block py-3 px-6 hover:bg-coffee-light transition-colors duration-200">Hakkında</a></li>
+                <li><a href="#menu" class="block py-3 px-6 hover:bg-coffee-light transition-colors duration-200">Menü İçerikleri</a></li>
+                <li><a href="#prices" class="block py-3 px-6 hover:bg-coffee-light transition-colors duration-200">Fiyatlar</a></li>
+                <li><a href="#locations" class="block py-3 px-6 hover:bg-coffee-light transition-colors duration-200">Şube Konumları</a></li>
+                <li><a href="#support" class="block py-3 px-6 hover:bg-coffee-light transition-colors duration-200">Destek</a></li>
+                <li><a href="#contact" class="block py-3 px-6 hover:bg-coffee-light transition-colors duration-200">İletişim</a></li>
+            </ul>
+        </nav>
+        <div class="p-6 border-t border-coffee-light text-sm text-coffee-cream/60">
+            &copy; 2023 Kahve Dükkanı
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="app" class="min-h-screen pt-16 px-4 pb-8 md:px-8 max-w-7xl mx-auto transition-all duration-300">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
