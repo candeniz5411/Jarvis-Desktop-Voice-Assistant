@@ -1,0 +1,34 @@
+/* Custom Styles for Kahve Dükkanı */
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FFFDD0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3E2723;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #281a17;
+}
+
+/* Card Hover Effects */
+.menu-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
