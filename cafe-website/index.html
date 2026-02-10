@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            800: '#3E2723',
+                            900: '#281a17',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream text-coffee-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-coffee-800 text-cream p-4 flex items-center justify-between fixed w-full z-50 shadow-md">
+        <div class="flex items-center">
+            <button id="hamburger-btn" class="text-3xl focus:outline-none mr-4">
+                &#9776; <!-- Hamburger Icon -->
+            </button>
+            <h1 class="text-2xl font-serif font-bold">Kahve Dükkanı</h1>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-800 text-cream z-50 transform -translate-x-full transition-transform duration-300 shadow-2xl pt-20">
+        <button id="close-sidebar" class="absolute top-4 right-4 text-2xl focus:outline-none">&times;</button>
+        <ul class="flex flex-col space-y-2 p-4">
+            <li><a href="#home" class="block py-2 px-4 hover:bg-coffee-900 rounded transition" data-link>Ana Sayfa</a></li>
+            <li><a href="#about" class="block py-2 px-4 hover:bg-coffee-900 rounded transition" data-link>Hakkında</a></li>
+            <li><a href="#menu" class="block py-2 px-4 hover:bg-coffee-900 rounded transition" data-link>Menü İçerikleri</a></li>
+            <li><a href="#prices" class="block py-2 px-4 hover:bg-coffee-900 rounded transition" data-link>Fiyatlar</a></li>
+            <li><a href="#locations" class="block py-2 px-4 hover:bg-coffee-900 rounded transition" data-link>Şube Konumları</a></li>
+            <li><a href="#support" class="block py-2 px-4 hover:bg-coffee-900 rounded transition" data-link>Destek</a></li>
+            <li><a href="#contact" class="block py-2 px-4 hover:bg-coffee-900 rounded transition" data-link>İletişim</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-grow pt-20 px-4 pb-8 container mx-auto">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-800 text-cream p-4 text-center mt-auto">
+        <p>&copy; 2023 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
