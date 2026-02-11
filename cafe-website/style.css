@@ -1,0 +1,65 @@
+/* Custom Scrollbar for Webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff8e1; /* cream-light */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3e2723; /* coffee-DEFAULT */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6d4c41; /* coffee-light */
+}
+
+/* Firefox Scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #3e2723 #fff8e1;
+}
+
+/* Global Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body.menu-open {
+    overflow: hidden; /* Prevent background scrolling when menu is open */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Grid layout for Menu Items */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Card Hover Effect */
+.menu-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(62, 39, 35, 0.2);
+}
