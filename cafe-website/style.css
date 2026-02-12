@@ -1,0 +1,38 @@
+/* Custom Styles for Kahve Dükkanı */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sidebar Open State Class - to be toggled by JS */
+.sidebar-open {
+    transform: translateX(0) !important;
+}
+
+/* Sidebar Overlay Open State */
+.overlay-open {
+    display: block !important;
+}
+
+/* Custom Scrollbar for Webkit */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FFFDD0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3E2723;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5D4037;
+}
