@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee-dark': '#3E2723',
+                        'cream-light': '#FFFDD0',
+                    },
+                    fontFamily: {
+                        'sans': ['Lato', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream-light text-coffee-dark font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-coffee-dark text-cream-light p-4 flex items-center shadow-md fixed w-full z-20 top-0 left-0">
+        <button id="menu-btn" class="text-2xl mr-4 focus:outline-none">
+            &#9776; <!-- Hamburger Icon -->
+        </button>
+        <h1 class="text-2xl font-serif font-bold">Kahve Dükkanı</h1>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden transition-opacity duration-300"></div>
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-cream-light transform -translate-x-full transition-transform duration-300 ease-in-out z-30 pt-16 shadow-lg">
+        <ul class="flex flex-col space-y-2 p-4">
+            <li><a href="#home" class="block py-2 px-4 hover:bg-cream-light hover:text-coffee-dark rounded transition-colors" onclick="closeSidebar()">Ana Sayfa</a></li>
+            <li><a href="#hakkinda" class="block py-2 px-4 hover:bg-cream-light hover:text-coffee-dark rounded transition-colors" onclick="closeSidebar()">Hakkında</a></li>
+            <li><a href="#destek" class="block py-2 px-4 hover:bg-cream-light hover:text-coffee-dark rounded transition-colors" onclick="closeSidebar()">Destek</a></li>
+            <li><a href="#iletisim" class="block py-2 px-4 hover:bg-cream-light hover:text-coffee-dark rounded transition-colors" onclick="closeSidebar()">İletişim</a></li>
+            <li><a href="#konumlar" class="block py-2 px-4 hover:bg-cream-light hover:text-coffee-dark rounded transition-colors" onclick="closeSidebar()">Şube Konumları</a></li>
+            <li><a href="#menu" class="block py-2 px-4 hover:bg-cream-light hover:text-coffee-dark rounded transition-colors" onclick="closeSidebar()">Menü İçerikleri</a></li>
+            <li><a href="#fiyatlar" class="block py-2 px-4 hover:bg-cream-light hover:text-coffee-dark rounded transition-colors" onclick="closeSidebar()">Fiyatlar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-grow pt-20 px-4 pb-8 container mx-auto max-w-4xl">
+
+        <!-- Home Section -->
+        <section id="home-section" class="page-section">
+            <div class="text-center mt-8">
+                <h2 class="text-4xl font-serif font-bold mb-4">Hoş Geldiniz</h2>
+                <p class="text-lg mb-8">En taze kahve çekirdekleriyle hazırlanan eşsiz lezzetleri keşfedin.</p>
+                <div class="rounded-lg overflow-hidden shadow-xl max-w-md mx-auto">
+                    <!-- Placeholder Image for Coffee -->
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kahve Fotoğrafı" class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="hakkinda-section" class="page-section hidden">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark pb-2">Hakkında</h2>
+            <p class="mb-4">Biz, kahve tutkunları için en iyi deneyimi sunmayı amaçlayan küçük ama sıcak bir kafeyiz. Yılların deneyimiyle harmanladığımız kahvelerimiz, her yudumda size keyif verecek.</p>
+            <p>Sürdürülebilir kaynaklardan elde edilen çekirdeklerimiz, usta baristalarımızın elinde sanata dönüşüyor.</p>
+        </section>
+
+        <!-- Support Section -->
+        <section id="destek-section" class="page-section hidden">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark pb-2">Destek</h2>
+            <p class="mb-4">Herhangi bir sorunuz veya öneriniz mi var? Müşteri memnuniyeti bizim için her şeyden önemlidir.</p>
+            <p>Size nasıl yardımcı olabiliriz? Lütfen bizimle iletişime geçmekten çekinmeyin.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="iletisim-section" class="page-section hidden">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark pb-2">İletişim</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="mb-2"><strong>Telefon:</strong> +90 212 123 45 67</p>
+                <p class="mb-2"><strong>E-posta:</strong> info@kahvedukkani.com</p>
+                <p class="mb-2"><strong>Adres:</strong> Kahve Sokak No: 1, İstanbul</p>
+            </div>
+        </section>
+
+        <!-- Locations Section -->
+        <section id="konumlar-section" class="page-section hidden">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark pb-2">Şube Konumları</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h3 class="font-bold text-xl mb-2">Merkez Şube</h3>
+                    <p>Beşiktaş, İstanbul</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h3 class="font-bold text-xl mb-2">Kadıköy Şubesi</h3>
+                    <p>Moda, İstanbul</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h3 class="font-bold text-xl mb-2">Nişantaşı Şubesi</h3>
+                    <p>Şişli, İstanbul</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Contents Section -->
+        <section id="menu-section" class="page-section hidden">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark pb-2">Menü İçerikleri</h2>
+            <div id="menu-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Javascript will populate this -->
+            </div>
+        </section>
+
+        <!-- Prices Section (Could be same as Menu, but maybe focused on list view) -->
+        <section id="fiyatlar-section" class="page-section hidden">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark pb-2">Fiyat Listesi</h2>
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="min-w-full">
+                    <thead class="bg-coffee-dark text-cream-light">
+                        <tr>
+                            <th class="py-3 px-4 text-left">Ürün</th>
+                            <th class="py-3 px-4 text-right">Fiyat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="price-list-body" class="divide-y divide-gray-200">
+                        <!-- Javascript will populate this -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-coffee-dark text-cream-light text-center p-4 mt-8">
+        <p>&copy; 2023 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
