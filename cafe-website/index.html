@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            light: '#6D4C41',
+                            cream: '#FFFDD0',
+                        }
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        lato: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-coffee-cream font-lato text-coffee-dark min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-coffee-dark text-coffee-cream p-4 flex items-center justify-between shadow-md fixed w-full top-0 z-50">
+        <div class="flex items-center">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="focus:outline-none mr-4" aria-label="Menüyü Aç">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <h1 class="font-playfair text-2xl font-bold tracking-wide">Kahve Dükkanı</h1>
+        </div>
+    </header>
+
+    <!-- Sidebar (Hidden by default) -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-coffee-cream transform -translate-x-full transition-transform duration-300 ease-in-out z-40 pt-20 shadow-xl">
+        <nav class="flex flex-col space-y-4 p-6">
+            <a href="#hakkinda" class="sidebar-link hover:text-white text-lg border-b border-coffee-light pb-2">Hakkında</a>
+            <a href="#destek" class="sidebar-link hover:text-white text-lg border-b border-coffee-light pb-2">Destek</a>
+            <a href="#iletisim" class="sidebar-link hover:text-white text-lg border-b border-coffee-light pb-2">İletişim</a>
+            <a href="#subeler" class="sidebar-link hover:text-white text-lg border-b border-coffee-light pb-2">Şube Konumları</a>
+            <a href="#menu" class="sidebar-link hover:text-white text-lg border-b border-coffee-light pb-2">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="sidebar-link hover:text-white text-lg border-b border-coffee-light pb-2">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Overlay (for closing sidebar) -->
+    <div id="overlay" class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-300 z-30"></div>
+
+    <!-- Main Content -->
+    <main id="content" class="flex-grow pt-24 px-4 container mx-auto pb-12 transition-all duration-300">
+        <!-- Dynamic content will be injected here -->
+        <div class="text-center mt-10">
+            <h2 class="text-3xl font-playfair mb-4">Hoş Geldiniz</h2>
+            <p class="text-xl mb-8">En taze kahve çekirdekleri ile hazırladığımız lezzetleri keşfedin.</p>
+            <div class="w-full h-64 bg-coffee-light rounded-lg flex items-center justify-center text-coffee-cream">
+                <!-- Placeholder for Image -->
+                <span class="text-2xl font-playfair">Kahve Fotoğrafı</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-dark text-coffee-cream text-center p-4 mt-auto">
+        <p>&copy; 2023 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
