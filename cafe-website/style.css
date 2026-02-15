@@ -1,0 +1,54 @@
+:root {
+    --coffee-dark: #3E2723;
+    --coffee-medium: #5D4037;
+    --coffee-light: #D7CCC8;
+    --cream: #FFFDD0;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+/* Sidebar Animation */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Overlay Animation */
+#overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Fade In Animation for Sections */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--coffee-medium);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--coffee-dark);
+}

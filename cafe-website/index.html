@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            medium: '#5D4037',
+                            light: '#D7CCC8',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream font-sans text-coffee-dark overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-coffee-dark text-cream p-4 z-50 flex items-center justify-between shadow-md h-16">
+        <div class="flex items-center">
+            <button id="menu-btn" class="mr-4 focus:outline-none hover:text-gray-300 transition-colors" aria-label="Menüyü Aç">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <h1 class="font-serif text-xl md:text-2xl font-bold tracking-wider truncate">KAHVE DÜKKANI</h1>
+        </div>
+        <!-- Logo / Icon -->
+        <div class="flex-shrink-0 w-10 h-10 bg-cream rounded-full flex items-center justify-center text-coffee-dark font-bold border-2 border-coffee-light">
+            KD
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 z-50 pt-20 border-r border-coffee-light">
+        <nav class="flex flex-col p-6 space-y-4">
+            <a href="#home" class="nav-link text-lg font-semibold hover:text-coffee-medium transition-colors p-2 rounded hover:bg-cream">Ana Sayfa</a>
+            <a href="#about" class="nav-link text-lg font-semibold hover:text-coffee-medium transition-colors p-2 rounded hover:bg-cream">Hakkında</a>
+            <a href="#support" class="nav-link text-lg font-semibold hover:text-coffee-medium transition-colors p-2 rounded hover:bg-cream">Destek</a>
+            <a href="#contact" class="nav-link text-lg font-semibold hover:text-coffee-medium transition-colors p-2 rounded hover:bg-cream">İletişim</a>
+            <a href="#locations" class="nav-link text-lg font-semibold hover:text-coffee-medium transition-colors p-2 rounded hover:bg-cream">Şube Konumları</a>
+            <a href="#menu" class="nav-link text-lg font-semibold hover:text-coffee-medium transition-colors p-2 rounded hover:bg-cream">Menü İçerikleri</a>
+            <a href="#prices" class="nav-link text-lg font-semibold hover:text-coffee-medium transition-colors p-2 rounded hover:bg-cream">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content" class="pt-24 px-4 pb-12 max-w-5xl mx-auto min-h-screen">
+
+        <!-- Home Section -->
+        <section id="home" class="page-section animate-fade-in">
+            <div class="text-center">
+                <h2 class="font-serif text-4xl md:text-5xl mb-6 text-coffee-dark">Hoş Geldiniz</h2>
+                <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Şehrin en iyi kahve çekirdekleriyle hazırlanan, sıcak ve samimi bir atmosferde unutulmaz anlar yaşayın.
+                </p>
+                <div class="w-full h-64 md:h-96 bg-coffee-light rounded-xl shadow-lg overflow-hidden relative group">
+                     <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+                          alt="Kahve ve Kruvasan"
+                          class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                    <div class="absolute bottom-4 left-4 text-white font-serif text-2xl">Kalite ve Lezzet</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="page-section hidden animate-fade-in">
+            <h2 class="font-serif text-3xl mb-6 border-b-2 border-coffee-light pb-2">Hakkında</h2>
+            <p class="mb-4 text-lg leading-relaxed">
+                Kahve Dükkanı olarak 2010 yılından beri kahve tutkunlarına hizmet veriyoruz. Amacımız sadece kahve satmak değil, kahve kültürünü yaşatmak ve yaymaktır.
+            </p>
+            <p class="mb-4 text-lg leading-relaxed">
+                Çekirdeklerimizi dünyanın en iyi kahve çiftliklerinden özenle seçiyor, kendi tesislerimizde kavuruyoruz. Baristalarımız, her fincanda mükemmelliği hedefler.
+            </p>
+        </section>
+
+        <!-- Support Section -->
+        <section id="support" class="page-section hidden animate-fade-in">
+            <h2 class="font-serif text-3xl mb-6 border-b-2 border-coffee-light pb-2">Destek</h2>
+            <p class="mb-6">Sizlere nasıl yardımcı olabiliriz?</p>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="font-bold text-xl mb-4">Sıkça Sorulan Sorular</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Siparişimi nasıl iptal edebilirim?</li>
+                    <li>Online ödeme seçenekleri nelerdir?</li>
+                    <li>Alerjen bilgisi nerede bulunur?</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page-section hidden animate-fade-in">
+            <h2 class="font-serif text-3xl mb-6 border-b-2 border-coffee-light pb-2">İletişim</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold text-xl mb-4">Bize Ulaşın</h3>
+                    <p class="mb-2"><strong>Telefon:</strong> +90 212 555 12 34</p>
+                    <p class="mb-2"><strong>E-posta:</strong> info@kahvedukkani.com</p>
+                    <p class="mb-2"><strong>Adres:</strong> Kahve Sokak No: 1, İstanbul</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold text-xl mb-4">Mesaj Gönderin</h3>
+                    <form onsubmit="event.preventDefault(); alert('Mesajınız alındı!');" class="space-y-4">
+                        <input type="text" placeholder="Adınız" class="w-full p-2 border border-coffee-light rounded focus:outline-none focus:border-coffee-dark">
+                        <input type="email" placeholder="E-posta" class="w-full p-2 border border-coffee-light rounded focus:outline-none focus:border-coffee-dark">
+                        <textarea placeholder="Mesajınız" class="w-full p-2 border border-coffee-light rounded focus:outline-none focus:border-coffee-dark h-32"></textarea>
+                        <button type="submit" class="bg-coffee-dark text-white px-6 py-2 rounded hover:bg-coffee-medium transition-colors">Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Locations Section -->
+        <section id="locations" class="page-section hidden animate-fade-in">
+            <h2 class="font-serif text-3xl mb-6 border-b-2 border-coffee-light pb-2">Şube Konumları</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Location Card 1 -->
+                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-xl mb-2 text-coffee-medium">Kadıköy</h3>
+                    <p class="text-sm text-gray-600 mb-2">Moda Caddesi No:42</p>
+                    <div class="h-32 bg-gray-200 rounded mb-2 flex items-center justify-center text-gray-500">Harita</div>
+                    <span class="text-green-600 text-sm font-semibold">Açık</span>
+                </div>
+                <!-- Location Card 2 -->
+                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-xl mb-2 text-coffee-medium">Beşiktaş</h3>
+                    <p class="text-sm text-gray-600 mb-2">Çarşı İçi No:10</p>
+                    <div class="h-32 bg-gray-200 rounded mb-2 flex items-center justify-center text-gray-500">Harita</div>
+                    <span class="text-green-600 text-sm font-semibold">Açık</span>
+                </div>
+                <!-- Location Card 3 -->
+                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
+                    <h3 class="font-bold text-xl mb-2 text-coffee-medium">Karaköy</h3>
+                    <p class="text-sm text-gray-600 mb-2">Mumhane Cad. No:5</p>
+                    <div class="h-32 bg-gray-200 rounded mb-2 flex items-center justify-center text-gray-500">Harita</div>
+                    <span class="text-green-600 text-sm font-semibold">Açık</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="page-section hidden animate-fade-in">
+            <h2 class="font-serif text-3xl mb-6 border-b-2 border-coffee-light pb-2">Menü İçerikleri</h2>
+            <div id="menu-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Menu items will be injected via JS -->
+            </div>
+        </section>
+
+        <!-- Prices Section -->
+        <section id="prices" class="page-section hidden animate-fade-in">
+            <h2 class="font-serif text-3xl mb-6 border-b-2 border-coffee-light pb-2">Fiyat Listesi</h2>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-2xl mx-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-coffee-light text-coffee-dark">
+                        <tr>
+                            <th class="p-4 font-serif text-lg">Ürün</th>
+                            <th class="p-4 font-serif text-lg text-right">Fiyat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="price-list-body" class="divide-y divide-gray-200">
+                        <!-- Prices will be injected via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-dark text-cream py-6 text-center mt-auto">
+        <p>&copy; 2023 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>
