@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            light: '#795548',
+                            cream: '#FFFDD0',
+                            white: '#FFFFFF',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-coffee-cream text-coffee-dark font-body min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-coffee-dark text-coffee-cream p-4 sticky top-0 z-50 shadow-md flex justify-between items-center">
+        <button id="hamburger-btn" class="text-2xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h1 class="font-heading text-2xl font-bold tracking-wider">KAHVE DÜKKANI</h1>
+        <div class="w-8"></div> <!-- Spacer for centering -->
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-coffee-cream transform -translate-x-full transition-transform duration-300 z-50 shadow-lg pt-16">
+        <button id="close-sidebar-btn" class="absolute top-4 right-4 text-2xl focus:outline-none">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="flex flex-col space-y-4 p-6 text-lg">
+            <li><a href="#home" class="block hover:text-white transition-colors sidebar-link"><i class="fas fa-home w-8"></i> Ana Sayfa</a></li>
+            <li><a href="#about" class="block hover:text-white transition-colors sidebar-link"><i class="fas fa-info-circle w-8"></i> Hakkında</a></li>
+            <li><a href="#menu" class="block hover:text-white transition-colors sidebar-link"><i class="fas fa-mug-hot w-8"></i> Menü İçerikleri</a></li>
+            <li><a href="#prices" class="block hover:text-white transition-colors sidebar-link"><i class="fas fa-tags w-8"></i> Fiyatlar</a></li>
+            <li><a href="#locations" class="block hover:text-white transition-colors sidebar-link"><i class="fas fa-map-marker-alt w-8"></i> Şube Konumları</a></li>
+            <li><a href="#support" class="block hover:text-white transition-colors sidebar-link"><i class="fas fa-headset w-8"></i> Destek</a></li>
+            <li><a href="#contact" class="block hover:text-white transition-colors sidebar-link"><i class="fas fa-envelope w-8"></i> İletişim</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-grow container mx-auto p-4 md:p-8 transition-all duration-300">
+        <!-- Content injected by JS -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-dark text-coffee-cream p-4 text-center text-sm mt-auto">
+        <p>&copy; 2023 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
