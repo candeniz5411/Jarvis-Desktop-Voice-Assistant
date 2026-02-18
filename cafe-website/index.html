@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            light: '#4E342E',
+                            cream: '#FFFDD0',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-coffee-cream font-body text-coffee-dark">
+
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-md z-50 flex items-center p-4">
+        <button id="menu-btn" class="text-coffee-dark focus:outline-none mr-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <h1 class="text-2xl font-heading font-bold text-coffee-dark">Kahve Dükkanı</h1>
+    </header>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-coffee-cream transform -translate-x-full transition-transform duration-300 ease-in-out z-40 pt-20 shadow-lg">
+        <ul class="flex flex-col space-y-4 p-6 text-lg">
+            <li><a href="#home" class="block hover:text-white transition-colors">Ana Sayfa</a></li>
+            <li><a href="#about" class="block hover:text-white transition-colors">Hakkında</a></li>
+            <li><a href="#menu" class="block hover:text-white transition-colors">Menü İçerikleri</a></li>
+            <li><a href="#prices" class="block hover:text-white transition-colors">Fiyatlar</a></li>
+            <li><a href="#branches" class="block hover:text-white transition-colors">Şube Konumları</a></li>
+            <li><a href="#support" class="block hover:text-white transition-colors">Destek</a></li>
+            <li><a href="#contact" class="block hover:text-white transition-colors">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay (optional for closing sidebar) -->
+    <div id="overlay" class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-300 z-30"></div>
+
+    <!-- Main Content -->
+    <main id="app" class="pt-20 p-4 min-h-screen">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

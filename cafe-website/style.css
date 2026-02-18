@@ -1,0 +1,35 @@
+/* Custom styles for sidebar transitions */
+
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+    background-color: #3E2723; /* Dark Brown */
+    color: #FFFDD0; /* Cream */
+}
+
+#overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Open state classes */
+.sidebar-open {
+    transform: translateX(0) !important;
+}
+
+.overlay-active {
+    opacity: 0.5 !important;
+    pointer-events: auto !important;
+}
+
+/* Custom scrollbar for menu if needed */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3E2723;
+    border-radius: 4px;
+}
