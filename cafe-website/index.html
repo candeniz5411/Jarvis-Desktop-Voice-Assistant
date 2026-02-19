@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee-dark': '#3E2723',
+                        'coffee-light': '#D7CCC8',
+                        'cream': '#FFFDD0',
+                        'cream-dark': '#F5F5DC',
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-cream font-sans text-coffee-dark antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-md z-50 px-6 py-4 flex items-center justify-between">
+        <button id="hamburger-btn" class="text-3xl text-coffee-dark focus:outline-none hover:text-coffee-light transition-colors">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h1 class="text-2xl font-serif font-bold tracking-wider text-coffee-dark">KAHVE DÜKKANI</h1>
+        <div class="w-8"></div> <!-- Spacer to center the logo roughly -->
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-cream z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+        <div class="p-6 border-b border-coffee-light/20 flex justify-between items-center">
+            <span class="text-xl font-serif font-bold">Menü</span>
+            <button id="close-sidebar-btn" class="text-cream hover:text-white transition-colors">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-2">
+                <li><a href="#home" class="block px-6 py-3 hover:bg-white/10 transition-colors nav-link">Ana Sayfa</a></li>
+                <li><a href="#about" class="block px-6 py-3 hover:bg-white/10 transition-colors nav-link">Hakkında</a></li>
+                <li><a href="#support" class="block px-6 py-3 hover:bg-white/10 transition-colors nav-link">Destek</a></li>
+                <li><a href="#contact" class="block px-6 py-3 hover:bg-white/10 transition-colors nav-link">İletişim</a></li>
+                <li><a href="#locations" class="block px-6 py-3 hover:bg-white/10 transition-colors nav-link">Şube Konumları</a></li>
+                <li><a href="#menu" class="block px-6 py-3 hover:bg-white/10 transition-colors nav-link">Menü İçerikleri</a></li>
+                <li><a href="#prices" class="block px-6 py-3 hover:bg-white/10 transition-colors nav-link">Fiyatlar</a></li>
+            </ul>
+        </div>
+        <div class="p-6 border-t border-coffee-light/20 text-center text-sm text-cream/70">
+            &copy; 2023 Kahve Dükkanı
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="pt-20 pb-12 px-4 md:px-8 max-w-4xl mx-auto min-h-screen">
+
+        <!-- Home Section -->
+        <section id="home-section" class="page-section animate-fade-in">
+            <div class="text-center py-12">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 text-coffee-dark">Hoş Geldiniz</h2>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-coffee-dark/80">
+                    En kaliteli kahve çekirdekleri ile hazırlanan özel lezzetlerimizi keşfedin.
+                    Modern atmosferimizde keyifli anlar sizi bekliyor.
+                </p>
+                <!-- Placeholder Image -->
+                <div class="relative w-full h-64 md:h-96 rounded-xl overflow-hidden shadow-xl mb-8 bg-coffee-light">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                         alt="Taze kahve ve kruvasan"
+                         class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end justify-center pb-8">
+                        <span class="text-white font-serif text-2xl italic">Günün Kahvesi</span>
+                    </div>
+                </div>
+                <a href="#menu" class="inline-block bg-coffee-dark text-cream px-8 py-3 rounded-full font-bold shadow-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-1">
+                    Menüyü İncele
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about-section" class="page-section hidden animate-fade-in">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark/20 pb-2">Hakkında</h2>
+            <div class="prose max-w-none text-coffee-dark/90">
+                <p class="mb-4">Kahve tutkusuyla yola çıktığımız bu serüvende, en taze çekirdekleri özenle seçip, ustalıkla kavurarak fincanlarınıza taşıyoruz.</p>
+                <p>Amacımız sadece kahve satmak değil, kahve kültürünü yaşatmak ve misafirlerimize unutulmaz bir deneyim sunmaktır. Minimalist ve modern tasarımımızla, şehrin gürültüsünden uzaklaşıp huzur bulabileceğiniz bir ortam yarattık.</p>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section id="support-section" class="page-section hidden animate-fade-in">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark/20 pb-2">Destek</h2>
+            <p class="mb-4">Sizlere daha iyi hizmet verebilmek için buradayız. Şikayet, öneri ve talepleriniz bizim için değerlidir.</p>
+            <div class="bg-white p-6 rounded-lg shadow-md border border-coffee-light/30">
+                <h3 class="font-bold text-lg mb-2">Sıkça Sorulan Sorular</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Rezervasyon gerekli mi? - Hayır, dilediğiniz zaman gelebilirsiniz.</li>
+                    <li>Vegan seçenekleriniz var mı? - Evet, menümüzde vegan seçenekler mevcuttur.</li>
+                    <li>Wi-Fi hizmetiniz var mı? - Evet, tüm şubelerimizde ücretsiz yüksek hızlı internet mevcuttur.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact-section" class="page-section hidden animate-fade-in">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark/20 pb-2">İletişim</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-2">Bize Ulaşın</h3>
+                    <p class="mb-2"><i class="fas fa-phone mr-2 text-coffee-dark"></i> +90 212 555 00 00</p>
+                    <p class="mb-2"><i class="fas fa-envelope mr-2 text-coffee-dark"></i> info@kahvedukkani.com</p>
+                    <p class="mb-4"><i class="fas fa-map-marker-alt mr-2 text-coffee-dark"></i> İstanbul, Türkiye</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <form onsubmit="event.preventDefault(); alert('Mesajınız alındı!');">
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold mb-1">Adınız</label>
+                            <input type="text" class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-coffee-dark" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold mb-1">Mesajınız</label>
+                            <textarea class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-coffee-dark" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-coffee-dark text-white px-4 py-2 rounded hover:bg-opacity-90 w-full transition-colors">Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Locations Section -->
+        <section id="locations-section" class="page-section hidden animate-fade-in">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark/20 pb-2">Şube Konumları</h2>
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-coffee-dark">
+                    <h3 class="font-bold text-xl mb-2">Kadıköy Şubesi</h3>
+                    <p class="text-gray-600 mb-2">Moda Caddesi No: 12</p>
+                    <p class="text-sm text-gray-500">Hafta içi: 08:00 - 23:00</p>
+                    <p class="text-sm text-gray-500">Hafta sonu: 09:00 - 00:00</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-coffee-dark">
+                    <h3 class="font-bold text-xl mb-2">Beşiktaş Şubesi</h3>
+                    <p class="text-gray-600 mb-2">Çarşı İçi Sokak No: 5</p>
+                    <p class="text-sm text-gray-500">Hafta içi: 07:30 - 22:00</p>
+                    <p class="text-sm text-gray-500">Hafta sonu: 08:30 - 23:30</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-coffee-dark">
+                    <h3 class="font-bold text-xl mb-2">Karaköy Şubesi</h3>
+                    <p class="text-gray-600 mb-2">Kemankeş Caddesi No: 24</p>
+                    <p class="text-sm text-gray-500">Hafta içi: 08:00 - 23:00</p>
+                    <p class="text-sm text-gray-500">Hafta sonu: 09:00 - 01:00</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Contents Section (Visuals/Categories) -->
+        <section id="menu-section" class="page-section hidden animate-fade-in">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark/20 pb-2">Menü İçerikleri</h2>
+            <p class="mb-6 text-center text-gray-600">Özenle hazırladığımız lezzetlerimiz.</p>
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Javascript will populate this -->
+            </div>
+        </section>
+
+        <!-- Prices Section (List View) -->
+        <section id="prices-section" class="page-section hidden animate-fade-in">
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b-2 border-coffee-dark/20 pb-2">Fiyat Listesi</h2>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-coffee-light/30">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-coffee-dark text-cream">
+                        <tr>
+                            <th class="p-4 font-serif text-lg">Ürün</th>
+                            <th class="p-4 font-serif text-lg text-right">Fiyat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="price-list-body" class="divide-y divide-gray-200">
+                        <!-- Javascript will populate this -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
