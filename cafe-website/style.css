@@ -1,0 +1,60 @@
+:root {
+  --coffee-dark: #3E2723;
+  --cream: #FFFDD0;
+}
+
+body {
+    background-color: var(--cream);
+    color: var(--coffee-dark);
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Sidebar Transition */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+#sidebar.open {
+    transform: translateX(0);
+}
+
+/* Overlay Transition */
+#sidebar-overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+#sidebar-overlay.visible {
+    opacity: 1;
+}
+
+/* Content Fade In */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--coffee-dark);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5D4037;
+}
