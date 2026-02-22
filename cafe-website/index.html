@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee-dark': '#3E2723',
+                        'coffee-light': '#D7CCC8',
+                        'cream': '#FFFDD0',
+                        'white': '#FFFFFF',
+                    },
+                    fontFamily: {
+                        'sans': ['Lato', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream font-sans text-coffee-dark antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-coffee-dark text-cream shadow-md z-50 h-16 flex items-center px-4 justify-between">
+        <div class="flex items-center">
+            <button id="menu-btn" class="text-3xl focus:outline-none mr-4">
+                &#9776; <!-- Hamburger Icon -->
+            </button>
+            <h1 class="text-2xl font-serif font-bold">Kahve Dükkanı</h1>
+        </div>
+        <div>
+            <!-- Optional: Right side header content (e.g., social icons) -->
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-cream transform -translate-x-full transition-transform duration-300 z-50 pt-20 shadow-xl">
+        <div class="flex flex-col px-4 space-y-4 text-lg">
+            <a href="#home" class="hover:text-coffee-light transition-colors py-2 border-b border-coffee-light/20">Ana Sayfa</a>
+            <a href="#hakkinda" class="hover:text-coffee-light transition-colors py-2 border-b border-coffee-light/20">Hakkında</a>
+            <a href="#destek" class="hover:text-coffee-light transition-colors py-2 border-b border-coffee-light/20">Destek</a>
+            <a href="#iletisim" class="hover:text-coffee-light transition-colors py-2 border-b border-coffee-light/20">İletişim</a>
+            <a href="#subeler" class="hover:text-coffee-light transition-colors py-2 border-b border-coffee-light/20">Şube Konumları</a>
+            <a href="#menu" class="hover:text-coffee-light transition-colors py-2 border-b border-coffee-light/20">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="hover:text-coffee-light transition-colors py-2 border-b border-coffee-light/20">Fiyatlar</a>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Main Content -->
+    <main id="app" class="pt-20 px-4 pb-10 min-h-screen container mx-auto">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
