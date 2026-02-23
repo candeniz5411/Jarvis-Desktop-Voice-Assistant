@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            light: '#4E342E',
+                            cream: '#FFFDD0',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-coffee-cream font-body text-coffee-dark antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-coffee-dark text-coffee-cream shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <button id="menu-btn" class="text-2xl hover:text-white transition-colors">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="text-2xl font-heading font-bold tracking-wider">
+                <a href="#home" class="hover:text-white transition-colors">Kahve Dükkanı</a>
+            </h1>
+            <!-- Placeholder for right side balance (optional) -->
+            <div class="w-8"></div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-coffee-cream z-50 shadow-2xl pt-16">
+        <ul class="flex flex-col space-y-2 p-4">
+            <li><a href="#home" class="block py-2 px-4 hover:bg-coffee-light rounded transition-colors" data-link>Ana Sayfa</a></li>
+            <li><a href="#about" class="block py-2 px-4 hover:bg-coffee-light rounded transition-colors" data-link>Hakkında</a></li>
+            <li><a href="#menu" class="block py-2 px-4 hover:bg-coffee-light rounded transition-colors" data-link>Menü İçerikleri</a></li>
+            <li><a href="#prices" class="block py-2 px-4 hover:bg-coffee-light rounded transition-colors" data-link>Fiyatlar</a></li>
+            <li><a href="#locations" class="block py-2 px-4 hover:bg-coffee-light rounded transition-colors" data-link>Şube Konumları</a></li>
+            <li><a href="#support" class="block py-2 px-4 hover:bg-coffee-light rounded transition-colors" data-link>Destek</a></li>
+            <li><a href="#contact" class="block py-2 px-4 hover:bg-coffee-light rounded transition-colors" data-link>İletişim</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300 opacity-0"></div>
+
+    <!-- Main Content -->
+    <main id="app" class="pt-20 pb-10 min-h-screen container mx-auto px-4">
+        <!-- Content injected by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-dark text-coffee-cream py-6 text-center">
+        <p>&copy; 2023 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
