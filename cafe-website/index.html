@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            light: '#5D4037',
+                            cream: '#FFFDD0',
+                            white: '#FFFFFF',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-coffee-cream text-coffee-dark font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-coffee-dark text-coffee-cream p-4 shadow-md fixed w-full top-0 z-50 flex items-center justify-between">
+        <div class="flex items-center">
+            <button id="menu-btn" class="text-3xl mr-4 focus:outline-none hover:text-white transition-colors">
+                &#9776; <!-- Hamburger Icon -->
+            </button>
+            <h1 class="text-2xl font-serif font-bold tracking-wider">
+                <a href="#home" class="hover:text-white transition-colors">Kahve Dükkanı</a>
+            </h1>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-coffee-cream transform -translate-x-full transition-transform duration-300 z-50 shadow-2xl pt-16">
+        <nav class="flex flex-col p-4 space-y-4">
+            <a href="#about" class="sidebar-link text-lg hover:text-white hover:bg-coffee-light p-2 rounded transition-colors">Hakkında</a>
+            <a href="#support" class="sidebar-link text-lg hover:text-white hover:bg-coffee-light p-2 rounded transition-colors">Destek</a>
+            <a href="#contact" class="sidebar-link text-lg hover:text-white hover:bg-coffee-light p-2 rounded transition-colors">İletişim</a>
+            <a href="#locations" class="sidebar-link text-lg hover:text-white hover:bg-coffee-light p-2 rounded transition-colors">Şube Konumları</a>
+            <a href="#menu" class="sidebar-link text-lg hover:text-white hover:bg-coffee-light p-2 rounded transition-colors">Menü İçerikleri</a>
+            <a href="#prices" class="sidebar-link text-lg hover:text-white hover:bg-coffee-light p-2 rounded transition-colors">Fiyatlar</a>
+        </nav>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-grow pt-20 p-4 container mx-auto max-w-4xl transition-opacity duration-300 opacity-100">
+        <!-- Content injected by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-dark text-coffee-cream text-center p-4 mt-auto">
+        <p>&copy; 2023 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>

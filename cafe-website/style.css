@@ -1,0 +1,56 @@
+:root {
+    --color-coffee-dark: #3E2723;
+    --color-coffee-light: #5D4037;
+    --color-coffee-cream: #FFFDD0;
+    --color-white: #FFFFFF;
+}
+
+body {
+    background-color: var(--color-coffee-cream);
+    color: var(--color-coffee-dark);
+}
+
+/* Sidebar Transition */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+#sidebar.active {
+    transform: translateX(0);
+}
+
+/* Overlay Transition */
+#overlay {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    pointer-events: none; /* Click through when hidden */
+}
+
+#overlay.active {
+    display: block;
+    opacity: 0.5;
+    pointer-events: auto; /* Catch clicks when visible */
+}
+
+/* Custom Scrollbar for Sidebar */
+#sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+    background: var(--color-coffee-dark);
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background: var(--color-coffee-light);
+    border-radius: 4px;
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+    background: #795548;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
