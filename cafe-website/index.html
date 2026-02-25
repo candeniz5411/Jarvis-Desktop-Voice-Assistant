@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee-dark': '#3E2723',
+                        'cream-light': '#FFFDD0',
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream-light text-coffee-dark font-sans antialiased overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-coffee-dark text-cream-light p-4 flex items-center justify-between z-50 shadow-md">
+        <button id="hamburger" class="text-3xl focus:outline-none p-2">
+            <!-- Hamburger Icon -->
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <h1 class="text-2xl font-serif font-bold tracking-widest flex-grow text-center pr-12">KAHVE DÜKKANI</h1>
+    </header>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-cream-light transform -translate-x-full transition-transform duration-300 ease-in-out z-50 pt-20 shadow-2xl">
+        <ul class="flex flex-col space-y-2 p-4">
+            <li><a href="#about" class="block py-3 px-4 hover:bg-white/10 rounded transition">Hakkında</a></li>
+            <li><a href="#support" class="block py-3 px-4 hover:bg-white/10 rounded transition">Destek</a></li>
+            <li><a href="#contact" class="block py-3 px-4 hover:bg-white/10 rounded transition">İletişim</a></li>
+            <li><a href="#locations" class="block py-3 px-4 hover:bg-white/10 rounded transition">Şube Konumları</a></li>
+            <li><a href="#menu" class="block py-3 px-4 hover:bg-white/10 rounded transition">Menü İçerikleri</a></li>
+            <li><a href="#prices" class="block py-3 px-4 hover:bg-white/10 rounded transition">Fiyatlar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Main Content -->
+    <main id="app" class="pt-24 px-4 pb-12 min-h-screen container mx-auto max-w-lg md:max-w-2xl lg:max-w-4xl">
+        <!-- Content will be injected here via app.js -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
