@@ -1,0 +1,28 @@
+/* Global Styles */
+body {
+    background-color: #FFFDD0;
+    color: #3E2723;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+p, a, span, div, button, input {
+    font-family: 'Lato', sans-serif;
+}
+
+/* Sidebar Animation */
+#sidebar {
+    /* Tailwind handles the initial state (-translate-x-full) and transition */
+}
+
+#sidebar.active {
+    transform: translateX(0);
+}
+
+/* Overlay Animation - Optional if we want fade instead of just toggle */
+#overlay {
+    /* We will handle display via 'hidden' class in JS,
+       but we can add a fade-in effect if we remove 'hidden' and add 'opacity-100' */
+}
