@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+
+/* Basic resets and base styles are handled by Tailwind CSS */
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #FFFDD0; /* Cream */
+    color: #3E2723; /* Dark Coffee */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Sidebar Custom Animations */
+#sidebar {
+    background-color: #3E2723;
+    color: #FFFDD0;
+    transition: transform 0.3s ease-in-out;
+    width: 280px;
+    z-index: 100;
+}
+
+#sidebar.active {
+    transform: translateX(0);
+}
+
+/* Overlay */
+#overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 90;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Custom Hamburger Button Style if needed beyond Tailwind */
+#hamburger-menu svg {
+    color: #FFFDD0;
+}
+
+/* Active Link Styling */
+#sidebar a.active-link {
+    color: #FFFDD0;
+    font-weight: bold;
+    border-bottom-color: #FFFDD0;
+}
+
+/* Card Styles */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #3E2723;
+    color: #FFFDD0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #5D4037;
+}
