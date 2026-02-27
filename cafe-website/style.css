@@ -1,0 +1,54 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #FFFDD0; /* Cream */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+#sidebar.open {
+    transform: translateX(0);
+}
+
+#overlay.show {
+    display: block;
+}
+
+/* Custom Scrollbar for Sidebar */
+#sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+#sidebar::-webkit-scrollbar-track {
+    background: #3E2723;
+}
+#sidebar::-webkit-scrollbar-thumb {
+    background: #FFFDD0;
+}
+#sidebar::-webkit-scrollbar-thumb:hover {
+    background: #FFF;
+}
+
+/* Main Content Area */
+main {
+    transition: padding-left 0.3s ease-in-out;
+}
+
+/* Responsive Handling */
+@media (min-width: 768px) {
+    /* Larger screens can have different sidebar behavior if needed */
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
