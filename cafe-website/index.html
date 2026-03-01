@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#3E2723', // Dark brown
+                            light: '#FFFDD0', // Cream
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Force Tailwind classes for dynamic content -->
+    <div class="hidden bg-brand-dark bg-brand-light text-brand-dark text-brand-light bg-[#2c1c19] text-[#2c1c19] text-gray-700 text-gray-600 text-gray-500 bg-gray-50 bg-black bg-opacity-50 opacity-100 opacity-0 -translate-x-full border-gray-200 border-gray-300 w-24 w-64 h-24 mt-10 p-8 pt-8 pb-8 hover:bg-opacity-90 transition-all shadow-md rounded-full mt-8 md:text-5xl border-4 text-3xl pb-2"></div>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#FFFDD0] font-body text-[#3E2723] min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="bg-[#3E2723] text-[#FFFDD0] p-4 flex items-center justify-between sticky top-0 z-40 shadow-md">
+        <div class="flex items-center">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" class="p-2 focus:outline-none focus:ring-2 focus:ring-[#FFFDD0] rounded mr-4" aria-label="Menüyü aç">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Logo / Brand Name -->
+            <a href="#/" class="flex items-center gap-2 text-xl font-heading font-bold">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/>
+                </svg>
+                Kahve Dükkanı
+            </a>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-4 bg-[#3E2723] text-[#FFFDD0] flex justify-between items-center">
+            <span class="font-heading font-bold text-lg">Menü</span>
+            <button id="menu-close" class="p-1 focus:outline-none focus:ring-2 focus:ring-[#FFFDD0] rounded" aria-label="Menüyü kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-2">
+                <li><a href="#/hakkinda" class="block px-6 py-2 text-[#3E2723] hover:bg-[#FFFDD0] hover:text-[#3E2723] transition-colors font-semibold">Hakkında</a></li>
+                <li><a href="#/destek" class="block px-6 py-2 text-[#3E2723] hover:bg-[#FFFDD0] hover:text-[#3E2723] transition-colors font-semibold">Destek</a></li>
+                <li><a href="#/iletisim" class="block px-6 py-2 text-[#3E2723] hover:bg-[#FFFDD0] hover:text-[#3E2723] transition-colors font-semibold">İletişim</a></li>
+                <li><a href="#/sube-konumlari" class="block px-6 py-2 text-[#3E2723] hover:bg-[#FFFDD0] hover:text-[#3E2723] transition-colors font-semibold">Şube Konumları</a></li>
+                <li><a href="#/menu-icerikleri" class="block px-6 py-2 text-[#3E2723] hover:bg-[#FFFDD0] hover:text-[#3E2723] transition-colors font-semibold">Menü İçerikleri</a></li>
+                <li><a href="#/fiyatlar" class="block px-6 py-2 text-[#3E2723] hover:bg-[#FFFDD0] hover:text-[#3E2723] transition-colors font-semibold">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="app-content" class="flex-1 p-4 md:p-8 max-w-4xl mx-auto w-full">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 text-center p-4 text-sm mt-auto">
+        <p>&copy; 2024 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
