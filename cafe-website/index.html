@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee-brown': '#3E2723',
+                        'coffee-cream': '#FFFDD0',
+                    },
+                    fontFamily: {
+                        'heading': ['"Playfair Display"', 'serif'],
+                        'body': ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-gray-800 font-body relative min-h-screen flex flex-col">
+
+    <!-- Pre-declare dynamic classes for Tailwind JIT -->
+    <div class="hidden text-[#3E2723] bg-[#FFFDD0] border-[#3E2723] hover:text-[#3E2723] hover:bg-[#FFFDD0] hover:bg-gray-100 flex-col items-center justify-center space-y-4 max-w-4xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-center text-left text-xl text-2xl font-bold font-heading mb-6 mb-4 mb-2 mt-4 rounded-lg shadow-md w-full h-auto object-cover"></div>
+
+    <!-- Header -->
+    <header class="bg-coffee-brown text-coffee-cream sticky top-0 z-40 shadow-md">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center">
+                <!-- Hamburger Menu Button -->
+                <button id="menu-btn" class="text-coffee-cream hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded p-1 mr-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <!-- Logo & Brand -->
+                <a href="#/" class="flex items-center space-x-2 text-xl md:text-2xl font-heading font-bold tracking-wider">
+                    <span class="text-2xl">☕</span>
+                    <span>Kahve Dükkanı</span>
+                </a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <!-- Additional header content if needed, kept minimal -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-cream shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 bg-coffee-brown text-coffee-cream flex justify-between items-center">
+            <span class="font-heading font-bold text-xl flex items-center gap-2"><span>☕</span> Menü</span>
+            <button id="close-sidebar-btn" class="text-coffee-cream hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="flex-grow py-4">
+            <ul class="flex flex-col">
+                <li><a href="#/" class="block px-6 py-3 text-coffee-brown font-bold hover:bg-gray-200 transition-colors border-b border-gray-200">Ana Sayfa</a></li>
+                <li><a href="#/hakkinda" class="block px-6 py-3 text-coffee-brown font-bold hover:bg-gray-200 transition-colors border-b border-gray-200">Hakkında</a></li>
+                <li><a href="#/destek" class="block px-6 py-3 text-coffee-brown font-bold hover:bg-gray-200 transition-colors border-b border-gray-200">Destek</a></li>
+                <li><a href="#/iletisim" class="block px-6 py-3 text-coffee-brown font-bold hover:bg-gray-200 transition-colors border-b border-gray-200">İletişim</a></li>
+                <li><a href="#/subeler" class="block px-6 py-3 text-coffee-brown font-bold hover:bg-gray-200 transition-colors border-b border-gray-200">Şube Konumları</a></li>
+                <li><a href="#/menu" class="block px-6 py-3 text-coffee-brown font-bold hover:bg-gray-200 transition-colors border-b border-gray-200">Menü İçerikleri</a></li>
+                <li><a href="#/fiyatlar" class="block px-6 py-3 text-coffee-brown font-bold hover:bg-gray-200 transition-colors">Fiyatlar</a></li>
+            </ul>
+        </nav>
+
+        <div class="p-6 border-t border-gray-200 text-center text-sm text-gray-500">
+            &copy; <span id="year"></span> Kahve Dükkanı
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="app-content" class="flex-grow container mx-auto px-4 py-8">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-6 text-center text-coffee-brown">
+        <div class="container mx-auto px-4">
+            <p class="font-body text-sm">&copy; <span id="footer-year"></span> Kahve Dükkanı. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="app.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
