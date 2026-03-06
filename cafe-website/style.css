@@ -1,0 +1,32 @@
+/* Custom CSS to supplement Tailwind */
+
+/* Typography Overrides */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+/* Sidebar Smooth Transition */
+/* Tailwind's transition classes handle most of this, but adding specific rule for transform just in case */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ensure the overlay fades smoothly */
+#sidebar-overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Hide scrollbar for sidebar, but allow scrolling */
+#sidebar::-webkit-scrollbar {
+    display: none;
+}
+#sidebar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Styling for content injected via JS (Moved to index.html for Tailwind CDN support) */
