@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Tailwind Custom Classes -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-card {
+                @apply bg-white rounded-lg shadow-lg p-6 max-w-4xl w-full mx-auto mt-4;
+            }
+        }
+    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#FFFDD0] text-[#3E2723] font-body m-0 p-0 flex flex-col min-h-screen relative overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md p-4 flex items-center sticky top-0 z-40">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="p-2 focus:outline-none focus:ring-2 focus:ring-[#3E2723] rounded mr-4" aria-label="Menü">
+            <svg class="w-8 h-8 text-[#3E2723]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <!-- Logo / Title -->
+        <a href="#/" class="flex items-center cursor-pointer hover:opacity-80 transition-opacity">
+            <svg class="w-8 h-8 text-[#3E2723] mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18,6V4H16V2H6V4H4V6H2V14C2,15.65 3.35,17 5,17H6.53C7.2,19.34 9.42,21 12,21C14.58,21 16.8,19.34 17.47,17H19C20.65,17 22,15.65 22,14V6H18M4,14V8H6V15H5C4.45,15 4,14.55 4,14M20,14C20,14.55 19.55,15 19,15H18V8H20V14Z" />
+            </svg>
+            <h1 class="text-2xl font-heading font-bold text-[#3E2723]">Kahve Dükkanı</h1>
+        </a>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40 transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex justify-between items-center p-4 border-b border-[#FFFDD0]">
+            <h2 class="text-xl font-heading font-bold text-[#3E2723]">Menü</h2>
+            <button id="close-btn" class="p-2 focus:outline-none focus:ring-2 focus:ring-[#3E2723] rounded" aria-label="Kapat">
+                <svg class="w-6 h-6 text-[#3E2723]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex flex-col py-4">
+            <li><a href="#/" class="block px-6 py-3 hover:bg-[#FFFDD0] transition-colors font-bold text-lg text-[#3E2723]">Ana Sayfa</a></li>
+            <li><a href="#/hakkinda" class="block px-6 py-3 hover:bg-[#FFFDD0] transition-colors text-lg text-[#3E2723]">Hakkında</a></li>
+            <li><a href="#/destek" class="block px-6 py-3 hover:bg-[#FFFDD0] transition-colors text-lg text-[#3E2723]">Destek</a></li>
+            <li><a href="#/iletisim" class="block px-6 py-3 hover:bg-[#FFFDD0] transition-colors text-lg text-[#3E2723]">İletişim</a></li>
+            <li><a href="#/subeler" class="block px-6 py-3 hover:bg-[#FFFDD0] transition-colors text-lg text-[#3E2723]">Şube Konumları</a></li>
+            <li><a href="#/menu" class="block px-6 py-3 hover:bg-[#FFFDD0] transition-colors text-lg text-[#3E2723]">Menü İçerikleri</a></li>
+            <li><a href="#/fiyatlar" class="block px-6 py-3 hover:bg-[#FFFDD0] transition-colors text-lg text-[#3E2723]">Fiyatlar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-grow p-4 md:p-8 flex flex-col">
+        <!-- Content gets injected here -->
+    </main>
+
+    <!-- Pre-declare classes for Tailwind JIT -->
+    <div class="hidden text-[#3E2723] bg-[#FFFDD0] bg-white text-center text-4xl text-2xl text-xl text-lg mb-4 mb-2 mb-6 mt-4 mt-8 font-heading shadow-lg rounded-lg max-w-4xl w-full mx-auto p-6 space-y-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-bold flex justify-between items-center border-b pb-2 rounded-xl object-cover h-64 h-auto max-w-full"></div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
