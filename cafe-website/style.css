@@ -1,0 +1,60 @@
+/* Custom Styles for Kahve Dükkanı */
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure smooth transitions for sidebar */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ensure smooth transitions for overlay */
+#overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Content fade animation for SPA routing */
+.fade-in {
+    animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom Scrollbar for sidebar */
+#sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+    background: #3E2723;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background: #FFFDD0;
+    border-radius: 3px;
+}
+
+/* Menu items hover effect */
+.menu-item:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease-in-out;
+}
