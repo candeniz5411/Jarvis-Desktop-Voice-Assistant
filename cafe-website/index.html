@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cafe: {
+                            brown: '#3E2723',
+                            cream: '#FFFDD0',
+                            lightBrown: '#5D4037',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .heading-primary {
+                @apply font-heading text-cafe-brown font-bold;
+            }
+            .text-body {
+                @apply font-body text-cafe-lightBrown;
+            }
+            .bg-cream {
+                @apply bg-cafe-cream;
+            }
+            .bg-brown {
+                @apply bg-cafe-brown text-cafe-cream;
+            }
+        }
+    </style>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-cafe-cream text-cafe-lightBrown font-body flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-cafe-brown text-cafe-cream p-4 flex items-center shadow-md relative z-20">
+        <!-- Hamburger Menu Button -->
+        <button id="hamburger-btn" class="mr-4 focus:outline-none focus:ring-2 focus:ring-cafe-cream rounded">
+            <!-- Inline SVG Hamburger Icon -->
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <!-- Logo/Title -->
+        <div class="flex items-center space-x-2 flex-grow justify-center pr-12">
+            <!-- Coffee Cup SVG Logo -->
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 21h18v-2H2v2zm15-11c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H4C2.9 2 2 2.9 2 4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-4h1zm-2 0H4V4h11v6zm-4.5 4h-3v-2h3v2zm6-3v2c0 2.21-1.79 4-4 4h-1v-2h1c1.1 0 2-.9 2-2v-2h2z"/>
+            </svg>
+            <h1 class="text-xl font-heading font-bold cursor-pointer" onclick="window.location.hash='#'">Kahve Dükkanı</h1>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-cafe-brown text-cafe-cream shadow-2xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 border-b border-cafe-lightBrown flex justify-between items-center">
+            <h2 class="text-2xl font-heading font-bold">Menü</h2>
+            <button id="close-btn" class="focus:outline-none focus:ring-2 focus:ring-cafe-cream rounded">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex flex-col flex-grow py-4" id="nav-links">
+            <li><a href="#hakkinda" class="block py-3 px-6 hover:bg-cafe-lightBrown transition duration-200 text-lg">Hakkında</a></li>
+            <li><a href="#destek" class="block py-3 px-6 hover:bg-cafe-lightBrown transition duration-200 text-lg">Destek</a></li>
+            <li><a href="#iletisim" class="block py-3 px-6 hover:bg-cafe-lightBrown transition duration-200 text-lg">İletişim</a></li>
+            <li><a href="#sube-konumlari" class="block py-3 px-6 hover:bg-cafe-lightBrown transition duration-200 text-lg">Şube Konumları</a></li>
+            <li><a href="#menu-icerikleri" class="block py-3 px-6 hover:bg-cafe-lightBrown transition duration-200 text-lg">Menü İçerikleri</a></li>
+            <li><a href="#fiyatlar" class="block py-3 px-6 hover:bg-cafe-lightBrown transition duration-200 text-lg">Fiyatlar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="app" class="flex-grow p-4 md:p-8 flex flex-col items-center">
+        <!-- Content gets injected here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cafe-brown text-cafe-cream p-4 text-center mt-auto z-10">
+        <p class="text-sm font-body">&copy; 2024 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Hidden Div for Pre-declaring dynamic tailwind classes for JIT compiler -->
+    <div class="hidden">
+        <div class="text-[#3E2723] bg-[#3E2723] text-[#FFFDD0] bg-[#FFFDD0] text-[#5D4037] bg-[#5D4037] bg-white border-[#5D4037] shadow-lg rounded-lg text-4xl text-2xl text-xl text-center flex flex-col md:flex-row items-center justify-center p-8 m-4 gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto list-disc list-inside hover:bg-gray-100 mt-6 mb-4 font-bold text-gray-700 italic border-b pb-2 transition-transform transform hover:scale-105"></div>
+    </div>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
