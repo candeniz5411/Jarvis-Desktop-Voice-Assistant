@@ -1,0 +1,40 @@
+/* Custom CSS for Kahve Dükkanı */
+
+/* Ensuring base font styles via CSS just in case Tailwind setup is incomplete */
+body {
+    font-family: 'Lato', sans-serif;
+    color: #3E2723;
+    background-color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Sidebar transitions */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ensure the overlay smooth fade */
+#sidebar-overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FFFDD0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3E2723;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5D4037;
+}
