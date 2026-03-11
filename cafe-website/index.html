@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            DEFAULT: '#3E2723',
+                            light: '#5D4037',
+                            dark: '#1B0000'
+                        },
+                        cream: {
+                            DEFAULT: '#FFFDD0',
+                            light: '#FFFFF0',
+                            dark: '#EBE9BE'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+          .font-heading {
+            font-family: "Playfair Display", serif;
+          }
+          .font-body {
+            font-family: "Lato", sans-serif;
+          }
+        }
+    </style>
+</head>
+<body class="bg-white text-brown font-body">
+    <!-- Hidden div for dynamically injected classes to ensure Tailwind compiles them -->
+    <div class="hidden text-[#3E2723] bg-[#FFFDD0] border-[#3E2723] bg-brown text-cream bg-cream"></div>
+
+    <!-- Header -->
+    <header class="bg-cream shadow-md fixed w-full top-0 z-40 h-16 flex items-center justify-between px-4">
+        <div class="flex items-center">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="text-brown focus:outline-none focus:ring-2 focus:ring-brown rounded p-1" aria-label="Menüyü Aç">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <!-- Logo / Brand -->
+            <a href="#" class="ml-4 flex items-center gap-2 text-2xl font-bold font-heading text-brown hover:text-brown-light transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 21h18v-2H2v2zm15-11.5c0-3.04-2.46-5.5-5.5-5.5S6 6.46 6 9.5v5h11v-5zM19 8h-1V6h1c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2h-1v-1h1V8zM8.5 2h5v2h-5z"/>
+                </svg>
+                Kahve Dükkanı
+            </a>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brown text-cream z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl overflow-y-auto">
+        <div class="p-4 flex items-center justify-between border-b border-brown-light">
+            <span class="text-xl font-bold font-heading">Menü</span>
+            <button id="close-btn" class="text-cream hover:text-white focus:outline-none p-1 rounded focus:ring-2 focus:ring-cream" aria-label="Menüyü Kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="mt-4 flex flex-col space-y-2 px-4">
+            <a href="#hakkinda" class="block py-2 px-4 hover:bg-brown-light rounded transition-colors text-lg font-heading">Hakkında</a>
+            <a href="#destek" class="block py-2 px-4 hover:bg-brown-light rounded transition-colors text-lg font-heading">Destek</a>
+            <a href="#iletisim" class="block py-2 px-4 hover:bg-brown-light rounded transition-colors text-lg font-heading">İletişim</a>
+            <a href="#sube-konumlari" class="block py-2 px-4 hover:bg-brown-light rounded transition-colors text-lg font-heading">Şube Konumları</a>
+            <a href="#menu-icerikleri" class="block py-2 px-4 hover:bg-brown-light rounded transition-colors text-lg font-heading">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="block py-2 px-4 hover:bg-brown-light rounded transition-colors text-lg font-heading">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="app" class="pt-16 min-h-screen">
+        <!-- SPA Content will be injected here -->
+    </main>
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>
