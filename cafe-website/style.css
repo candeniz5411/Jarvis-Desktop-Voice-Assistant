@@ -1,0 +1,43 @@
+/* Custom styles and overrides */
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Animations and transitions for smoother UI */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FFFDD0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8D6E63;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5D4037;
+}
