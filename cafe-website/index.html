@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brown-dark': '#3E2723',
+                        'cream': '#FFFDD0'
+                    },
+                    fontFamily: {
+                        'playfair': ['"Playfair Display"', 'serif'],
+                        'lato': ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-cream font-lato text-brown-dark min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-brown-dark text-white p-4 flex items-center shadow-md relative z-20">
+        <button id="hamburger-btn" class="p-2 mr-4 focus:outline-none" aria-label="Menüyü aç">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+        <h1 class="text-2xl font-playfair font-bold tracking-wide cursor-pointer" onclick="window.location.hash=''">Kahve Dükkanı</h1>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-4 bg-brown-dark text-white flex justify-between items-center">
+            <span class="text-xl font-playfair font-bold">Menü</span>
+            <button id="close-sidebar-btn" class="p-1 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-2">
+                <li><a href="#" class="block px-6 py-3 hover:bg-cream hover:text-brown-dark transition-colors font-medium text-lg">Ana Sayfa</a></li>
+                <li><a href="#hakkinda" class="block px-6 py-3 hover:bg-cream hover:text-brown-dark transition-colors font-medium text-lg">Hakkında</a></li>
+                <li><a href="#destek" class="block px-6 py-3 hover:bg-cream hover:text-brown-dark transition-colors font-medium text-lg">Destek</a></li>
+                <li><a href="#iletisim" class="block px-6 py-3 hover:bg-cream hover:text-brown-dark transition-colors font-medium text-lg">İletişim</a></li>
+                <li><a href="#subeler" class="block px-6 py-3 hover:bg-cream hover:text-brown-dark transition-colors font-medium text-lg">Şube Konumları</a></li>
+                <li><a href="#menu" class="block px-6 py-3 hover:bg-cream hover:text-brown-dark transition-colors font-medium text-lg">Menü İçerikleri</a></li>
+                <li><a href="#fiyatlar" class="block px-6 py-3 hover:bg-cream hover:text-brown-dark transition-colors font-medium text-lg">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-1 flex flex-col pt-8 pb-12 w-full max-w-4xl mx-auto px-4">
+        <!-- Dynamic content will be injected here -->
+    </main>
+
+    <!-- Hidden Pre-declared Tailwind Classes for dynamic injection -->
+    <div id="tailwind-pre-declare" class="hidden text-[#3E2723] bg-[#FFFDD0] bg-white text-brown-dark bg-brown-dark text-white text-4xl text-3xl text-2xl text-xl mb-4 mb-6 font-playfair font-lato shadow-lg shadow-md rounded-lg rounded-xl p-6 p-4 max-w-md max-w-2xl mx-auto object-cover h-64 h-80 w-full grid grid-cols-1 md:grid-cols-2 gap-4 gap-6 border-b border-gray-200 py-3 py-4 flex justify-between justify-center items-center text-center mt-8 mt-4 space-y-4 space-y-2"></div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
