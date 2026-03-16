@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cafe-brown': '#3E2723',
+                        'cafe-cream': '#FFFDD0',
+                    },
+                    fontFamily: {
+                        'playfair': ['"Playfair Display"', 'serif'],
+                        'lato': ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-cafe-cream text-cafe-brown font-lato min-h-screen flex flex-col m-0 p-0">
+
+    <!-- Pre-declare tailwind classes for JIT if dynamic generation is needed -->
+    <div id="tailwind-safelist" class="hidden text-[#3E2723] bg-[#FFFDD0]"></div>
+
+    <!-- Header -->
+    <header class="bg-cafe-brown text-cafe-cream p-4 flex items-center shadow-md relative z-20">
+        <!-- Hamburger Menu Button -->
+        <button id="hamburger-btn" class="p-2 mr-4 focus:outline-none hover:bg-opacity-80 transition-opacity" aria-label="Menüyü aç">
+            <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+        </button>
+
+        <!-- Logo / Title -->
+        <div class="flex items-center">
+            <svg class="w-8 h-8 mr-2 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <!-- Simple Coffee Cup SVG -->
+                <path d="M2,21V19H20V21H2M20,8V5H18V8H20M20,3A2,2 0 0,1 22,5V8A2,2 0 0,1 20,10H18V13A4,4 0 0,1 14,17H8A4,4 0 0,1 4,13V3H20M16,5H6V13A2,2 0 0,0 8,15H14A2,2 0 0,0 16,13V5Z"/>
+            </svg>
+            <h1 class="font-playfair text-2xl font-bold cursor-pointer" onclick="window.location.hash='/'">Kahve Dükkanı</h1>
+        </div>
+    </header>
+
+    <!-- Sidebar & Overlay Container -->
+    <div class="relative z-30 flex-grow flex">
+
+        <!-- Overlay -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden transition-opacity duration-300 z-40"></div>
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-cafe-brown text-cafe-cream transform -translate-x-full transition-transform duration-300 ease-in-out z-50 shadow-2xl flex flex-col pt-16">
+            <!-- Close Button for Mobile / inside sidebar -->
+            <button id="close-sidebar-btn" class="absolute top-4 right-4 p-2 focus:outline-none hover:text-gray-300" aria-label="Menüyü kapat">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+
+            <nav class="flex-1 mt-8">
+                <ul class="flex flex-col space-y-2">
+                    <li><a href="#/hakkinda" class="block px-6 py-3 hover:bg-[#5C3A21] transition-colors text-lg font-playfair">1. Hakkında</a></li>
+                    <li><a href="#/destek" class="block px-6 py-3 hover:bg-[#5C3A21] transition-colors text-lg font-playfair">2. Destek</a></li>
+                    <li><a href="#/iletisim" class="block px-6 py-3 hover:bg-[#5C3A21] transition-colors text-lg font-playfair">3. İletişim</a></li>
+                    <li><a href="#/sube-konumlari" class="block px-6 py-3 hover:bg-[#5C3A21] transition-colors text-lg font-playfair">4. Şube Konumları</a></li>
+                    <li><a href="#/menu-icerikleri" class="block px-6 py-3 hover:bg-[#5C3A21] transition-colors text-lg font-playfair">5. Menü İçerikleri</a></li>
+                    <li><a href="#/fiyatlar" class="block px-6 py-3 hover:bg-[#5C3A21] transition-colors text-lg font-playfair">6. Fiyatlar</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 p-6 lg:p-12 w-full transition-all duration-300 ease-in-out relative z-10" id="main-content-area">
+            <div id="content" class="max-w-4xl mx-auto w-full">
+                <!-- Content will be injected here by app.js -->
+            </div>
+        </main>
+    </div>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
