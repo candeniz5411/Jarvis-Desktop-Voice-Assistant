@@ -1,0 +1,44 @@
+/* Custom CSS for Kahve Dükkanı */
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    /* Tailwind will handle most styles, but we can add any custom non-Tailwind rules here */
+}
+
+/* Ensure fade transitions are smooth for the overlay */
+#sidebar-overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+
+#sidebar-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#sidebar-overlay:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Custom scrollbar for sidebar and main content */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FFFDD0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D7CCC8;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5D4037;
+}
