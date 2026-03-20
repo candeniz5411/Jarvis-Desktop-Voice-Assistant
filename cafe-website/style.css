@@ -1,0 +1,33 @@
+/* Custom CSS overrides and animations */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Fonts are primarily handled by Tailwind, but adding a fallback here */
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Ensure smooth sidebar transitions */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
+}
+
+#overlay {
+    transition: opacity 0.3s ease-in-out;
+    will-change: opacity;
+}
+
+/* Active navigation link styling */
+.nav-link.active {
+    background-color: #FFFDD0; /* cafeCream */
+    color: #3E2723; /* cafeBrown */
+    font-weight: 700;
+    border-left: 4px solid #3E2723;
+}
