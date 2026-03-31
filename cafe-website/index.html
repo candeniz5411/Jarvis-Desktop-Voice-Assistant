@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee': '#3E2723',
+                        'cream': '#FFFDD0',
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Tailwind Styles -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply block py-3 px-6 text-xl font-body text-coffee hover:bg-cream hover:text-[#2a1a17] transition-colors border-b border-coffee/10;
+            }
+            .page-title {
+                @apply text-3xl font-heading font-bold text-coffee mb-6 text-center;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream font-body text-coffee antialiased overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-40 h-16 flex items-center justify-between px-4">
+        <button id="menu-btn" class="p-2 text-coffee focus:outline-none focus:ring-2 focus:ring-coffee rounded" aria-label="Menüyü aç">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="flex-1 text-center pr-12">
+            <h1 class="text-2xl font-heading font-bold text-coffee tracking-wide">
+                <a href="#home">Kahve Dükkanı</a>
+            </h1>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-72 h-full bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto flex flex-col">
+        <div class="p-6 border-b border-coffee/10 flex justify-between items-center bg-cream">
+            <h2 class="text-2xl font-heading font-bold text-coffee">Menü</h2>
+            <button id="close-btn" class="text-coffee hover:text-gray-600 focus:outline-none p-1" aria-label="Menüyü kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 py-4">
+            <a href="#hakkinda" class="nav-link">1. Hakkında</a>
+            <a href="#destek" class="nav-link">2. Destek</a>
+            <a href="#iletisim" class="nav-link">3. İletişim</a>
+            <a href="#sube-konumlari" class="nav-link">4. Şube Konumları</a>
+            <a href="#menu-icerikleri" class="nav-link">5. Menü İçerikleri</a>
+            <a href="#fiyatlar" class="nav-link">6. Fiyatlar</a>
+        </nav>
+        <div class="p-6 text-sm text-center text-coffee/60 border-t border-coffee/10">
+            &copy; 2024 Kahve Dükkanı
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-grow pt-20 px-4 pb-8 max-w-4xl mx-auto w-full">
+        <!-- Content injected by app.js -->
+    </main>
+
+    <!-- Hidden Div for Tailwind JIT (Dynamic classes from JS) -->
+    <div id="tailwind-jit-hidden" style="display: none;">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 md:p-8 bg-white rounded-lg shadow-sm w-full mx-auto max-w-3xl flex flex-col md:flex-row items-center gap-8 md:gap-12 aspect-video object-cover text-center text-lg md:text-xl text-gray-700 leading-relaxed font-bold border border-coffee/10 hover:shadow-md transition-shadow justify-between border-b pb-4 last:border-0 border-t pt-4"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
