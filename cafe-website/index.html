@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#3E2723',  /* Dark brown */
+                            light: '#FFFDD0', /* Cream */
+                            accent: '#D4A373' /* Accent brown */
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS to support @apply and smooth transitions -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply block py-3 px-4 text-brand-dark hover:bg-brand-light hover:text-brand-accent transition-colors duration-200 border-b border-gray-200;
+            }
+            .page-title {
+                @apply text-3xl font-heading text-brand-dark mb-6 text-center;
+            }
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #FFFDD0;
+            color: #3E2723;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: '"Playfair Display"', serif;
+        }
+    </style>
+</head>
+<body class="bg-brand-light min-h-screen flex flex-col font-body">
+
+    <!-- Pre-declare dynamic tailwind classes used in app.js -->
+    <div class="hidden">
+        <span class="text-brand-dark text-brand-accent bg-brand-light page-title grid grid-cols-1 md:grid-cols-2 gap-6 p-6 rounded-lg shadow-md mb-8 flex items-center justify-between border-b pb-4 text-xl font-bold font-heading space-y-4"></span>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-brand-dark text-white p-4 sticky top-0 z-40 shadow-md">
+        <div class="container mx-auto flex items-center justify-between">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="p-2 focus:outline-none hover:bg-white/10 rounded transition-colors" aria-label="Toggle Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Branding / Logo -->
+            <a href="#/" class="text-2xl font-heading font-bold tracking-wider flex items-center gap-2">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 19h16v2H4v-2zM20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 5h-2V5h2v3z"/>
+                </svg>
+                Kahve Dükkanı
+            </a>
+
+            <div class="w-10"></div> <!-- Spacer for flexbox centering -->
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-4 bg-brand-dark text-brand-light flex justify-between items-center">
+            <span class="font-heading text-xl font-bold">Menü</span>
+            <button id="close-btn" class="p-1 hover:bg-white/20 rounded focus:outline-none" aria-label="Close Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-2">
+            <ul class="flex flex-col">
+                <li><a href="#/hakkinda" class="nav-link">Hakkında</a></li>
+                <li><a href="#/destek" class="nav-link">Destek</a></li>
+                <li><a href="#/iletisim" class="nav-link">İletişim</a></li>
+                <li><a href="#/subeler" class="nav-link">Şube Konumları</a></li>
+                <li><a href="#/menu" class="nav-link">Menü İçerikleri</a></li>
+                <li><a href="#/fiyatlar" class="nav-link">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="content" class="container mx-auto px-4 py-8 flex-1">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white/80 py-6 text-center text-sm">
+        <p>&copy; <span id="year"></span> Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
