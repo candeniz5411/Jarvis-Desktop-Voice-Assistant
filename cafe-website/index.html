@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: '#3E2723',
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .heading-font {
+                font-family: 'Playfair Display', serif;
+            }
+            .body-font {
+                font-family: 'Lato', sans-serif;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream text-coffee font-sans flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-coffee text-cream shadow-md fixed w-full z-20 top-0 left-0">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="text-cream focus:outline-none focus:ring-2 focus:ring-cream rounded mr-4" aria-label="Menü">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Logo / Title -->
+            <h1 class="text-2xl font-serif font-bold tracking-wider">
+                <a href="#/" class="hover:text-gray-300">Kahve Dükkanı</a>
+            </h1>
+        </div>
+    </header>
+
+    <!-- Sidebar & Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity"></div>
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-coffee text-cream shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-6 h-full flex flex-col">
+            <!-- Close Button -->
+            <div class="flex justify-end mb-6">
+                <button id="close-btn" class="text-cream hover:text-gray-300 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex-1 flex flex-col space-y-4 font-serif text-lg">
+                <a href="#/hakkinda" class="hover:text-gray-300 transition-colors">Hakkında</a>
+                <a href="#/destek" class="hover:text-gray-300 transition-colors">Destek</a>
+                <a href="#/iletisim" class="hover:text-gray-300 transition-colors">İletişim</a>
+                <a href="#/subeler" class="hover:text-gray-300 transition-colors">Şube Konumları</a>
+                <a href="#/menu" class="hover:text-gray-300 transition-colors">Menü İçerikleri</a>
+                <a href="#/fiyatlar" class="hover:text-gray-300 transition-colors">Fiyatlar</a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="app" class="flex-1 max-w-7xl mx-auto w-full px-4 pt-24 pb-8">
+        <!-- SPA content will be rendered here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee text-cream text-center py-4 mt-auto">
+        <p class="font-sans text-sm">&copy; 2024 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
