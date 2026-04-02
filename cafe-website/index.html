@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .btn {
+                @apply inline-block px-4 py-2 bg-brown-900 text-cream rounded hover:bg-opacity-90 transition-colors;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-brown-900 text-cream fixed w-full top-0 left-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-center relative">
+            <button id="menu-btn" class="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 focus:outline-none" aria-label="Menüyü aç">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <h1 class="font-serif text-2xl tracking-wider text-center w-full cursor-pointer" onclick="window.location.hash='#'">Kahve Dükkanı</h1>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-cream text-brown-900 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-xl flex flex-col pt-16">
+        <div class="px-6 py-4 border-b border-brown-900/20">
+            <h2 class="font-serif text-xl font-bold">Menü</h2>
+        </div>
+        <nav class="flex-1 px-4 py-4 space-y-2 overflow-y-auto">
+            <a href="#hakkinda" class="block px-4 py-2 rounded hover:bg-brown-900 hover:text-cream transition-colors">Hakkında</a>
+            <a href="#destek" class="block px-4 py-2 rounded hover:bg-brown-900 hover:text-cream transition-colors">Destek</a>
+            <a href="#iletisim" class="block px-4 py-2 rounded hover:bg-brown-900 hover:text-cream transition-colors">İletişim</a>
+            <a href="#subeler" class="block px-4 py-2 rounded hover:bg-brown-900 hover:text-cream transition-colors">Şube Konumları</a>
+            <a href="#menu" class="block px-4 py-2 rounded hover:bg-brown-900 hover:text-cream transition-colors">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="block px-4 py-2 rounded hover:bg-brown-900 hover:text-cream transition-colors">Fiyatlar</a>
+        </nav>
+        <button id="close-sidebar" class="absolute top-4 right-4 p-2 focus:outline-none text-brown-900" aria-label="Menüyü kapat">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 mt-16 p-4 container mx-auto" id="content">
+        <!-- Content injected by app.js -->
+    </main>
+
+    <!-- Hidden div for arbitrary Tailwind classes to compile -->
+    <div class="hidden text-[#3E2723] bg-[#3E2723] bg-[#FFFDD0] text-[#FFFDD0]"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
