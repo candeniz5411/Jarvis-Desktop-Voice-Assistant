@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            900: '#3E2723', // Dark Brown
+                            800: '#4E342E',
+                            700: '#5D4037',
+                            600: '#6D4C41',
+                            500: '#795548',
+                            400: '#8D6E63',
+                        },
+                        cream: {
+                            100: '#FFFDD0', // Cream Background
+                            50: '#FFFEF0',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .heading-primary {
+                @apply font-serif text-brown-900 font-bold text-3xl md:text-4xl;
+            }
+            .text-body {
+                @apply font-sans text-brown-800 text-lg;
+            }
+        }
+        body {
+            @apply bg-cream-100;
+        }
+    </style>
+</head>
+<body class="bg-cream-100 text-brown-900 font-sans min-h-screen flex flex-col m-0 p-0 overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="bg-brown-900 text-cream-100 p-4 flex justify-between items-center shadow-md relative z-20">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="p-2 focus:outline-none focus:ring-2 focus:ring-cream-100 rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <!-- Logo/Title -->
+        <div class="font-serif text-2xl font-bold flex-grow text-center flex items-center justify-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.63a8.97 8.97 0 00-1.57-4.14M5.63 10.87a8.97 8.97 0 00-1.57 4.14m16.89 0A8.97 8.97 0 0021 15.63m-16.89 0A8.97 8.97 0 003 15.63" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12m-3 0a3 3 0 106 0 3 3 0 10-6 0m-7.07 7.07l2.12-2.12M19.07 19.07l-2.12-2.12M12 21v-3M12 6V3" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9h8v3a4 4 0 01-8 0V9z" />
+            </svg>
+            <a href="#ana-sayfa"><span>Kahve Dükkanı</span></a>
+        </div>
+
+        <!-- Spacer for centering -->
+        <div class="w-12"></div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-brown-800 text-cream-100 z-40 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+        <div class="p-6 flex justify-between items-center border-b border-brown-700">
+            <h2 class="font-serif text-xl font-bold">Menü</h2>
+            <button id="close-btn" class="p-1 focus:outline-none focus:ring-2 focus:ring-cream-100 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-grow py-4 overflow-y-auto">
+            <ul class="space-y-2">
+                <li><a href="#ana-sayfa" class="block px-6 py-3 hover:bg-brown-700 transition duration-200">Ana Sayfa</a></li>
+                <li><a href="#hakkinda" class="block px-6 py-3 hover:bg-brown-700 transition duration-200">Hakkında</a></li>
+                <li><a href="#destek" class="block px-6 py-3 hover:bg-brown-700 transition duration-200">Destek</a></li>
+                <li><a href="#iletisim" class="block px-6 py-3 hover:bg-brown-700 transition duration-200">İletişim</a></li>
+                <li><a href="#subeler" class="block px-6 py-3 hover:bg-brown-700 transition duration-200">Şube Konumları</a></li>
+                <li><a href="#menu-icerikleri" class="block px-6 py-3 hover:bg-brown-700 transition duration-200">Menü İçerikleri</a></li>
+                <li><a href="#fiyatlar" class="block px-6 py-3 hover:bg-brown-700 transition duration-200">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main id="app-content" class="flex-grow p-4 md:p-8 flex flex-col items-center max-w-4xl mx-auto w-full relative z-10 transition-opacity duration-300">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream-100 text-center p-4 mt-auto">
+        <p class="text-sm opacity-80">&copy; 2024 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Safe list for dynamic classes (if any are injected via JS and not present in HTML) -->
+    <div class="hidden text-[#3E2723] bg-[#FFFDD0]"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
