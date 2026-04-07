@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            DEFAULT: '#3E2723',
+                            light: '#5D4037',
+                            dark: '#1B0000',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 300ms;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream font-sans text-brown min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- Hidden div to force Tailwind to generate dynamic classes used in JS -->
+    <div class="hidden text-[#3E2723] bg-[#FFFDD0] -translate-x-full translate-x-0 hidden block"></div>
+
+    <!-- Header -->
+    <header class="bg-brown text-cream p-4 sticky top-0 z-40 flex items-center shadow-md">
+        <button id="menu-btn" class="p-2 focus:outline-none focus:ring-2 focus:ring-cream rounded z-50 relative" aria-label="Menüyü aç">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="flex-grow text-center font-serif text-2xl font-bold tracking-wide">
+            Kahve Dükkanı
+        </div>
+        <div class="w-12"></div> <!-- Spacer for centering -->
+    </header>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-brown-light text-cream z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-xl flex flex-col">
+        <div class="p-6 border-b border-brown flex justify-between items-center bg-brown">
+            <h2 class="font-serif text-xl font-semibold">Menü</h2>
+            <button id="close-menu-btn" class="text-cream focus:outline-none focus:ring-2 focus:ring-cream rounded" aria-label="Menüyü kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-grow overflow-y-auto py-4">
+            <ul class="space-y-2">
+                <li><a href="#/" class="sidebar-link block px-6 py-3 hover:bg-brown transition-colors">Ana Sayfa</a></li>
+                <li><a href="#/hakkinda" class="sidebar-link block px-6 py-3 hover:bg-brown transition-colors">Hakkında</a></li>
+                <li><a href="#/destek" class="sidebar-link block px-6 py-3 hover:bg-brown transition-colors">Destek</a></li>
+                <li><a href="#/iletisim" class="sidebar-link block px-6 py-3 hover:bg-brown transition-colors">İletişim</a></li>
+                <li><a href="#/subeler" class="sidebar-link block px-6 py-3 hover:bg-brown transition-colors">Şube Konumları</a></li>
+                <li><a href="#/menu" class="sidebar-link block px-6 py-3 hover:bg-brown transition-colors">Menü İçerikleri</a></li>
+                <li><a href="#/fiyatlar" class="sidebar-link block px-6 py-3 hover:bg-brown transition-colors">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div id="app" class="flex-grow flex flex-col relative w-full p-4 md:p-8 max-w-4xl mx-auto">
+        <!-- Content will be injected here -->
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
