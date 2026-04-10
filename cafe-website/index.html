@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cafe: {
+                            dark: '#3E2723',
+                            light: '#FFFDD0',
+                            accent: '#8D6E63'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-container {
+                @apply bg-white p-6 rounded-lg shadow-md max-w-4xl mx-auto;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cafe-light text-cafe-dark font-body antialiased min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-cafe-dark text-cafe-light shadow-md fixed w-full z-20 top-0">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <!-- Hamburger Menu Button -->
+                <button id="menu-btn" class="focus:outline-none hover:text-cafe-accent transition">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-2">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2,21H22V19H2M20,8H18V5H20M20,3H4V13A4,4 0 0,0 8,17H14A4,4 0 0,0 18,13V10H20A2,2 0 0,0 22,8V5C22,3.89 21.1,3 20,3M16,13A2,2 0 0,1 14,15H8A2,2 0 0,1 6,13V5H16V13Z" />
+                    </svg>
+                    <span class="text-xl font-heading font-bold tracking-wider">Kahve Dükkanı</span>
+                </a>
+            </div>
+            <!-- Optional: Desktop Navigation (Hidden on small screens) -->
+            <nav class="hidden md:flex space-x-6 font-semibold">
+                <a href="#menu" class="hover:text-cafe-accent transition">Menü</a>
+                <a href="#contact" class="hover:text-cafe-accent transition">İletişim</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 bg-cafe-dark text-cafe-light w-64 z-40 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl overflow-y-auto">
+        <div class="p-6 border-b border-cafe-accent">
+            <h2 class="text-2xl font-heading font-bold">Menü</h2>
+        </div>
+        <nav class="mt-6">
+            <ul class="space-y-2">
+                <li><a href="#about" class="block px-6 py-3 hover:bg-cafe-accent transition">1. Hakkında</a></li>
+                <li><a href="#support" class="block px-6 py-3 hover:bg-cafe-accent transition">2. Destek</a></li>
+                <li><a href="#contact" class="block px-6 py-3 hover:bg-cafe-accent transition">3. İletişim</a></li>
+                <li><a href="#locations" class="block px-6 py-3 hover:bg-cafe-accent transition">4. Şube Konumları</a></li>
+                <li><a href="#menu" class="block px-6 py-3 hover:bg-cafe-accent transition">5. Menü İçerikleri</a></li>
+                <li><a href="#prices" class="block px-6 py-3 hover:bg-cafe-accent transition">6. Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-20 px-4 pb-8 container mx-auto" id="app-content">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cafe-dark text-cafe-light text-center py-4 mt-auto">
+        <p class="text-sm opacity-75">&copy; 2024 Kahve Dükkanı. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <!-- Hidden div for pre-compiling dynamic Tailwind classes if needed -->
+    <div class="hidden">
+        <div class="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 text-center border-b pb-4 text-gray-600 bg-white p-6 rounded-lg shadow-md max-w-4xl mx-auto flex items-center justify-between font-heading font-bold text-3xl text-2xl text-xl mt-4 space-y-4"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
