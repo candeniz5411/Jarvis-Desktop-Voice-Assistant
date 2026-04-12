@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            light: '#D7CCC8',
+                        },
+                        cream: '#FFFDD0',
+                        white: '#FFFFFF'
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply block py-3 px-4 text-cream hover:bg-white hover:text-[#3E2723] rounded transition-colors text-lg font-heading;
+            }
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #FFFDD0;
+            color: #3E2723;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-[#FFFDD0] text-[#3E2723] m-0 p-0 overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-[#3E2723] text-[#FFFDD0] p-4 flex items-center justify-between shadow-md relative z-20">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="text-[#FFFDD0] focus:outline-none p-2 rounded hover:bg-white/10" aria-label="Menüyü Aç">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <!-- Logo / Brand Name -->
+        <div class="text-2xl font-bold font-heading flex-grow text-center">
+            <a href="#" class="hover:text-white transition-colors">☕ Kahve Dükkanı</a>
+        </div>
+
+        <!-- Placeholder to balance the header flexbox -->
+        <div class="w-12"></div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-[#3E2723] text-[#FFFDD0] shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-4 flex items-center justify-between border-b border-[#FFFDD0]/20">
+            <span class="text-xl font-bold font-heading">Menü</span>
+            <button id="close-btn" class="text-[#FFFDD0] focus:outline-none p-2 rounded hover:bg-white/10" aria-label="Menüyü Kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-grow p-4 space-y-2 overflow-y-auto">
+            <a href="#hakkinda" class="nav-link">Hakkında</a>
+            <a href="#destek" class="nav-link">Destek</a>
+            <a href="#iletisim" class="nav-link">İletişim</a>
+            <a href="#subeler" class="nav-link">Şube Konumları</a>
+            <a href="#menu-icerikleri" class="nav-link">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="nav-link">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="app-content" class="flex-grow w-full">
+        <!-- Content will be injected here via app.js -->
+    </main>
+
+    <!-- Hidden div for Tailwind arbitrary values -->
+    <div class="hidden text-[#3E2723] bg-[#FFFDD0] bg-[#FFFFFF] bg-[#3E2723] text-[#FFFFFF] text-xl font-bold font-heading text-center p-8 m-4 rounded shadow-lg grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-4xl mx-auto items-center justify-center flex-col mt-8 border-b py-2 w-full max-w-2xl object-cover h-64 rounded-xl shadow-md w-full h-full mb-6"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
