@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee-dark': '#3E2723',
+                        'coffee-light': '#D7CCC8',
+                        'cream': '#FFFDD0'
+                    },
+                    fontFamily: {
+                        'heading': ['Playfair Display', 'serif'],
+                        'body': ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply block py-3 px-4 text-coffee-dark hover:bg-coffee-light hover:text-coffee-dark rounded transition-colors text-lg font-body;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream font-body text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="p-2 text-coffee-dark focus:outline-none focus:ring-2 focus:ring-coffee-dark rounded-md z-50">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-heading font-bold text-coffee-dark flex items-center gap-2" id="logo-link">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 19h16v2H4zM20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm-2 5h-2V5h2v3z"/>
+                </svg>
+                Kahve Dükkanı
+            </a>
+
+            <div class="w-8"></div> <!-- Placeholder for centering logo -->
+        </div>
+    </header>
+
+    <!-- Sidebar & Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col pt-16 overflow-y-auto">
+        <nav class="p-4 space-y-2" id="nav-menu">
+            <a href="#hakkinda" class="nav-link">Hakkında</a>
+            <a href="#destek" class="nav-link">Destek</a>
+            <a href="#iletisim" class="nav-link">İletişim</a>
+            <a href="#subeler" class="nav-link">Şube Konumları</a>
+            <a href="#menu" class="nav-link">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="nav-link">Fiyatlar</a>
+        </nav>
+        <div class="mt-auto p-4 text-center text-sm text-gray-500">
+            &copy; 2024 Kahve Dükkanı
+        </div>
+    </aside>
+
+    <!-- Main Content Container for SPA -->
+    <main id="app-content" class="flex-grow container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Pre-declare tailwind classes for JIT compiler -->
+    <div class="hidden text-[#3E2723] bg-cream"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
