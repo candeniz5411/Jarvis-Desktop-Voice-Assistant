@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee': '#3E2723',
+                        'cream': '#FFFDD0',
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .hidden-safe {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream font-body text-coffee min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50 flex items-center justify-between p-4">
+        <div class="flex items-center">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="text-coffee hover:text-gray-700 focus:outline-none p-2 mr-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <!-- Logo / Brand -->
+            <a href="#ana-sayfa" class="text-2xl font-bold font-heading flex items-center gap-2">
+                <svg class="w-8 h-8 text-coffee" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v14h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5c0-2.21-1.79-4-4-4zM6 18c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm13.5-8.5l1.96 2.5H17V9.5h2.5zM18 18c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"></path></svg>
+                Kahve Dükkanı
+            </a>
+        </div>
+    </nav>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sliding Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-50 pt-20">
+        <div class="px-6 pb-6 h-full overflow-y-auto">
+            <h2 class="text-xl font-heading font-bold mb-6 border-b border-gray-200 pb-2">Menü</h2>
+            <ul class="space-y-4">
+                <li><a href="#ana-sayfa" class="sidebar-link block text-lg hover:text-yellow-600 transition-colors">Ana Sayfa</a></li>
+                <li><a href="#hakkinda" class="sidebar-link block text-lg hover:text-yellow-600 transition-colors">Hakkında</a></li>
+                <li><a href="#destek" class="sidebar-link block text-lg hover:text-yellow-600 transition-colors">Destek</a></li>
+                <li><a href="#iletisim" class="sidebar-link block text-lg hover:text-yellow-600 transition-colors">İletişim</a></li>
+                <li><a href="#sube-konumlari" class="sidebar-link block text-lg hover:text-yellow-600 transition-colors">Şube Konumları</a></li>
+                <li><a href="#menu-icerikleri" class="sidebar-link block text-lg hover:text-yellow-600 transition-colors">Menü İçerikleri</a></li>
+                <li><a href="#fiyatlar" class="sidebar-link block text-lg hover:text-yellow-600 transition-colors">Fiyatlar</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="app" class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee text-cream py-6 text-center mt-auto">
+        <p>&copy; 2026 Kahve Dükkanı. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
+
+    <!-- Hidden div to force Tailwind to generate dynamic colors used in JS -->
+    <div class="hidden text-[#3E2723] bg-[#FFFDD0] border-[#3E2723]"></div>
+</body>
+</html>
