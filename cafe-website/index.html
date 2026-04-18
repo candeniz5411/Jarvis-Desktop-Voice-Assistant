@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kahve Dükkanı</title>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Playfair Display for headings, Lato for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Configuration to safelist dynamically generated classes used in JS -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'coffee-dark': '#3E2723',
+            'coffee-cream': '#FFFDD0',
+            'coffee-brown': '#5D4037',
+            'coffee-light': '#D7CCC8'
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            body: ['Lato', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer utilities {
+      /* Any custom utility if needed */
+    }
+    body {
+      @apply bg-coffee-cream text-coffee-dark font-body;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      @apply font-heading;
+    }
+  </style>
+
+  <!-- A hidden div to force Tailwind to generate specific dynamic classes used in JS -->
+  <div hidden class="text-coffee-dark bg-coffee-cream text-[#3E2723] bg-[#FFFDD0] border-coffee-brown"></div>
+</head>
+<body class="bg-coffee-cream text-coffee-dark font-body antialiased flex flex-col min-h-screen">
+
+  <!-- Header Section -->
+  <header class="fixed top-0 left-0 right-0 h-16 bg-white bg-opacity-90 shadow z-40 flex items-center px-4">
+    <button id="menu-btn" class="p-2 mr-4 focus:outline-none flex-shrink-0" aria-label="Menü Aç">
+      <svg class="w-6 h-6 text-coffee-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+
+    <div class="flex items-center space-x-2">
+      <!-- Simple coffee cup icon for logo -->
+      <svg class="w-8 h-8 text-coffee-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+      </svg>
+      <h1 class="font-heading font-bold text-xl tracking-wide"><a href="#">Kahve Dükkanı</a></h1>
+    </div>
+  </header>
+
+  <!-- Sidebar Navigation & Overlay -->
+  <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+  <nav id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    <div class="p-4 bg-coffee-dark text-white flex justify-between items-center h-16">
+      <span class="font-heading font-bold text-lg">Menü</span>
+      <button id="close-btn" class="focus:outline-none p-2" aria-label="Menü Kapat">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <ul class="flex-grow py-4 overflow-y-auto">
+      <li><a href="#hakkinda" class="block px-6 py-3 hover:bg-coffee-light transition-colors border-b border-gray-100">Hakkında</a></li>
+      <li><a href="#destek" class="block px-6 py-3 hover:bg-coffee-light transition-colors border-b border-gray-100">Destek</a></li>
+      <li><a href="#iletisim" class="block px-6 py-3 hover:bg-coffee-light transition-colors border-b border-gray-100">İletişim</a></li>
+      <li><a href="#sube-konumlari" class="block px-6 py-3 hover:bg-coffee-light transition-colors border-b border-gray-100">Şube Konumları</a></li>
+      <li><a href="#menu-icerikleri" class="block px-6 py-3 hover:bg-coffee-light transition-colors border-b border-gray-100">Menü İçerikleri</a></li>
+      <li><a href="#fiyatlar" class="block px-6 py-3 hover:bg-coffee-light transition-colors border-b border-gray-100">Fiyatlar</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="flex-grow pt-16 relative">
+    <div id="app" class="w-full max-w-4xl mx-auto p-4 md:p-8">
+      <!-- Content will be injected here by app.js -->
+    </div>
+  </main>
+
+  <footer class="bg-coffee-dark text-coffee-cream text-center py-4 text-sm mt-auto">
+    <p>&copy; 2024 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Sidebar toggle logic
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const sidebarLinks = sidebar.querySelectorAll('a');
+
+    function openSidebar() {
+      sidebar.classList.remove('-translate-x-full');
+      overlay.classList.remove('hidden');
+    }
+
+    function closeSidebar() {
+      sidebar.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+    }
+
+    menuBtn.addEventListener('click', openSidebar);
+    closeBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+    // Close sidebar when a link is clicked
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', closeSidebar);
+    });
+  </script>
+</body>
+</html>
