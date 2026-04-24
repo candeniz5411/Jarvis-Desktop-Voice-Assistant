@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#D7CCC8',
+                            300: '#A1887F',
+                            500: '#795548',
+                            700: '#5D4037',
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0'
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 300ms;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream font-body text-brown-900 min-h-screen flex flex-col">
+    <!-- Overlay for Sidebar -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-brown-900 text-cream z-50 transform -translate-x-full transition-transform duration-300 shadow-xl overflow-y-auto">
+        <div class="p-6 flex justify-between items-center border-b border-brown-700">
+            <h2 class="font-heading text-xl font-bold">Menü</h2>
+            <button id="close-btn" class="text-cream hover:text-brown-100 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="p-4">
+            <ul class="space-y-2">
+                <li><a href="#/" class="block py-2 px-4 rounded hover:bg-brown-700 transition-colors">Ana Sayfa</a></li>
+                <li><a href="#/hakkinda" class="block py-2 px-4 rounded hover:bg-brown-700 transition-colors">Hakkında</a></li>
+                <li><a href="#/destek" class="block py-2 px-4 rounded hover:bg-brown-700 transition-colors">Destek</a></li>
+                <li><a href="#/iletisim" class="block py-2 px-4 rounded hover:bg-brown-700 transition-colors">İletişim</a></li>
+                <li><a href="#/subeler" class="block py-2 px-4 rounded hover:bg-brown-700 transition-colors">Şube Konumları</a></li>
+                <li><a href="#/menu" class="block py-2 px-4 rounded hover:bg-brown-700 transition-colors">Menü İçerikleri</a></li>
+                <li><a href="#/fiyatlar" class="block py-2 px-4 rounded hover:bg-brown-700 transition-colors">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Header -->
+    <header class="bg-brown-900 text-cream sticky top-0 z-30 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <button id="menu-btn" class="mr-4 text-cream hover:text-brown-100 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <div class="flex items-center gap-2">
+                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                     </svg>
+                    <h1 class="font-heading text-2xl font-bold tracking-wide">Kahve Dükkanı</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-grow container mx-auto px-4 py-8">
+        <!-- Dynamic content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- Pre-declare tailwind classes for dynamic injection -->
+    <div class="hidden">
+        <span class="text-[#3E2723]"></span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
