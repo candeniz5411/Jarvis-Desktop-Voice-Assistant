@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kahve Dükkanı</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              brown: '#3E2723',
+              cream: '#FFFDD0',
+              brownLight: '#5D4037',
+              brownDark: '#1B0000',
+            }
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            body: ['Lato', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand-cream text-brand-brown font-body m-0 p-0 overflow-x-hidden">
+
+  <!-- Navbar -->
+  <header class="bg-brand-brown text-brand-cream p-4 flex items-center justify-between shadow-md relative z-20">
+    <!-- Hamburger Menu Button -->
+    <button id="menu-btn" class="text-brand-cream focus:outline-none hover:text-brand-cream/80 transition-colors" aria-label="Menüyü Aç">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    <!-- Brand / Logo Area -->
+    <a href="#" class="text-2xl font-heading font-bold cursor-pointer hover:opacity-90 transition-opacity">
+      Kahve Dükkanı
+    </a>
+    <div class="w-8"></div> <!-- Spacer for centering -->
+  </header>
+
+  <!-- Sidebar Overlay -->
+  <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden transition-opacity duration-300"></div>
+
+  <!-- Sidebar -->
+  <nav id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-brand-brown text-brand-cream shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out z-40 flex flex-col">
+    <div class="p-6 flex items-center justify-between border-b border-brand-brownLight">
+      <span class="text-xl font-heading font-bold">Menü</span>
+      <button id="close-btn" class="text-brand-cream focus:outline-none hover:text-brand-cream/80 transition-colors" aria-label="Menüyü Kapat">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto py-4">
+      <ul class="space-y-2">
+        <li><a href="#hakkinda" class="block px-6 py-3 hover:bg-brand-brownLight transition-colors font-medium">Hakkında</a></li>
+        <li><a href="#destek" class="block px-6 py-3 hover:bg-brand-brownLight transition-colors font-medium">Destek</a></li>
+        <li><a href="#iletisim" class="block px-6 py-3 hover:bg-brand-brownLight transition-colors font-medium">İletişim</a></li>
+        <li><a href="#sube-konumlari" class="block px-6 py-3 hover:bg-brand-brownLight transition-colors font-medium">Şube Konumları</a></li>
+        <li><a href="#menu-icerikleri" class="block px-6 py-3 hover:bg-brand-brownLight transition-colors font-medium">Menü İçerikleri</a></li>
+        <li><a href="#fiyatlar" class="block px-6 py-3 hover:bg-brand-brownLight transition-colors font-medium">Fiyatlar</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="app" class="p-6 md:p-12 min-h-screen max-w-6xl mx-auto">
+    <!-- App.js will inject content here -->
+  </main>
+
+  <!-- Hidden div for dynamic Tailwind classes -->
+  <div id="tailwind-safelist" class="hidden text-brand-brown bg-brand-cream font-heading font-body grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 md:p-12 text-center text-4xl mb-4 font-bold shadow-lg rounded-xl flex items-center justify-center min-h-[400px] w-full max-w-4xl mx-auto space-y-4 border-b pb-2 text-xl text-lg text-brand-brownLight mb-6 border border-brand-brownLight list-disc pl-5 mt-4 w-full h-auto object-cover rounded shadow mb-8 text-2xl font-semibold mb-2 bg-white flex-col space-y-2 max-w-2xl text-left bg-brand-brown text-brand-cream py-10 px-5 opacity-90 transition-opacity"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
