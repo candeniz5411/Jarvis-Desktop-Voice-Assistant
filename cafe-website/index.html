@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahve Dükkanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cafe: {
+                            brown: '#3E2723',
+                            cream: '#FFFDD0',
+                            light: '#D7CCC8',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+        body {
+            @apply font-body bg-cafe-cream text-cafe-brown m-0 p-0 overflow-x-hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-heading;
+        }
+
+        /* Sidebar transition */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .nav-link {
+            @apply block px-4 py-3 text-lg font-heading hover:bg-cafe-light transition-colors duration-200 border-b border-cafe-light last:border-0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-cafe-brown text-cafe-cream py-4 px-4 shadow-md sticky top-0 z-40">
+        <div class="flex items-center justify-between">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="focus:outline-none flex flex-col justify-center items-center gap-1 w-8 h-8">
+                <span class="block w-6 h-0.5 bg-cafe-cream"></span>
+                <span class="block w-6 h-0.5 bg-cafe-cream"></span>
+                <span class="block w-6 h-0.5 bg-cafe-cream"></span>
+            </button>
+
+            <!-- Logo / Brand -->
+            <div class="flex-grow text-center">
+                <a href="#home" class="text-2xl font-heading font-bold tracking-wider inline-flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></svg>
+                    Kahve Dükkanı
+                </a>
+            </div>
+
+            <div class="w-8"></div> <!-- Spacer for centering -->
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-cafe-cream shadow-2xl z-50 transform -translate-x-full overflow-y-auto">
+        <div class="p-4 bg-cafe-brown text-cafe-cream flex justify-between items-center">
+            <span class="font-heading text-xl font-bold">Menü</span>
+            <button id="close-btn" class="focus:outline-none text-2xl leading-none">&times;</button>
+        </div>
+        <div class="py-2">
+            <a href="#home" class="nav-link">Ana Sayfa</a>
+            <a href="#about" class="nav-link">Hakkında</a>
+            <a href="#support" class="nav-link">Destek</a>
+            <a href="#contact" class="nav-link">İletişim</a>
+            <a href="#locations" class="nav-link">Şube Konumları</a>
+            <a href="#menu-items" class="nav-link">Menü İçerikleri</a>
+            <a href="#pricing" class="nav-link">Fiyatlar</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="app-content" class="min-h-screen">
+        <!-- Content will be injected here via JS -->
+    </main>
+
+    <footer class="bg-cafe-brown text-cafe-cream text-center py-6 mt-12">
+        <p class="font-body text-sm opacity-80">&copy; 2024 Kahve Dükkanı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Ensure utility classes are generated if injected by JS -->
+    <div class="hidden text-[#3E2723] bg-[#FFFDD0]"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
