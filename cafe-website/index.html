@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#D7CCC8',
+                            300: '#A1887F',
+                            500: '#795548',
+                            700: '#5D4037',
+                            900: '#3E2723'
+                        },
+                        cream: '#FFFDD0'
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply block px-4 py-2 text-brown-900 hover:bg-brown-100 hover:text-brown-700 rounded transition-colors duration-200 text-lg font-sans;
+            }
+            .sidebar {
+                @apply fixed inset-y-0 left-0 z-50 w-64 bg-cream shadow-xl transform transition-transform duration-300 ease-in-out;
+            }
+        }
+        body {
+            @apply bg-cream text-brown-900 font-sans;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-serif;
+        }
+    </style>
+</head>
+<body class="bg-cream min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-brown-900 text-cream p-4 shadow-md flex items-center fixed w-full top-0 z-40">
+        <button id="menu-btn" class="text-cream focus:outline-none p-2 hover:bg-brown-700 rounded transition" aria-label="Menüyü Aç/Kapat">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="ml-4 flex-grow text-center lg:text-left lg:ml-8">
+            <h1 class="text-2xl font-serif font-bold cursor-pointer" onclick="window.location.hash='#'">Cafe Brew</h1>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar -translate-x-full">
+        <div class="p-6 border-b border-brown-300 flex justify-between items-center bg-brown-900 text-cream">
+            <h2 class="text-2xl font-serif font-bold">Menü</h2>
+            <button id="close-btn" class="text-cream hover:text-brown-300 focus:outline-none p-1">
+                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="p-4 space-y-2">
+            <a href="#hakkinda" class="nav-link">Hakkında</a>
+            <a href="#destek" class="nav-link">Destek</a>
+            <a href="#iletisim" class="nav-link">İletişim</a>
+            <a href="#subeler" class="nav-link">Şube Konumları</a>
+            <a href="#menu" class="nav-link">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="nav-link">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-grow pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <!-- İçerik JavaScript ile buraya yüklenecek -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-brown-100 py-6 text-center mt-auto">
+        <p>&copy; 2023 Cafe Brew. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Classes for JIT -->
+    <div class="hidden text-[#3E2723] bg-brown-100 hover:bg-brown-100"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
