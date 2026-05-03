@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            brown: '#3E2723',
+                            cream: '#FFFDD0',
+                            white: '#FFFFFF',
+                            lightBrown: '#5D4037'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-brand-brown { background-color: #3E2723; }
+            .bg-brand-cream { background-color: #FFFDD0; }
+            .bg-brand-lightBrown { background-color: #5D4037; }
+            .text-brand-brown { color: #3E2723; }
+            .text-brand-cream { color: #FFFDD0; }
+        }
+        body {
+            @apply font-body bg-brand-cream text-brand-brown;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-heading;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-brown font-body overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-brand-brown text-brand-cream z-50 transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="p-6 border-b border-brand-lightBrown flex justify-between items-center">
+            <h2 class="text-2xl font-heading font-bold">Menü</h2>
+            <button id="close-sidebar" class="text-brand-cream hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="p-4">
+            <ul class="space-y-2">
+                <li><a href="#/" class="block px-4 py-3 rounded hover:bg-brand-lightBrown transition-colors sidebar-link">Ana Sayfa</a></li>
+                <li><a href="#/hakkinda" class="block px-4 py-3 rounded hover:bg-brand-lightBrown transition-colors sidebar-link">Hakkında</a></li>
+                <li><a href="#/destek" class="block px-4 py-3 rounded hover:bg-brand-lightBrown transition-colors sidebar-link">Destek</a></li>
+                <li><a href="#/iletisim" class="block px-4 py-3 rounded hover:bg-brand-lightBrown transition-colors sidebar-link">İletişim</a></li>
+                <li><a href="#/subeler" class="block px-4 py-3 rounded hover:bg-brand-lightBrown transition-colors sidebar-link">Şube Konumları</a></li>
+                <li><a href="#/menu" class="block px-4 py-3 rounded hover:bg-brand-lightBrown transition-colors sidebar-link">Menü İçerikleri</a></li>
+                <li><a href="#/fiyatlar" class="block px-4 py-3 rounded hover:bg-brand-lightBrown transition-colors sidebar-link">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Header -->
+    <header class="bg-brand-brown text-brand-cream p-4 shadow-md sticky top-0 z-30">
+        <div class="container mx-auto flex items-center justify-between">
+            <button id="hamburger-menu" class="text-brand-cream hover:text-white focus:outline-none p-2" aria-label="Menüyü aç">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <div class="text-xl md:text-2xl font-heading font-bold text-center flex-grow">
+                <a href="#/" class="hover:text-gray-200 transition-colors">Cafe Serenity</a>
+            </div>
+            <div class="w-12"></div> <!-- Spacer for centering -->
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="app" class="flex-grow container mx-auto p-4 md:p-8">
+        <!-- Content will be loaded here via JavaScript -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-brown text-brand-cream py-6 text-center mt-auto">
+        <p class="text-sm opacity-80">&copy; 2024 Cafe Serenity. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Hidden div for Safelisting dynamically generated Tailwind classes -->
+    <div class="hidden bg-brand-cream text-brand-brown bg-brand-brown text-brand-cream font-heading font-body grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 rounded-lg shadow-lg p-6 max-w-2xl max-w-4xl mx-auto items-center justify-center text-center object-cover h-64 h-96 w-full text-3xl text-4xl mb-6 mb-8 text-2xl font-bold border-b pb-2 mb-4 space-y-4 hover:shadow-xl transition-shadow duration-300"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
