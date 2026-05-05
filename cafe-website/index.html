@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a1887f',
+                            600: '#8d6e63',
+                            700: '#795548',
+                            800: '#5d4037',
+                            900: '#4e342e',
+                            950: '#3E2723'
+                        },
+                        cream: '#FFFDD0'
+                    },
+                    fontFamily: {
+                        'playfair': ['"Playfair Display"', 'serif'],
+                        'lato': ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            body {
+                @apply bg-cream font-lato text-brown-950;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                @apply font-playfair;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream font-lato text-brown-950 overflow-x-hidden">
+    <!-- Navbar -->
+    <header class="bg-brown-950 text-cream p-4 flex items-center justify-between shadow-md relative z-20">
+        <div class="flex items-center space-x-4">
+            <button id="hamburger-menu" class="focus:outline-none focus:ring-2 focus:ring-cream rounded-md p-1" aria-label="Menüyü aç">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <h1 class="text-2xl font-bold font-playfair"><a href="#/">Cafe Jules</a></h1>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brown-900 text-cream shadow-2xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-4 flex justify-end">
+            <button id="close-menu" class="focus:outline-none focus:ring-2 focus:ring-cream rounded-md p-1" aria-label="Menüyü kapat">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex flex-col space-y-2 mt-4 px-4 text-lg">
+            <li><a href="#/" class="block py-2 px-4 hover:bg-brown-800 rounded transition-colors duration-200">Ana Sayfa</a></li>
+            <li><a href="#/hakkinda" class="block py-2 px-4 hover:bg-brown-800 rounded transition-colors duration-200">Hakkında</a></li>
+            <li><a href="#/destek" class="block py-2 px-4 hover:bg-brown-800 rounded transition-colors duration-200">Destek</a></li>
+            <li><a href="#/iletisim" class="block py-2 px-4 hover:bg-brown-800 rounded transition-colors duration-200">İletişim</a></li>
+            <li><a href="#/sube-konumlari" class="block py-2 px-4 hover:bg-brown-800 rounded transition-colors duration-200">Şube Konumları</a></li>
+            <li><a href="#/menu-icerikleri" class="block py-2 px-4 hover:bg-brown-800 rounded transition-colors duration-200">Menü İçerikleri</a></li>
+            <li><a href="#/fiyatlar" class="block py-2 px-4 hover:bg-brown-800 rounded transition-colors duration-200">Fiyatlar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="app-container" class="p-6 max-w-4xl mx-auto min-h-screen">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <footer class="bg-brown-950 text-cream text-center py-4 mt-8">
+        <p class="text-sm">&copy; 2024 Cafe Jules. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
