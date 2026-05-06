@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kafe Web Sitesi</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              brown: '#3E2723', // Dark brown
+              cream: '#FFFDD0', // Cream
+              white: '#FFFFFF',
+              lightbrown: '#5D4037',
+              accent: '#8D6E63'
+            }
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            body: ['Lato', 'sans-serif']
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            }
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-out',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Needed for utility classes loaded dynamically to work -->
+  <div class="hidden text-brand-brown text-brand-cream bg-brand-brown bg-brand-cream bg-brand-white border-brand-brown border-brand-cream text-[#3E2723] bg-[#3E2723] text-center text-xl text-2xl font-bold font-heading font-body my-4 my-8 p-4 p-8 w-full h-full object-cover"></div>
+
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .font-heading {
+        font-family: 'Playfair Display', serif;
+      }
+      .font-body {
+        font-family: 'Lato', sans-serif;
+      }
+    }
+  </style>
+
+  <style>
+    body {
+      background-color: #FFFDD0; /* Cream background */
+      color: #3E2723; /* Dark brown text */
+    }
+
+    /* Transition for sliding sidebar */
+    #sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body class="font-body min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <header class="bg-brand-brown text-brand-cream p-4 flex items-center justify-between shadow-md relative z-20">
+    <!-- Hamburger Menu Button -->
+    <button id="menu-btn" class="p-2 focus:outline-none focus:bg-brand-lightbrown rounded group" aria-label="Toggle Menu">
+      <div class="w-6 h-0.5 bg-brand-cream mb-1.5 transition-all group-hover:bg-brand-white"></div>
+      <div class="w-6 h-0.5 bg-brand-cream mb-1.5 transition-all group-hover:bg-brand-white"></div>
+      <div class="w-6 h-0.5 bg-brand-cream transition-all group-hover:bg-brand-white"></div>
+    </button>
+
+    <!-- Logo -->
+    <div class="font-heading text-2xl font-bold tracking-wider cursor-pointer" onclick="window.location.hash='home'">
+      KAFE BİZ
+    </div>
+
+    <!-- Placeholder for right side to balance flex layout -->
+    <div class="w-10"></div>
+  </header>
+
+  <!-- Overlay -->
+  <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden" onclick="closeSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-brand-cream border-r-2 border-brand-brown z-40 transform -translate-x-full shadow-xl flex flex-col">
+    <div class="p-4 border-b border-brand-brown/20 flex justify-between items-center bg-brand-brown text-brand-cream">
+      <h2 class="font-heading text-xl font-bold">Menü</h2>
+      <button onclick="closeSidebar()" class="text-brand-cream hover:text-white p-2">
+        <!-- Close (X) icon -->
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto py-4">
+      <ul class="space-y-2 px-2">
+        <li><a href="#home" class="block px-4 py-2 rounded text-brand-brown hover:bg-brand-brown hover:text-brand-cream transition-colors font-medium text-lg">Ana Sayfa</a></li>
+        <li><a href="#hakkinda" class="block px-4 py-2 rounded text-brand-brown hover:bg-brand-brown hover:text-brand-cream transition-colors font-medium text-lg">Hakkında</a></li>
+        <li><a href="#destek" class="block px-4 py-2 rounded text-brand-brown hover:bg-brand-brown hover:text-brand-cream transition-colors font-medium text-lg">Destek</a></li>
+        <li><a href="#iletisim" class="block px-4 py-2 rounded text-brand-brown hover:bg-brand-brown hover:text-brand-cream transition-colors font-medium text-lg">İletişim</a></li>
+        <li><a href="#subeler" class="block px-4 py-2 rounded text-brand-brown hover:bg-brand-brown hover:text-brand-cream transition-colors font-medium text-lg">Şube Konumları</a></li>
+        <li><a href="#icerikler" class="block px-4 py-2 rounded text-brand-brown hover:bg-brand-brown hover:text-brand-cream transition-colors font-medium text-lg">Menü İçerikleri</a></li>
+        <li><a href="#fiyatlar" class="block px-4 py-2 rounded text-brand-brown hover:bg-brand-brown hover:text-brand-cream transition-colors font-medium text-lg">Fiyatlar</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main id="main-content" class="flex-1 w-full max-w-5xl mx-auto p-4 md:p-8">
+    <!-- Content injected here by app.js -->
+  </main>
+
+  <footer class="bg-brand-brown text-brand-cream text-center p-4 mt-auto">
+    <p>&copy; 2024 Kafe Biz. Tüm hakları saklıdır.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
