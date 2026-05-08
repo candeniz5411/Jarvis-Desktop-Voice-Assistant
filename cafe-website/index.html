@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#EFEBE9',
+                            300: '#A1887F',
+                            500: '#795548',
+                            700: '#5D4037',
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-cream text-brown-900 font-sans min-h-screen flex flex-col m-0 p-0 overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="bg-brown-900 text-cream p-4 flex items-center shadow-md relative z-20">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="focus:outline-none p-2 mr-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <!-- Logo / Title -->
+        <h1 class="text-2xl font-serif font-bold tracking-wide"><a href="#/" class="hover:text-brown-100 transition duration-300">Kafe Keyfi</a></h1>
+    </header>
+
+    <!-- Sidebar Overlay (hidden by default) -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-brown-900 text-cream shadow-2xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-6 flex flex-col h-full">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-xl font-serif font-bold">Menü</h2>
+                <!-- Close Button -->
+                <button id="close-btn" class="focus:outline-none text-cream hover:text-brown-100 transition duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Navigation Links -->
+            <ul class="flex-col space-y-4 text-lg">
+                <li><a href="#/about" class="block hover:bg-brown-700 px-3 py-2 rounded transition duration-200">Hakkında</a></li>
+                <li><a href="#/support" class="block hover:bg-brown-700 px-3 py-2 rounded transition duration-200">Destek</a></li>
+                <li><a href="#/contact" class="block hover:bg-brown-700 px-3 py-2 rounded transition duration-200">İletişim</a></li>
+                <li><a href="#/locations" class="block hover:bg-brown-700 px-3 py-2 rounded transition duration-200">Şube Konumları</a></li>
+                <li><a href="#/menu" class="block hover:bg-brown-700 px-3 py-2 rounded transition duration-200">Menü İçerikleri</a></li>
+                <li><a href="#/prices" class="block hover:bg-brown-700 px-3 py-2 rounded transition duration-200">Fiyatlar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="flex-grow p-6 md:p-12 relative z-10 w-full max-w-5xl mx-auto">
+        <!-- Content gets injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream text-center p-4 mt-auto z-10 relative">
+        <p class="text-sm">&copy; 2024 Kafe Keyfi. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Hidden div to force Tailwind JIT to include dynamic classes if any are needed in app.js -->
+    <div id="tailwind-safelist" class="hidden">
+        <div class="text-center text-4xl font-serif text-brown-900 mb-6 bg-brown-100 p-8 rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-2 gap-8 text-xl border-b border-brown-300 pb-4 text-left font-bold text-lg mb-2 rounded-md object-cover w-full h-64 md:h-96"></div>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
