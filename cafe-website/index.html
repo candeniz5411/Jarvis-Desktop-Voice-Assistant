@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Portalı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a1887f',
+                            600: '#8d6e63',
+                            700: '#795548',
+                            800: '#5d4037',
+                            900: '#3E2723', // Dark brown theme
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply block py-3 px-4 hover:bg-brown-100 hover:text-brown-900 rounded transition-colors duration-200 text-lg;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream text-brown-900 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-brown-900 text-white p-4 flex items-center justify-between shadow-md relative z-20">
+        <button id="menu-btn" class="p-2 focus:outline-none hover:bg-brown-800 rounded transition-colors" aria-label="Menüyü aç">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="text-2xl font-serif font-bold text-center flex-grow">Kafe Mocha</div>
+        <div class="w-10"></div> <!-- Placeholder to center text -->
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-4 bg-brown-900 text-white flex justify-between items-center">
+            <span class="text-xl font-serif font-bold">Menü</span>
+            <button id="close-btn" class="p-2 focus:outline-none hover:bg-brown-800 rounded transition-colors" aria-label="Menüyü kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex-grow p-4 space-y-2 overflow-y-auto">
+            <li><a href="#hakkinda" class="nav-link">Hakkında</a></li>
+            <li><a href="#destek" class="nav-link">Destek</a></li>
+            <li><a href="#iletisim" class="nav-link">İletişim</a></li>
+            <li><a href="#subeler" class="nav-link">Şube Konumları</a></li>
+            <li><a href="#menu" class="nav-link">Menü İçerikleri</a></li>
+            <li><a href="#fiyatlar" class="nav-link">Fiyatlar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-4 md:p-8 max-w-4xl mx-auto w-full relative z-10">
+        <div id="content" class="bg-white p-6 md:p-10 rounded-lg shadow-lg">
+            <!-- Content will be injected here via app.js -->
+            <div class="text-center">Yükleniyor...</div>
+        </div>
+    </main>
+
+    <footer class="bg-brown-900 text-white p-4 text-center text-sm font-sans z-20 relative mt-auto">
+        &copy; 2024 Kafe Mocha. Tüm hakları saklıdır.
+    </footer>
+
+    <!-- Hidden div to pre-declare dynamic Tailwind classes if any -->
+    <div class="hidden text-[#3E2723] bg-brown-100 bg-brown-800"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
