@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Portalı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a18072',
+                            600: '#977669',
+                            700: '#846358',
+                            800: '#43302b',
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0'
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        lato: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .font-playfair {
+                font-family: 'Playfair Display', serif;
+            }
+            .font-lato {
+                font-family: 'Lato', sans-serif;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream text-brown-900 font-lato min-h-screen flex flex-col">
+    <!-- Overlay for Sidebar -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" onclick="toggleSidebar()"></div>
+
+    <!-- Navigation Header -->
+    <header class="bg-brown-900 text-cream p-4 shadow-md sticky top-0 z-30">
+        <div class="flex items-center">
+            <!-- Hamburger Menu Button -->
+            <button onclick="toggleSidebar()" id="hamburger-btn" class="focus:outline-none focus:ring-2 focus:ring-cream rounded p-1" aria-label="Menüyü Aç">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <h1 class="ml-4 text-2xl font-playfair font-bold tracking-wider"><a href="#/">Kafe Serenity</a></h1>
+        </div>
+    </header>
+
+    <!-- Sliding Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brown-800 text-cream transform -translate-x-full transition-transform duration-300 ease-in-out z-50 shadow-2xl flex flex-col">
+        <div class="p-4 flex justify-between items-center border-b border-brown-600">
+            <span class="text-xl font-playfair font-semibold">Menü</span>
+            <button onclick="toggleSidebar()" class="focus:outline-none focus:ring-2 focus:ring-cream rounded p-1" aria-label="Menüyü Kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-grow overflow-y-auto">
+            <ul class="flex flex-col py-4">
+                <li><a href="#/hakkinda" onclick="toggleSidebar()" class="block px-6 py-3 hover:bg-brown-700 transition-colors">Hakkında</a></li>
+                <li><a href="#/destek" onclick="toggleSidebar()" class="block px-6 py-3 hover:bg-brown-700 transition-colors">Destek</a></li>
+                <li><a href="#/iletisim" onclick="toggleSidebar()" class="block px-6 py-3 hover:bg-brown-700 transition-colors">İletişim</a></li>
+                <li><a href="#/subeler" onclick="toggleSidebar()" class="block px-6 py-3 hover:bg-brown-700 transition-colors">Şube Konumları</a></li>
+                <li><a href="#/menu-icerikleri" onclick="toggleSidebar()" class="block px-6 py-3 hover:bg-brown-700 transition-colors">Menü İçerikleri</a></li>
+                <li><a href="#/fiyatlar" onclick="toggleSidebar()" class="block px-6 py-3 hover:bg-brown-700 transition-colors">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Container for SPA -->
+    <main id="app" class="flex-grow container mx-auto p-4 md:p-8">
+        <!-- Content gets injected here via JS -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream text-center p-4 mt-auto">
+        <p class="text-sm opacity-80">&copy; 2023 Kafe Serenity. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Safe list for Tailwind dynamic classes if needed -->
+    <div id="tailwind-safelist" class="hidden text-[#3E2723] bg-brown-900 bg-cream text-brown-900 font-playfair font-lato"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
