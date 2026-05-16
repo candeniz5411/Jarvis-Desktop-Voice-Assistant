@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Portalı</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            light: '#5D4037',
+                            hover: '#4E342E'
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .heading-font { font-family: 'Playfair Display', serif; }
+            .body-font { font-family: 'Lato', sans-serif; }
+        }
+    </style>
+</head>
+<body class="bg-cream body-font text-coffee-dark antialiased">
+
+    <!-- Overlay for Sidebar -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-cream z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-xl flex flex-col">
+        <div class="p-6 border-b border-coffee-light flex justify-between items-center">
+            <h2 class="text-2xl heading-font font-bold">Kafe Menü</h2>
+            <button id="close-sidebar" class="text-cream hover:text-white transition-colors p-2" aria-label="Close Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-2 px-4">
+                <li><a href="#/" class="block py-3 px-4 rounded hover:bg-coffee-hover transition-colors nav-link">Ana Sayfa</a></li>
+                <li><a href="#/hakkinda" class="block py-3 px-4 rounded hover:bg-coffee-hover transition-colors nav-link">Hakkında</a></li>
+                <li><a href="#/destek" class="block py-3 px-4 rounded hover:bg-coffee-hover transition-colors nav-link">Destek</a></li>
+                <li><a href="#/iletisim" class="block py-3 px-4 rounded hover:bg-coffee-hover transition-colors nav-link">İletişim</a></li>
+                <li><a href="#/sube-konumlari" class="block py-3 px-4 rounded hover:bg-coffee-hover transition-colors nav-link">Şube Konumları</a></li>
+                <li><a href="#/menu-icerikleri" class="block py-3 px-4 rounded hover:bg-coffee-hover transition-colors nav-link">Menü İçerikleri</a></li>
+                <li><a href="#/fiyatlar" class="block py-3 px-4 rounded hover:bg-coffee-hover transition-colors nav-link">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Header / Navbar -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-30 shadow-sm border-b border-gray-200">
+        <div class="container mx-auto px-4 h-16 flex items-center">
+            <button id="open-sidebar" class="p-2 text-coffee-dark hover:bg-gray-100 rounded-md transition-colors mr-4" aria-label="Open Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <div class="flex items-center space-x-3">
+                <!-- Simple Logo SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-coffee-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.958 17.958 0 0112 21a17.958 17.958 0 01-8.716-6.747M3 12c0-.778.099-1.533.284-2.253" />
+                </svg>
+                <h1 class="text-xl font-bold heading-font tracking-wide">Kafe Portalı</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="app" class="container mx-auto px-4 py-8 min-h-[calc(100vh-64px)]">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
