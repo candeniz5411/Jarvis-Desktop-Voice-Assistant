@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Portalı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#D7CCC8',
+                            300: '#A1887F',
+                            500: '#795548',
+                            700: '#5D4037',
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="bg-cream text-brown-900 font-sans min-h-screen relative overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="absolute top-0 left-0 w-full p-4 z-50 flex items-center justify-between">
+        <button id="menu-btn" class="p-2 focus:outline-none focus:ring-2 focus:ring-brown-500 rounded-md">
+            <svg class="w-8 h-8 text-brown-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brown-900 text-cream z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-xl">
+        <div class="p-6 h-full flex flex-col">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-serif font-bold">Menü</h2>
+                <button id="close-btn" class="p-1 focus:outline-none focus:ring-2 focus:ring-cream rounded-md">
+                    <svg class="w-6 h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex-1 space-y-4 text-lg">
+                <a href="#home" class="block hover:text-brown-100 hover:pl-2 transition-all">Ana Sayfa</a>
+                <a href="#about" class="block hover:text-brown-100 hover:pl-2 transition-all">Hakkında</a>
+                <a href="#support" class="block hover:text-brown-100 hover:pl-2 transition-all">Destek</a>
+                <a href="#contact" class="block hover:text-brown-100 hover:pl-2 transition-all">İletişim</a>
+                <a href="#locations" class="block hover:text-brown-100 hover:pl-2 transition-all">Şube Konumları</a>
+                <a href="#menu" class="block hover:text-brown-100 hover:pl-2 transition-all">Menü İçerikleri</a>
+                <a href="#prices" class="block hover:text-brown-100 hover:pl-2 transition-all">Fiyatlar</a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="app" class="pt-20 pb-10 px-4 max-w-4xl mx-auto min-h-screen">
+        <!-- Content will be injected here via JS -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
