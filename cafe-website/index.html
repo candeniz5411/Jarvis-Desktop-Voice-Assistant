@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#D7CCC8',
+                            300: '#A1887F',
+                            500: '#795548',
+                            700: '#5D4037',
+                            900: '#3E2723',
+                        },
+                        cream: {
+                            DEFAULT: '#FFFDD0',
+                            100: '#FFFEF0',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream text-brown-900 font-sans antialiased overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed w-full top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Hamburger Menu Button -->
+                <button id="menu-btn" class="p-2 rounded-md text-brown-700 hover:text-brown-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brown-500">
+                    <span class="sr-only">Menüyü Aç</span>
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <h1 class="font-serif text-2xl font-bold tracking-tight text-brown-900">
+                        <a href="#ana-sayfa">Bizim Kafe</a>
+                    </h1>
+                </div>
+
+                <!-- Spacer for layout balance -->
+                <div class="w-10"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-brown-900 text-cream transform -translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-serif font-bold text-cream">Menü</h2>
+                <button id="close-sidebar" class="text-cream-100 hover:text-white focus:outline-none">
+                    <span class="sr-only">Kapat</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="space-y-4">
+                <a href="#ana-sayfa" class="block py-2 px-4 rounded transition duration-200 hover:bg-brown-700 hover:text-white">Ana Sayfa</a>
+                <a href="#hakkinda" class="block py-2 px-4 rounded transition duration-200 hover:bg-brown-700 hover:text-white">Hakkında</a>
+                <a href="#destek" class="block py-2 px-4 rounded transition duration-200 hover:bg-brown-700 hover:text-white">Destek</a>
+                <a href="#iletisim" class="block py-2 px-4 rounded transition duration-200 hover:bg-brown-700 hover:text-white">İletişim</a>
+                <a href="#subeler" class="block py-2 px-4 rounded transition duration-200 hover:bg-brown-700 hover:text-white">Şube Konumları</a>
+                <a href="#menu-icerikleri" class="block py-2 px-4 rounded transition duration-200 hover:bg-brown-700 hover:text-white">Menü İçerikleri</a>
+                <a href="#fiyatlar" class="block py-2 px-4 rounded transition duration-200 hover:bg-brown-700 hover:text-white">Fiyatlar</a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="pt-20 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen flex flex-col items-center">
+        <div id="content" class="w-full max-w-4xl bg-white shadow-lg rounded-xl overflow-hidden mt-4 p-8">
+            <!-- Content will be injected here by app.js -->
+        </div>
+    </main>
+
+    <footer class="bg-brown-900 text-cream py-6 text-center">
+        <p>&copy; 2026 Bizim Kafe. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Single Page App Logic -->
+    <script src="app.js"></script>
+
+    <!-- Hidden div to ensure Tailwind compiler includes necessary dynamic classes -->
+    <div class="hidden text-brown-900 text-brown-700 bg-brown-100 bg-brown-900 text-cream font-serif font-sans text-xl text-3xl font-bold rounded-lg shadow-md hover:bg-brown-700 w-full mb-6 py-4 px-6 gap-4 grid grid-cols-1 md:grid-cols-2 rounded-t-xl overflow-hidden aspect-video object-cover text-center list-disc list-inside"></div>
+
+</body>
+</html>
