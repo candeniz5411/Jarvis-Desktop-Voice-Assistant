@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a18072',
+                            600: '#977669',
+                            700: '#846358',
+                            800: '#43302b',
+                            900: '#3E2723', // Dark brown
+                        },
+                        cream: {
+                            50: '#ffffff',
+                            100: '#FFFDD0', // Cream
+                            200: '#fbf8c0',
+                            300: '#f7f4b0',
+                            400: '#f3ef9d',
+                            500: '#efeb89',
+                            600: '#ebe676',
+                            700: '#e7e262',
+                            800: '#e3dd4f',
+                            900: '#dfd93b',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .heading {
+                @apply font-heading text-brown-900;
+            }
+            .body-text {
+                @apply font-body text-brown-800;
+            }
+        }
+        body {
+            @apply bg-cream-100 text-brown-800 font-body;
+        }
+    </style>
+</head>
+<body class="bg-cream-100 min-h-screen flex flex-col m-0 p-0 overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="bg-brown-900 text-cream-100 p-4 flex items-center shadow-md relative z-20">
+        <!-- Hamburger Menu Button -->
+        <button id="menuBtn" class="text-cream-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded p-1 mr-4 transition-colors">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <a href="#/" class="font-heading text-2xl font-bold tracking-wider">Kafe Moka</a>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brown-900 text-cream-100 z-40 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8 border-b border-brown-700 pb-4">
+                <h2 class="font-heading text-2xl font-bold">Menü</h2>
+                <button id="closeBtn" class="text-cream-100 hover:text-white focus:outline-none transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav class="space-y-2">
+                <a href="#/hakkinda" class="block px-4 py-3 rounded-md hover:bg-brown-800 transition-colors font-semibold text-lg">Hakkında</a>
+                <a href="#/destek" class="block px-4 py-3 rounded-md hover:bg-brown-800 transition-colors font-semibold text-lg">Destek</a>
+                <a href="#/iletisim" class="block px-4 py-3 rounded-md hover:bg-brown-800 transition-colors font-semibold text-lg">İletişim</a>
+                <a href="#/subeler" class="block px-4 py-3 rounded-md hover:bg-brown-800 transition-colors font-semibold text-lg">Şube Konumları</a>
+                <a href="#/menu" class="block px-4 py-3 rounded-md hover:bg-brown-800 transition-colors font-semibold text-lg">Menü İçerikleri</a>
+                <a href="#/fiyatlar" class="block px-4 py-3 rounded-md hover:bg-brown-800 transition-colors font-semibold text-lg">Fiyatlar</a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow p-4 md:p-8 lg:p-12 transition-all duration-300 w-full max-w-7xl mx-auto">
+        <div id="content" class="w-full">
+            <!-- Content will be injected here by app.js -->
+        </div>
+    </main>
+
+    <footer class="bg-brown-900 text-cream-100 text-center p-4 mt-auto">
+        <p class="font-body text-sm">&copy; 2024 Kafe Moka. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Used to pre-declare dynamic classes for Tailwind JIT -->
+    <div class="hidden text-[#3E2723] bg-[#3E2723] text-[#FFFDD0] bg-[#FFFDD0] text-brown-900 text-cream-100 bg-brown-900 bg-cream-100 bg-brown-100 border-brown-200"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
