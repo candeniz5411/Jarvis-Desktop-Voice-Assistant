@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            900: '#3E2723',
+                            800: '#4e342e',
+                            700: '#5d4037',
+                            100: '#d7ccc8',
+                            50: '#efebe9'
+                        },
+                        cream: '#FFFDD0'
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream text-brown-900 font-body antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-brown-900 text-cream p-4 flex items-center justify-between shadow-md relative z-20">
+        <button id="menu-btn" class="text-cream focus:outline-none p-2" aria-label="Menüyü Aç">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="flex-grow text-center font-heading text-2xl font-bold">
+            Kafe Molası
+        </div>
+        <div class="w-12"></div> <!-- Placeholder to center the logo text -->
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-4 bg-brown-900 text-cream flex items-center justify-between">
+            <h2 class="text-xl font-heading font-bold">Menü</h2>
+            <button id="close-btn" class="text-cream focus:outline-none p-2" aria-label="Menüyü Kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="mt-4 flex flex-col p-2">
+            <a href="#/hakkinda" class="block px-4 py-3 text-brown-900 hover:bg-brown-50 rounded transition-colors font-bold">Hakkında</a>
+            <a href="#/destek" class="block px-4 py-3 text-brown-900 hover:bg-brown-50 rounded transition-colors font-bold">Destek</a>
+            <a href="#/iletisim" class="block px-4 py-3 text-brown-900 hover:bg-brown-50 rounded transition-colors font-bold">İletişim</a>
+            <a href="#/sube-konumlari" class="block px-4 py-3 text-brown-900 hover:bg-brown-50 rounded transition-colors font-bold">Şube Konumları</a>
+            <a href="#/menu-icerikleri" class="block px-4 py-3 text-brown-900 hover:bg-brown-50 rounded transition-colors font-bold">Menü İçerikleri</a>
+            <a href="#/fiyatlar" class="block px-4 py-3 text-brown-900 hover:bg-brown-50 rounded transition-colors font-bold">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="content" class="flex-grow p-6 flex flex-col items-center w-full max-w-4xl mx-auto">
+        <!-- Dynamic content goes here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream text-center p-4 mt-auto">
+        <p>&copy; 2024 Kafe Molası. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Pre-declare hidden utility classes used dynamically -->
+    <div class="hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full"></div>
+        <div class="bg-white p-4 rounded-lg shadow flex justify-between items-center border-l-4 border-brown-900 w-full mb-4"></div>
+        <div class="font-bold text-lg"></div>
+        <div class="text-brown-700"></div>
+        <h2 class="text-3xl font-heading font-bold text-brown-900 mb-6 text-center"></h2>
+        <div class="max-w-2xl w-full bg-white p-8 rounded-xl shadow-lg text-center"></div>
+        <p class="text-lg text-brown-800 mb-4 leading-relaxed"></p>
+        <img src="./Images/coffee.jpg" class="w-full h-64 object-cover rounded-lg mb-6 shadow-md" alt="Kahve">
+        <h1 class="text-4xl font-heading font-bold text-brown-900 mb-4"></h1>
+        <ul class="text-left list-disc list-inside text-lg text-brown-800 space-y-2"></ul>
+        <li class="bg-white p-4 rounded-lg shadow w-full text-center font-bold text-lg text-brown-900 mb-4 list-none"></li>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
