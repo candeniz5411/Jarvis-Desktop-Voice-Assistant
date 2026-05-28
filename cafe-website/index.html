@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Modern</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#D7CCC8',
+                            300: '#A1887F',
+                            500: '#795548',
+                            700: '#5D4037',
+                            900: '#3E2723', // Primary dark brown
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS (if needed, otherwise Tailwind handles most) -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 300ms;
+            }
+        }
+        body {
+            @apply bg-cream text-brown-900 font-body;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-heading;
+        }
+    </style>
+</head>
+<body class="bg-cream text-brown-900 font-body relative min-h-screen flex flex-col">
+
+    <!-- Header / Nav -->
+    <header class="bg-brown-900 text-cream p-4 flex items-center justify-between shadow-md relative z-20">
+        <div class="flex items-center">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" class="mr-4 p-2 focus:outline-none" aria-label="Toggle Menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <a href="#home" class="flex items-center space-x-2">
+                <img src="./Images/logo.svg" alt="Kafe Logo" class="h-10 w-10 filter brightness-200 contrast-200">
+                <span class="text-2xl font-heading font-bold">Kafe Modern</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Overlay (hidden by default) -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-brown-100 shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 bg-brown-900 text-cream flex justify-between items-center">
+            <span class="text-xl font-heading font-bold">Menü</span>
+            <button id="close-menu" class="p-1 focus:outline-none" aria-label="Close Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-grow p-4">
+            <ul class="space-y-2">
+                <li><a href="#home" class="block py-2 px-4 rounded hover:bg-brown-300 hover:text-white transition-colors">Ana Sayfa</a></li>
+                <li><a href="#hakkinda" class="block py-2 px-4 rounded hover:bg-brown-300 hover:text-white transition-colors">Hakkında</a></li>
+                <li><a href="#destek" class="block py-2 px-4 rounded hover:bg-brown-300 hover:text-white transition-colors">Destek</a></li>
+                <li><a href="#iletisim" class="block py-2 px-4 rounded hover:bg-brown-300 hover:text-white transition-colors">İletişim</a></li>
+                <li><a href="#sube-konumlari" class="block py-2 px-4 rounded hover:bg-brown-300 hover:text-white transition-colors">Şube Konumları</a></li>
+                <li><a href="#menu-icerikleri" class="block py-2 px-4 rounded hover:bg-brown-300 hover:text-white transition-colors">Menü İçerikleri</a></li>
+                <li><a href="#fiyatlar" class="block py-2 px-4 rounded hover:bg-brown-300 hover:text-white transition-colors">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow w-full max-w-7xl mx-auto p-4 md:p-8">
+        <div id="content" class="w-full">
+            <!-- Dynamic content will be loaded here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream text-center p-4 mt-auto">
+        <p>&copy; 2026 Kafe Modern. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
