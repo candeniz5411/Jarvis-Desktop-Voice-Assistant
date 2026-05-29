@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            50: '#efebe9',
+                            100: '#d7ccc8',
+                            200: '#bcaaa4',
+                            300: '#a1887f',
+                            400: '#8d6e63',
+                            500: '#795548',
+                            600: '#6d4c41',
+                            700: '#5d4037',
+                            800: '#4e342e',
+                            900: '#3E2723', // Dark brown
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Ensures smooth sidebar transition */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-cream text-brown-900 min-h-screen flex flex-col m-0 p-0 font-body">
+
+    <!-- Header -->
+    <header class="bg-brown-900 text-cream p-4 sticky top-0 z-20 flex items-center justify-between shadow-md">
+        <button id="menuBtn" class="p-2 focus:outline-none hover:bg-brown-800 rounded transition-colors" aria-label="Menüyü aç">
+            <!-- Hamburger SVG -->
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <h1 class="font-heading text-xl md:text-2xl font-bold text-center flex-grow cursor-pointer" onclick="window.location.hash='#home'">Kahve Dünyası</h1>
+        <div class="w-10"></div> <!-- Spacer for balancing the title -->
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden" aria-hidden="true"></div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed inset-y-0 left-0 bg-white w-64 shadow-2xl z-40 transform -translate-x-full overflow-y-auto">
+        <div class="p-6 bg-brown-900 text-cream">
+            <h2 class="text-2xl font-heading font-bold mb-2">Menü</h2>
+        </div>
+        <ul class="flex flex-col p-4 space-y-2">
+            <li><a href="#about" class="block py-3 px-4 text-brown-800 hover:bg-brown-50 hover:text-brown-900 rounded-lg transition-colors border-b border-brown-100 last:border-0 font-medium">1. Hakkında</a></li>
+            <li><a href="#support" class="block py-3 px-4 text-brown-800 hover:bg-brown-50 hover:text-brown-900 rounded-lg transition-colors border-b border-brown-100 last:border-0 font-medium">2. Destek</a></li>
+            <li><a href="#contact" class="block py-3 px-4 text-brown-800 hover:bg-brown-50 hover:text-brown-900 rounded-lg transition-colors border-b border-brown-100 last:border-0 font-medium">3. İletişim</a></li>
+            <li><a href="#locations" class="block py-3 px-4 text-brown-800 hover:bg-brown-50 hover:text-brown-900 rounded-lg transition-colors border-b border-brown-100 last:border-0 font-medium">4. Şube Konumları</a></li>
+            <li><a href="#menu" class="block py-3 px-4 text-brown-800 hover:bg-brown-50 hover:text-brown-900 rounded-lg transition-colors border-b border-brown-100 last:border-0 font-medium">5. Menü İçerikleri</a></li>
+            <li><a href="#prices" class="block py-3 px-4 text-brown-800 hover:bg-brown-50 hover:text-brown-900 rounded-lg transition-colors border-b border-brown-100 last:border-0 font-medium">6. Fiyatlar</a></li>
+        </ul>
+        <button id="closeBtn" class="absolute top-4 right-4 text-cream hover:text-white focus:outline-none p-2" aria-label="Menüyü kapat">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow p-4 md:p-8 flex flex-col items-center">
+        <div id="app" class="w-full max-w-4xl bg-white shadow-xl rounded-xl overflow-hidden p-6 md:p-10 transition-all duration-300 min-h-[400px]">
+            <!-- Content injected via JS -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-brown-100 py-6 text-center mt-auto">
+        <p class="text-sm">&copy; 2024 Kahve Dünyası. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Hidden JIT classes for dynamic content to ensure Tailwind bundles them -->
+    <div class="hidden text-brown-900 bg-brown-50 bg-brown-100 bg-brown-800 text-brown-700 bg-white grid grid-cols-1 md:grid-cols-2 gap-6 rounded-lg shadow p-4 text-2xl font-bold font-heading font-body mb-4 mb-6 border-b border-brown-200 pb-2 text-xl text-center rounded-xl overflow-hidden aspect-video object-cover w-full h-64 h-auto shadow-md hover:shadow-lg transition-shadow flex items-center justify-between"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
