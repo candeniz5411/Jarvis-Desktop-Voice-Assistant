@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            900: '#3E2723', // Dark brown
+                            800: '#4E342E',
+                            700: '#5D4037',
+                        },
+                        cream: {
+                            100: '#FFFDD0', // Cream background
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #FFFDD0;
+            color: #3E2723;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: '"Playfair Display"', serif;
+        }
+    </style>
+</head>
+<body class="bg-cream-100 text-brown-900 min-h-screen relative flex flex-col">
+
+    <!-- Hidden div to load dynamic tailwind classes that might be used by app.js -->
+    <div class="hidden grid grid-cols-1 md:grid-cols-2 gap-4 border-b border-brown-900/20 pb-2 mb-2 justify-between items-center text-lg font-bold"></div>
+
+    <!-- Header -->
+    <header class="p-4 flex items-center shadow-md bg-white">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="text-brown-900 focus:outline-none z-50">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <!-- Logo/Title -->
+        <div class="ml-4 flex-grow text-center pr-8">
+            <h1 class="text-2xl font-heading font-bold cursor-pointer" onclick="window.location.hash=''">Kahve Molası</h1>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-2xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 border-b border-brown-900/10">
+            <h2 class="text-2xl font-heading font-bold text-brown-900">Menü</h2>
+        </div>
+        <nav class="flex-grow p-4">
+            <ul class="space-y-2">
+                <li><a href="#hakkinda" class="block py-2 px-4 rounded hover:bg-brown-900 hover:text-cream-100 transition-colors font-semibold">Hakkında</a></li>
+                <li><a href="#destek" class="block py-2 px-4 rounded hover:bg-brown-900 hover:text-cream-100 transition-colors font-semibold">Destek</a></li>
+                <li><a href="#iletisim" class="block py-2 px-4 rounded hover:bg-brown-900 hover:text-cream-100 transition-colors font-semibold">İletişim</a></li>
+                <li><a href="#sube-konumlari" class="block py-2 px-4 rounded hover:bg-brown-900 hover:text-cream-100 transition-colors font-semibold">Şube Konumları</a></li>
+                <li><a href="#menu-icerikleri" class="block py-2 px-4 rounded hover:bg-brown-900 hover:text-cream-100 transition-colors font-semibold">Menü İçerikleri</a></li>
+                <li><a href="#fiyatlar" class="block py-2 px-4 rounded hover:bg-brown-900 hover:text-cream-100 transition-colors font-semibold">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="content" class="flex-grow p-6 md:p-12">
+        <!-- Content will be dynamically loaded here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream-100 text-center p-4 mt-auto">
+        <p>&copy; 2026 Kahve Molası. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>
