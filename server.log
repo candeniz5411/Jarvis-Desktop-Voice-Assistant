@@ -1,0 +1,3 @@
+127.0.0.1 - - [01/Jun/2026 19:12:33] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 19:12:33] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 19:12:34] "GET /Images/coffee-photo.jpg HTTP/1.1" 200 -
