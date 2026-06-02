@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            brown: '#3E2723',
+                            cream: '#FFFDD0',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @layer base {
+            html {
+                @apply font-body bg-brand-cream text-brand-brown;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                @apply font-heading font-bold text-brand-brown;
+            }
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-brown min-h-screen m-0 flex flex-col">
+
+    <!-- Pre-declare JIT utility classes for dynamic content -->
+    <div class="hidden text-brand-brown bg-brand-cream text-3xl mb-4 font-bold border-brand-brown p-4 rounded-lg shadow-md max-w-2xl mx-auto flex justify-between border-b w-full hover:bg-brand-brown hover:text-brand-cream transition-colors duration-200 grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-brand-brown text-brand-cream fixed w-full top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center">
+                <!-- Hamburger Menu Button -->
+                <button id="menu-btn" class="p-2 mr-4 hover:bg-[#5D4037] rounded-md focus:outline-none focus:ring-2 focus:ring-brand-cream" aria-label="Menu">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <a href="#home" class="flex items-center space-x-2">
+                    <!-- Logo Placeholder -->
+                    <svg class="h-8 w-8 text-brand-cream" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
+                    </svg>
+                    <span class="font-heading text-xl font-bold tracking-wider uppercase">Kafe Mola</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-brand-cream text-brand-brown z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl border-r border-brand-brown flex flex-col">
+        <div class="h-16 flex items-center justify-between px-4 bg-brand-brown text-brand-cream">
+            <span class="font-heading text-xl font-bold">Menü</span>
+            <button id="close-btn" class="p-2 hover:bg-[#5D4037] rounded-md focus:outline-none focus:ring-2 focus:ring-brand-cream">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 px-2 py-4 space-y-1 overflow-y-auto font-heading text-lg">
+            <a href="#hakkinda" class="sidebar-link block px-4 py-3 rounded-md hover:bg-brand-brown hover:text-brand-cream transition-colors duration-200">Hakkında</a>
+            <a href="#destek" class="sidebar-link block px-4 py-3 rounded-md hover:bg-brand-brown hover:text-brand-cream transition-colors duration-200">Destek</a>
+            <a href="#iletisim" class="sidebar-link block px-4 py-3 rounded-md hover:bg-brand-brown hover:text-brand-cream transition-colors duration-200">İletişim</a>
+            <a href="#subeler" class="sidebar-link block px-4 py-3 rounded-md hover:bg-brand-brown hover:text-brand-cream transition-colors duration-200">Şube Konumları</a>
+            <a href="#menu" class="sidebar-link block px-4 py-3 rounded-md hover:bg-brand-brown hover:text-brand-cream transition-colors duration-200">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="sidebar-link block px-4 py-3 rounded-md hover:bg-brand-brown hover:text-brand-cream transition-colors duration-200">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 mt-16 p-4 sm:p-6 lg:p-8 w-full max-w-7xl mx-auto">
+        <div id="content" class="w-full">
+            <!-- Dynamic content will be loaded here by app.js -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-brown text-brand-cream py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; 2024 Kafe Mola. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
