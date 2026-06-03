@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#D7CCC8',
+                            500: '#795548',
+                            800: '#4E342E',
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .transition-transform {
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 300ms;
+            }
+        }
+
+        body {
+            @apply font-body bg-cream text-brown-900;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-heading;
+        }
+    </style>
+</head>
+<body class="bg-cream text-brown-900 min-h-screen flex flex-col relative">
+
+    <!-- Navbar -->
+    <header class="bg-brown-900 text-cream p-4 shadow-md sticky top-0 z-40 flex items-center">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="p-2 focus:outline-none focus:ring-2 focus:ring-brown-500 rounded" aria-label="Menüyü Aç">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="ml-4 flex items-center">
+            <img src="./Images/logo.png" alt="Kafe Logo" class="h-10 w-10 object-contain rounded-full">
+            <h1 class="ml-3 text-xl font-bold font-heading">Kafe Web Sitesi</h1>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity" aria-hidden="true"></div>
+
+    <!-- Sliding Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-brown-900 text-cream transform -translate-x-full transition-transform z-50 shadow-2xl flex flex-col">
+        <div class="p-4 flex items-center justify-between border-b border-brown-800">
+            <h2 class="text-2xl font-heading font-bold">Menü</h2>
+            <button id="close-btn" class="p-2 focus:outline-none focus:ring-2 focus:ring-brown-500 rounded" aria-label="Menüyü Kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex-grow py-4 flex flex-col space-y-2">
+            <li><a href="#/" class="block px-6 py-3 hover:bg-brown-800 transition-colors">Ana Sayfa</a></li>
+            <li><a href="#/hakkinda" class="block px-6 py-3 hover:bg-brown-800 transition-colors">Hakkında</a></li>
+            <li><a href="#/destek" class="block px-6 py-3 hover:bg-brown-800 transition-colors">Destek</a></li>
+            <li><a href="#/iletisim" class="block px-6 py-3 hover:bg-brown-800 transition-colors">İletişim</a></li>
+            <li><a href="#/sube-konumlari" class="block px-6 py-3 hover:bg-brown-800 transition-colors">Şube Konumları</a></li>
+            <li><a href="#/menu-icerikleri" class="block px-6 py-3 hover:bg-brown-800 transition-colors">Menü İçerikleri</a></li>
+            <li><a href="#/fiyatlar" class="block px-6 py-3 hover:bg-brown-800 transition-colors">Fiyatlar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow p-4 sm:p-8 flex justify-center w-full">
+        <div id="app-content" class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 sm:p-10">
+            <!-- Dynamic content will be loaded here by app.js -->
+        </div>
+    </main>
+
+    <footer class="bg-brown-900 text-cream text-center p-4 mt-auto">
+        <p>&copy; 2024 Kafe Web Sitesi. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>
