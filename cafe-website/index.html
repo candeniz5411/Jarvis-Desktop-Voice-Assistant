@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            50: '#F4EBE6',
+                            100: '#E8D5CE',
+                            200: '#D1AFA2',
+                            300: '#B98877',
+                            400: '#A1624B',
+                            500: '#893B20',
+                            600: '#7B351D',
+                            700: '#582614',
+                            800: '#3E2723', // Dark brown
+                            900: '#2A1815'
+                        },
+                        cream: {
+                            DEFAULT: '#FFFDD0',
+                            100: '#FFFFF0',
+                            200: '#FFFDD0',
+                            300: '#FFFACD',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .heading-text {
+                @apply font-serif text-brown-800;
+            }
+            .body-text {
+                @apply font-sans text-gray-800;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream body-text antialiased min-h-screen flex flex-col relative">
+
+    <!-- Hidden div for dynamically injected classes to ensure JIT compilation -->
+    <div class="hidden text-3xl md:text-5xl lg:text-6xl text-center mb-6 mt-4 grid grid-cols-1 md:grid-cols-2 gap-8 object-cover w-full h-64 md:h-96 rounded-xl shadow-xl flex flex-col items-center justify-center p-8 bg-white border border-brown-200 text-xl font-bold flex justify-between border-b pb-2 mb-2 text-brown-600 space-y-4"></div>
+
+    <!-- Top Navigation Bar -->
+    <header class="bg-brown-800 text-cream w-full flex items-center justify-between p-4 shadow-md sticky top-0 z-40">
+        <div class="flex items-center gap-4">
+            <!-- Hamburger Button -->
+            <button id="menu-btn" class="p-2 focus:outline-none hover:bg-brown-700 rounded transition-colors" aria-label="Toggle Menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <h1 class="text-2xl font-serif font-bold tracking-wider cursor-pointer" onclick="window.location.hash=''">Kafe Logo</h1>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sliding Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-cream-100 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out z-50 flex flex-col">
+        <div class="flex items-center justify-between p-4 border-b border-brown-200 bg-brown-800 text-cream">
+            <h2 class="text-xl font-serif font-bold tracking-wide">Menü</h2>
+            <button id="close-btn" class="p-2 focus:outline-none hover:bg-brown-700 rounded transition-colors" aria-label="Close Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-grow overflow-y-auto p-4 space-y-2">
+            <a href="#hakkinda" class="block px-4 py-3 rounded-md text-brown-800 font-semibold hover:bg-brown-200 hover:text-brown-900 transition-colors">Hakkında</a>
+            <a href="#destek" class="block px-4 py-3 rounded-md text-brown-800 font-semibold hover:bg-brown-200 hover:text-brown-900 transition-colors">Destek</a>
+            <a href="#iletisim" class="block px-4 py-3 rounded-md text-brown-800 font-semibold hover:bg-brown-200 hover:text-brown-900 transition-colors">İletişim</a>
+            <a href="#sube-konumlari" class="block px-4 py-3 rounded-md text-brown-800 font-semibold hover:bg-brown-200 hover:text-brown-900 transition-colors">Şube Konumları</a>
+            <a href="#menu-icerikleri" class="block px-4 py-3 rounded-md text-brown-800 font-semibold hover:bg-brown-200 hover:text-brown-900 transition-colors">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="block px-4 py-3 rounded-md text-brown-800 font-semibold hover:bg-brown-200 hover:text-brown-900 transition-colors">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Container -->
+    <main id="app-content" class="flex-grow p-6 w-full max-w-6xl mx-auto">
+        <!-- Content gets injected here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream-200 py-6 text-center mt-auto">
+        <p class="text-sm font-sans">&copy; 2026 Kafe. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
