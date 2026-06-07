@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cafe: {
+                            brown: '#3E2723',
+                            cream: '#FFFDD0',
+                            light: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply block py-3 px-6 text-xl text-cafe-cream hover:bg-cafe-cream hover:text-cafe-brown transition-colors duration-200 border-b border-white/10;
+            }
+        }
+        body {
+            @apply bg-cafe-light text-cafe-brown min-h-screen flex flex-col font-sans;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-serif;
+        }
+    </style>
+</head>
+<body class="bg-cafe-cream">
+    <!-- Header -->
+    <header class="bg-cafe-brown text-cafe-cream shadow-md fixed w-full z-20 top-0 h-16 flex items-center px-4">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="p-2 mr-4 focus:outline-none hover:bg-white/10 rounded-lg transition-colors">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <!-- Logo Text -->
+        <a href="#home" class="text-2xl font-serif font-bold truncate">Kahve Durağı</a>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-30 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-cafe-brown shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="h-16 flex items-center justify-between px-4 border-b border-white/10">
+            <span class="text-2xl font-serif font-bold text-cafe-cream">Menü</span>
+            <button id="close-btn" class="p-2 text-cafe-cream hover:bg-white/10 rounded-lg transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4">
+            <a href="#home" class="nav-link">Ana Sayfa</a>
+            <a href="#about" class="nav-link">Hakkında</a>
+            <a href="#support" class="nav-link">Destek</a>
+            <a href="#contact" class="nav-link">İletişim</a>
+            <a href="#locations" class="nav-link">Şube Konumları</a>
+            <a href="#menu" class="nav-link">Menü İçerikleri</a>
+            <a href="#prices" class="nav-link">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="app-content" class="flex-1 mt-16 p-4 md:p-8">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cafe-brown text-cafe-cream py-6 text-center mt-auto">
+        <p class="text-sm opacity-80">&copy; 2024 Kahve Durağı. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- For Tailwind JIT to pick up dynamic classes injected via app.js -->
+    <div class="hidden text-center text-4xl text-cafe-brown font-bold mb-4 rounded-lg shadow-lg object-cover w-full h-64 md:h-96 grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 justify-between items-center border-b border-gray-200 py-3 text-lg font-semibold space-y-4 text-gray-700 bg-gray-100 p-4 max-w-4xl mx-auto rounded-xl overflow-hidden aspect-video"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
