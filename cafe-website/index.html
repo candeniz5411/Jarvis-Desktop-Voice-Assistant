@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <!-- Google Fonts: Playfair Display (Headings) & Lato (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            light: '#5d4037',
+                            DEFAULT: '#3e2723', // Dark Brown
+                            dark: '#1b0000',
+                        },
+                        cream: {
+                            DEFAULT: '#fffdd0',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            body {
+                @apply font-body bg-cream text-coffee;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                @apply font-heading text-coffee-dark;
+            }
+            .nav-link {
+                @apply block py-3 px-6 text-xl text-cream hover:bg-coffee-light transition-colors duration-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream text-coffee relative h-screen overflow-hidden flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-coffee text-cream p-4 flex items-center shadow-md z-20 relative">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="p-2 focus:outline-none hover:bg-coffee-light rounded mr-4 z-50">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <!-- Logo / Title -->
+        <h1 class="text-2xl font-heading font-bold cursor-pointer" onclick="window.location.hash='#'">Kafe Logosu</h1>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity duration-300"></div>
+
+    <!-- Sliding Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-coffee shadow-2xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col pt-20">
+        <nav class="flex-1 flex flex-col mt-4">
+            <a href="#hakkinda" class="nav-link menu-item">Hakkında</a>
+            <a href="#destek" class="nav-link menu-item">Destek</a>
+            <a href="#iletisim" class="nav-link menu-item">İletişim</a>
+            <a href="#subeler" class="nav-link menu-item">Şube Konumları</a>
+            <a href="#icerikler" class="nav-link menu-item">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="nav-link menu-item">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Container -->
+    <main id="main-content" class="flex-1 overflow-y-auto p-4 md:p-8 w-full max-w-4xl mx-auto">
+        <!-- Dynamic content injected here via app.js -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
