@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe</title>
+    <!-- Google Fonts: Playfair Display for headings, Lato for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            500: '#795548',
+                            800: '#4e342e',
+                            900: '#3E2723', // Dark brown theme
+                        },
+                        cream: '#FFFDD0', // Cream background
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            @apply bg-cream text-brown-900 font-sans;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-serif text-brown-900;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- Header area: Hamburger menu -->
+    <header class="fixed top-0 left-0 w-full p-4 z-50 flex items-center bg-cream/90 backdrop-blur-sm shadow-sm">
+        <button id="menu-btn" class="text-brown-900 focus:outline-none focus:ring-2 focus:ring-brown-900 rounded p-1" aria-label="Menüyü aç">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="ml-4 text-xl font-serif font-bold text-brown-900">
+            <a href="#/" class="hover:text-brown-800 transition-colors">Kafe Keyfi</a>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sliding Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brown-900 text-cream z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl overflow-y-auto">
+        <div class="p-6 flex flex-col h-full">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-serif font-bold text-cream">Menü</h2>
+                <button id="close-btn" class="text-cream hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded p-1" aria-label="Menüyü kapat">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex-grow space-y-2">
+                <a href="#/hakkinda" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">Hakkında</a>
+                <a href="#/destek" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">Destek</a>
+                <a href="#/iletisim" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">İletişim</a>
+                <a href="#/sube-konumlari" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">Şube Konumları</a>
+                <a href="#/menu-icerikleri" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">Menü İçerikleri</a>
+                <a href="#/fiyatlar" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">Fiyatlar</a>
+            </nav>
+
+            <div class="mt-8 pt-4 border-t border-brown-800 text-sm opacity-70">
+                &copy; 2026 Kafe Keyfi
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Container for Dynamic Routing -->
+    <main id="content" class="flex-grow pt-20 px-4 pb-12 w-full max-w-5xl mx-auto">
+        <!-- Default Content (will be overwritten by JS router if #/ is loaded) -->
+    </main>
+
+    <script src="./app.js"></script>
+</body>
+</html>
