@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            brown: '#3E2723',
+                            cream: '#FFFDD0',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        lato: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            /* To handle dynamic classes from JS */
+        }
+        body {
+            @apply bg-brand-cream text-brand-brown font-lato;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-playfair;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-brand-cream text-brand-brown font-lato relative">
+
+    <!-- Header -->
+    <header class="bg-brand-brown text-brand-cream p-4 flex items-center justify-between shadow-md z-20 relative">
+        <div class="flex items-center">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="p-2 mr-4 focus:outline-none hover:bg-opacity-80 transition-colors" aria-label="Menüyü aç">
+                <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <rect y="4" width="24" height="2" rx="1"></rect>
+                    <rect y="11" width="24" height="2" rx="1"></rect>
+                    <rect y="18" width="24" height="2" rx="1"></rect>
+                </svg>
+            </button>
+            <h1 class="text-2xl font-playfair font-bold">Kafe Ahenk</h1>
+        </div>
+    </header>
+
+    <!-- Overlay (hidden by default) -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity"></div>
+
+    <!-- Sliding Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-brand-cream border-r border-brand-brown shadow-xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-4 flex justify-between items-center bg-brand-brown text-brand-cream">
+            <h2 class="text-xl font-playfair font-bold">Menü</h2>
+            <!-- Close Button -->
+            <button id="close-btn" class="p-2 focus:outline-none hover:bg-opacity-80" aria-label="Menüyü kapat">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+                </svg>
+            </button>
+        </div>
+        <nav class="mt-4">
+            <ul class="flex flex-col">
+                <li><a href="#/" class="block px-6 py-3 hover:bg-brand-brown hover:text-brand-cream transition-colors border-b border-gray-300">Ana Sayfa</a></li>
+                <li><a href="#/hakkinda" class="block px-6 py-3 hover:bg-brand-brown hover:text-brand-cream transition-colors border-b border-gray-300">Hakkında</a></li>
+                <li><a href="#/destek" class="block px-6 py-3 hover:bg-brand-brown hover:text-brand-cream transition-colors border-b border-gray-300">Destek</a></li>
+                <li><a href="#/iletisim" class="block px-6 py-3 hover:bg-brand-brown hover:text-brand-cream transition-colors border-b border-gray-300">İletişim</a></li>
+                <li><a href="#/sube-konumlari" class="block px-6 py-3 hover:bg-brand-brown hover:text-brand-cream transition-colors border-b border-gray-300">Şube Konumları</a></li>
+                <li><a href="#/menu-icerikleri" class="block px-6 py-3 hover:bg-brand-brown hover:text-brand-cream transition-colors border-b border-gray-300">Menü İçerikleri</a></li>
+                <li><a href="#/fiyatlar" class="block px-6 py-3 hover:bg-brand-brown hover:text-brand-cream transition-colors">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Container -->
+    <main id="content" class="flex-grow p-6 z-10">
+        <!-- SPA content rendered here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-brown text-brand-cream text-center p-4 mt-auto">
+        <p>&copy; 2024 Kafe Ahenk. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>
