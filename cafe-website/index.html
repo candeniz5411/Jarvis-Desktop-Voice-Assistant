@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#D7CCC8',
+                            300: '#A1887F',
+                            500: '#795548',
+                            700: '#5D4037',
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0'
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+        body {
+            @apply font-body bg-cream text-brown-900;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-heading font-bold;
+        }
+
+        /* Utility classes for dynamic usage in JS */
+        .hidden-safelist {
+            @apply hidden bg-brown-900 text-cream text-brown-700 bg-white shadow-md p-6 rounded-lg text-center font-heading text-4xl mb-4 text-2xl mb-8 flex flex-col items-center justify-center min-h-screen text-xl mb-2 gap-4 list-disc pl-5;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-brown-900 text-cream p-4 z-40 flex items-center shadow-md">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="focus:outline-none p-2 mr-4">
+            <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+                <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+            </svg>
+        </button>
+        <!-- Logo Text -->
+        <h1 class="text-2xl font-heading tracking-wide cursor-pointer" onclick="window.location.hash='#'">Kafe Rüstik</h1>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+    <!-- Sliding Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-cream text-brown-900 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col pt-20">
+        <button id="close-btn" class="absolute top-4 right-4 focus:outline-none p-2 text-brown-900 hover:text-brown-700">
+            <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+                <path d="M19.41 7.41L18 6l-6 6-6-6L4.59 7.41L10.59 13l-6 6L6 20.41l6-6 6 6L19.41 20.41l-6-6 6-6z" />
+            </svg>
+        </button>
+        <ul class="flex flex-col space-y-2 mt-4 px-6 font-heading text-lg">
+            <li><a href="#hakkinda" class="block py-2 border-b border-brown-300 hover:text-brown-500 transition-colors">Hakkında</a></li>
+            <li><a href="#destek" class="block py-2 border-b border-brown-300 hover:text-brown-500 transition-colors">Destek</a></li>
+            <li><a href="#iletisim" class="block py-2 border-b border-brown-300 hover:text-brown-500 transition-colors">İletişim</a></li>
+            <li><a href="#subeler" class="block py-2 border-b border-brown-300 hover:text-brown-500 transition-colors">Şube Konumları</a></li>
+            <li><a href="#menu" class="block py-2 border-b border-brown-300 hover:text-brown-500 transition-colors">Menü İçerikleri</a></li>
+            <li><a href="#fiyatlar" class="block py-2 hover:text-brown-500 transition-colors">Fiyatlar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="app" class="flex-grow pt-20 pb-10 px-4 max-w-4xl mx-auto w-full">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Hidden div to safelist dynamic Tailwind classes -->
+    <div class="hidden-safelist" style="display: none;"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
