@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#D7CCC8',
+                            500: '#795548',
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0'
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-body bg-cream text-brown-900 m-0 p-0 overflow-x-hidden;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                @apply font-heading;
+            }
+        }
+
+        .nav-link {
+            @apply block px-4 py-3 text-lg font-medium hover:bg-brown-100 hover:text-brown-900 transition-colors duration-200 border-b border-brown-100/30;
+        }
+
+        /* Smooth transitions for sidebar */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-cream text-brown-900 font-body">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-cream/90 backdrop-blur-md shadow-md z-40 flex items-center justify-between px-4 py-3">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="text-brown-900 focus:outline-none p-2 rounded-md hover:bg-brown-100 transition-colors z-50">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <div class="font-heading text-2xl font-bold flex-1 text-center pr-12">
+            Cafe Serenity
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sliding Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brown-900 text-cream z-50 transform -translate-x-full overflow-y-auto pt-20 shadow-2xl">
+        <ul class="flex flex-col w-full h-full">
+            <li><a href="#/" class="nav-link bg-brown-500/20">Ana Sayfa</a></li>
+            <li><a href="#/hakkinda" class="nav-link">Hakkında</a></li>
+            <li><a href="#/destek" class="nav-link">Destek</a></li>
+            <li><a href="#/iletisim" class="nav-link">İletişim</a></li>
+            <li><a href="#/subeler" class="nav-link">Şube Konumları</a></li>
+            <li><a href="#/menu" class="nav-link">Menü İçerikleri</a></li>
+            <li><a href="#/fiyatlar" class="nav-link">Fiyatlar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="app" class="pt-20 min-h-screen px-4 pb-12 w-full max-w-4xl mx-auto">
+        <!-- Routed content will be injected here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream py-6 text-center mt-auto w-full">
+        <p class="font-body text-sm">&copy; 2024 Cafe Serenity. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Hidden element to ensure Tailwind JIT compiles dynamic utility classes used in JS -->
+    <div class="hidden bg-white rounded-xl shadow-lg p-6 mb-6 mt-8 w-full max-w-2xl mx-auto flex-col items-center justify-center space-y-4 space-y-6 text-center text-left text-3xl text-4xl mb-4 font-bold text-brown-500 grid grid-cols-1 md:grid-cols-2 gap-6 border-b border-brown-100 pb-4 flex justify-between font-bold text-xl mb-2 text-gray-600 rounded-lg"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
