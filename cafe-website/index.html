@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#3E2723', // Kahverengi
+                            light: '#FFFDD0', // Krem
+                            white: '#FFFFFF' // Beyaz
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            @apply bg-brand-light text-brand-dark font-sans;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-serif font-bold;
+        }
+
+        .nav-link {
+            @apply block py-3 px-6 text-brand-dark hover:bg-brand-dark hover:text-brand-light transition-colors duration-200 text-lg;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-brand-white shadow-md z-40 h-16 flex items-center px-4">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="p-2 mr-4 focus:outline-none" aria-label="Toggle Menu">
+            <svg class="w-8 h-8 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <!-- Logo/Title -->
+        <h1 class="text-2xl font-serif text-brand-dark flex-grow text-center md:text-left pr-12 md:pr-0">
+            <a href="#/" class="cursor-pointer">Kafe Keyfi</a>
+        </h1>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brand-white shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-4 flex items-center justify-between border-b border-gray-200 h-16">
+            <h2 class="text-xl font-serif text-brand-dark">Menü</h2>
+            <button id="close-btn" class="p-2 focus:outline-none" aria-label="Close Menu">
+                <svg class="w-6 h-6 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-grow overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li><a href="#/hakkinda" class="nav-link">Hakkında</a></li>
+                <li><a href="#/destek" class="nav-link">Destek</a></li>
+                <li><a href="#/iletisim" class="nav-link">İletişim</a></li>
+                <li><a href="#/subeler" class="nav-link">Şube Konumları</a></li>
+                <li><a href="#/menu" class="nav-link">Menü İçerikleri</a></li>
+                <li><a href="#/fiyatlar" class="nav-link">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-16" id="app">
+        <!-- Content will be dynamically loaded here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-brand-light py-6 text-center mt-auto">
+        <p class="font-sans">&copy; 2024 Kafe Keyfi. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- App JS -->
+    <script src="app.js"></script>
+</body>
+</html>
