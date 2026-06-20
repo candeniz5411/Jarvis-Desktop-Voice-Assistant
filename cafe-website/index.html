@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Keyfi</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            dark: '#3E2723',
+                            light: '#FFFDD0',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #FFFDD0;
+            color: #3E2723;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: '"Playfair Display"', serif;
+        }
+    </style>
+</head>
+<body class="bg-coffee-light text-coffee-dark">
+
+    <!-- Pre-declare classes for Tailwind CDN -->
+    <div class="hidden text-center mt-8 text-3xl font-heading mb-6 max-w-2xl mx-auto rounded-lg shadow-xl mb-8 object-cover w-full h-64 md:h-96 text-lg mb-4 grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 shadow-md flex justify-between border-b border-gray-200 pb-2 text-xl font-bold text-gray-600 bg-coffee-dark text-coffee-light rounded px-4 py-2 hover:bg-opacity-90"></div>
+
+    <!-- Navbar -->
+    <nav class="p-4 flex items-center bg-coffee-dark text-coffee-light shadow-md fixed w-full z-20 top-0 h-16">
+        <button id="menu-btn" class="focus:outline-none flex flex-col justify-center items-center w-8 h-8 space-y-1.5 ml-2" aria-label="Menüyü aç">
+            <span class="block w-6 h-0.5 bg-coffee-light"></span>
+            <span class="block w-6 h-0.5 bg-coffee-light"></span>
+            <span class="block w-6 h-0.5 bg-coffee-light"></span>
+        </button>
+        <div class="text-2xl font-heading font-bold mx-auto pr-10">Kafe Keyfi</div>
+    </nav>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-coffee-dark text-coffee-light z-40 transform -translate-x-full transition-transform duration-300 shadow-lg flex flex-col">
+        <div class="p-4 flex justify-between items-center border-b border-white/10 h-16">
+            <h2 class="text-xl font-heading font-bold ml-2">Menü</h2>
+            <button id="close-btn" class="focus:outline-none text-coffee-light text-3xl font-bold mr-2" aria-label="Menüyü kapat">&times;</button>
+        </div>
+        <nav class="mt-4 flex flex-col space-y-1 px-3 overflow-y-auto pb-4">
+            <a href="#/" class="sidebar-link block py-3 px-4 rounded hover:bg-white/10 transition text-lg">Ana Sayfa</a>
+            <a href="#/hakkinda" class="sidebar-link block py-3 px-4 rounded hover:bg-white/10 transition text-lg">Hakkında</a>
+            <a href="#/destek" class="sidebar-link block py-3 px-4 rounded hover:bg-white/10 transition text-lg">Destek</a>
+            <a href="#/iletisim" class="sidebar-link block py-3 px-4 rounded hover:bg-white/10 transition text-lg">İletişim</a>
+            <a href="#/subeler" class="sidebar-link block py-3 px-4 rounded hover:bg-white/10 transition text-lg">Şube Konumları</a>
+            <a href="#/menu" class="sidebar-link block py-3 px-4 rounded hover:bg-white/10 transition text-lg">Menü İçerikleri</a>
+            <a href="#/fiyatlar" class="sidebar-link block py-3 px-4 rounded hover:bg-white/10 transition text-lg">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="app" class="pt-24 px-4 min-h-screen pb-12 max-w-4xl mx-auto">
+        <!-- Content injected via JS -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
