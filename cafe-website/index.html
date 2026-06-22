@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#3E2723', // Kahverengi (kahve teması)
+                            cream: '#FFFDD0', // Krem
+                            white: '#FFFFFF',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply block py-3 px-4 text-brand-cream hover:bg-brand-cream hover:text-brand-dark transition-colors font-body text-lg;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-brand-white text-brand-dark font-body min-h-screen m-0 p-0 flex flex-col">
+
+    <!-- Header / Nav -->
+    <header class="bg-brand-dark text-brand-cream p-4 flex items-center justify-between shadow-md relative z-20">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="focus:outline-none z-50">
+            <svg class="w-8 h-8 text-brand-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <!-- Logo Text -->
+        <h1 class="text-2xl font-heading font-bold text-center flex-grow">Kafe Logo</h1>
+        <div class="w-8"></div> <!-- Spacer for centering -->
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 bg-brand-dark w-64 transform -translate-x-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto pt-20 shadow-xl">
+        <nav class="flex flex-col mt-4">
+            <a href="#/hakkinda" class="nav-link">Hakkında</a>
+            <a href="#/destek" class="nav-link">Destek</a>
+            <a href="#/iletisim" class="nav-link">İletişim</a>
+            <a href="#/subeler" class="nav-link">Şube Konumları</a>
+            <a href="#/menu" class="nav-link">Menü İçerikleri</a>
+            <a href="#/fiyatlar" class="nav-link">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30 transition-opacity"></div>
+
+    <!-- Main Content Container for SPA -->
+    <main id="app" class="flex-grow flex flex-col p-4 z-10 w-full max-w-4xl mx-auto">
+        <!-- Content will be loaded here via app.js -->
+    </main>
+
+    <footer class="bg-brand-dark text-brand-cream text-center p-4 mt-auto">
+        <p class="font-body">&copy; 2026 Kafe Web Sitesi. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
