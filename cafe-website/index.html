@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            brown: '#3E2723',
+                            cream: '#FFFDD0',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Lato', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-brown min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-brand-brown text-brand-cream p-4 sticky top-0 z-40 shadow-md">
+        <div class="container mx-auto flex items-center justify-between">
+            <button id="menu-btn" class="focus:outline-none z-50">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <h1 class="text-2xl font-bold font-heading mx-auto"><a href="#/">Lezzet Kafe</a></h1>
+            <div class="w-8"></div> <!-- spacer -->
+        </div>
+    </header>
+
+    <!-- Sidebar overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brand-brown text-brand-cream transform -translate-x-full transition-transform duration-300 ease-in-out z-50 shadow-2xl overflow-y-auto">
+        <div class="p-6">
+            <button id="close-btn" class="absolute top-4 right-4 focus:outline-none">
+                <svg class="w-6 h-6 text-brand-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h2 class="text-2xl font-bold font-heading mb-8 border-b border-brand-cream pb-2">Menü</h2>
+            <ul class="space-y-4">
+                <li><a href="#/hakkinda" class="block hover:text-gray-300 transition-colors text-lg sidebar-link">Hakkında</a></li>
+                <li><a href="#/destek" class="block hover:text-gray-300 transition-colors text-lg sidebar-link">Destek</a></li>
+                <li><a href="#/iletisim" class="block hover:text-gray-300 transition-colors text-lg sidebar-link">İletişim</a></li>
+                <li><a href="#/subeler" class="block hover:text-gray-300 transition-colors text-lg sidebar-link">Şube Konumları</a></li>
+                <li><a href="#/menu" class="block hover:text-gray-300 transition-colors text-lg sidebar-link">Menü İçerikleri</a></li>
+                <li><a href="#/fiyatlar" class="block hover:text-gray-300 transition-colors text-lg sidebar-link">Fiyatlar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="app" class="container mx-auto p-4 md:p-8">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
