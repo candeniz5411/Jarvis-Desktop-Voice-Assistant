@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            brown: '#3E2723',
+                            cream: '#FFFDD0',
+                            white: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+            .no-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-brown font-body m-0 p-0 overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-brand-cream shadow-sm px-4 py-4 flex items-center justify-between">
+        <!-- Hamburger Menu Button -->
+        <button id="menu-btn" class="text-brand-brown focus:outline-none focus:ring-2 focus:ring-brand-brown rounded" aria-label="Menü">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <!-- Logo Text -->
+        <div class="font-heading font-bold text-2xl tracking-wide absolute left-1/2 transform -translate-x-1/2">
+            Cafe Lumière
+        </div>
+        <div class="w-8"></div> <!-- Spacer to balance header -->
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sliding Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brand-white shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-6">
+            <button id="close-btn" class="absolute top-4 right-4 text-brand-brown focus:outline-none focus:ring-2 focus:ring-brand-brown rounded" aria-label="Kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h2 class="font-heading font-bold text-xl mb-8 mt-2 border-b-2 border-brand-brown pb-2">Menü</h2>
+            <ul class="space-y-4">
+                <li><a href="#home" class="block font-semibold text-lg hover:text-opacity-70 transition-colors" onclick="closeSidebar()">Ana Sayfa</a></li>
+                <li><a href="#about" class="block font-semibold text-lg hover:text-opacity-70 transition-colors" onclick="closeSidebar()">Hakkında</a></li>
+                <li><a href="#support" class="block font-semibold text-lg hover:text-opacity-70 transition-colors" onclick="closeSidebar()">Destek</a></li>
+                <li><a href="#contact" class="block font-semibold text-lg hover:text-opacity-70 transition-colors" onclick="closeSidebar()">İletişim</a></li>
+                <li><a href="#locations" class="block font-semibold text-lg hover:text-opacity-70 transition-colors" onclick="closeSidebar()">Şube Konumları</a></li>
+                <li><a href="#menu" class="block font-semibold text-lg hover:text-opacity-70 transition-colors" onclick="closeSidebar()">Menü İçerikleri</a></li>
+                <li><a href="#prices" class="block font-semibold text-lg hover:text-opacity-70 transition-colors" onclick="closeSidebar()">Fiyatlar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="app" class="pt-20 min-h-screen flex flex-col items-center">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Hidden div to ensure Tailwind generates dynamic classes if needed -->
+    <div class="hidden">
+        <div class="bg-brand-brown text-brand-cream text-brand-white bg-brand-cream"></div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
