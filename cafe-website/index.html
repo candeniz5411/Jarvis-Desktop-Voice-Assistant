@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            900: '#3E2723',
+                            800: '#4e342e',
+                            700: '#5d4037',
+                        },
+                        cream: {
+                            100: '#FFFDD0',
+                            200: '#fef9c3',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            body {
+                @apply bg-cream-100 text-brown-900 font-sans m-0 p-0 overflow-x-hidden;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                @apply font-serif;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full bg-cream-100 z-50 shadow-sm border-b border-brown-900/10">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="text-brown-900 focus:outline-none p-2 rounded-md hover:bg-brown-900/5 transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Logo/Title -->
+            <h1 class="text-2xl md:text-3xl font-bold font-serif text-center flex-grow text-brown-900">
+                Kafe Nostalji
+            </h1>
+
+            <!-- Empty div for flex balance -->
+            <div class="w-12"></div>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sliding Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brown-900 text-cream-100 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-xl overflow-y-auto">
+        <div class="p-6 border-b border-cream-100/20 flex justify-between items-center">
+            <h2 class="text-2xl font-bold font-serif">Menü</h2>
+            <button id="close-btn" class="text-cream-100 hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex flex-col py-4" id="nav-links">
+            <li><a href="#/" class="block px-6 py-3 hover:bg-brown-800 transition-colors text-lg">Ana Sayfa</a></li>
+            <li><a href="#/hakkinda" class="block px-6 py-3 hover:bg-brown-800 transition-colors text-lg">Hakkında</a></li>
+            <li><a href="#/destek" class="block px-6 py-3 hover:bg-brown-800 transition-colors text-lg">Destek</a></li>
+            <li><a href="#/iletisim" class="block px-6 py-3 hover:bg-brown-800 transition-colors text-lg">İletişim</a></li>
+            <li><a href="#/sube-konumlari" class="block px-6 py-3 hover:bg-brown-800 transition-colors text-lg">Şube Konumları</a></li>
+            <li><a href="#/menu-icerikleri" class="block px-6 py-3 hover:bg-brown-800 transition-colors text-lg">Menü İçerikleri</a></li>
+            <li><a href="#/fiyatlar" class="block px-6 py-3 hover:bg-brown-800 transition-colors text-lg">Fiyatlar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area (SPA Root) -->
+    <main id="app" class="mt-20 px-4 py-8 container mx-auto min-h-screen">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream-100 py-6 text-center mt-auto border-t border-brown-800">
+        <p class="font-sans text-sm">&copy; 2024 Kafe Nostalji. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
