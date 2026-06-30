@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            900: '#3E2723',
+                            800: '#4E342E',
+                            700: '#5D4037',
+                        },
+                        cream: {
+                            100: '#FFFDD0',
+                            50: '#FFFEF0',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+        @layer utilities {
+            .bg-brown-900 {
+                background-color: #3E2723;
+            }
+            .text-brown-900 {
+                color: #3E2723;
+            }
+            .bg-cream-100 {
+                background-color: #FFFDD0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream-100 text-brown-900 font-sans min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-brown-900 text-cream-100 p-4 fixed w-full top-0 z-40 shadow-md">
+        <div class="flex items-center">
+            <button id="menu-btn" class="p-2 focus:outline-none focus:bg-brown-800 rounded">
+                <svg class="w-6 h-6 text-cream-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <h1 class="text-2xl font-serif ml-4 cursor-pointer" onclick="window.location.hash='#'">Kafe</h1>
+        </div>
+    </nav>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-brown-900 text-cream-100 transform -translate-x-full transition-transform duration-300 ease-in-out z-50 shadow-2xl">
+        <div class="p-6">
+            <h2 class="text-3xl font-serif mb-6 border-b border-brown-700 pb-2">Menü</h2>
+            <ul class="space-y-4">
+                <li><a href="#hakkinda" class="block text-lg hover:text-white transition-colors">Hakkında</a></li>
+                <li><a href="#destek" class="block text-lg hover:text-white transition-colors">Destek</a></li>
+                <li><a href="#iletisim" class="block text-lg hover:text-white transition-colors">İletişim</a></li>
+                <li><a href="#subeler" class="block text-lg hover:text-white transition-colors">Şube Konumları</a></li>
+                <li><a href="#menu-icerikleri" class="block text-lg hover:text-white transition-colors">Menü İçerikleri</a></li>
+                <li><a href="#fiyatlar" class="block text-lg hover:text-white transition-colors">Fiyatlar</a></li>
+            </ul>
+        </div>
+        <button id="close-menu-btn" class="absolute top-4 right-4 text-cream-100 p-2 focus:outline-none">
+             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Main Content (SPA Container) -->
+    <main id="app" class="pt-20 p-6 max-w-4xl mx-auto pb-10">
+        <!-- Content gets injected here -->
+    </main>
+
+    <!-- Include App Logic -->
+    <script src="app.js"></script>
+
+    <!-- Hidden div to pre-declare dynamic utility classes for Tailwind JIT -->
+    <div class="hidden text-[#3E2723] bg-[#FFFDD0] bg-brown-900 text-cream-100 font-serif font-sans border-brown-700 border-brown-800 border-b"></div>
+</body>
+</html>
