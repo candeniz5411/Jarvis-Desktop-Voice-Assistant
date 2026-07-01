@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            brown: '#3E2723',
+                            cream: '#FFFDD0',
+                            light: '#ffffff'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            @apply font-body bg-brand-cream text-brand-brown antialiased;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-heading;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brand-brown text-brand-cream z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-xl flex flex-col">
+        <div class="p-6 flex items-center justify-between border-b border-brand-cream/20">
+            <h2 class="text-2xl font-bold font-heading">Menü</h2>
+            <button id="close-menu" class="text-brand-cream hover:text-white focus:outline-none p-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+            <a href="#/" class="block px-4 py-2 rounded-md hover:bg-brand-cream/10 transition-colors">Ana Sayfa</a>
+            <a href="#/about" class="block px-4 py-2 rounded-md hover:bg-brand-cream/10 transition-colors">Hakkında</a>
+            <a href="#/support" class="block px-4 py-2 rounded-md hover:bg-brand-cream/10 transition-colors">Destek</a>
+            <a href="#/contact" class="block px-4 py-2 rounded-md hover:bg-brand-cream/10 transition-colors">İletişim</a>
+            <a href="#/locations" class="block px-4 py-2 rounded-md hover:bg-brand-cream/10 transition-colors">Şube Konumları</a>
+            <a href="#/menu" class="block px-4 py-2 rounded-md hover:bg-brand-cream/10 transition-colors">Menü İçerikleri</a>
+            <a href="#/pricing" class="block px-4 py-2 rounded-md hover:bg-brand-cream/10 transition-colors">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Header -->
+    <header class="bg-brand-brown text-brand-cream shadow-md sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center">
+            <!-- Hamburger Menu Button -->
+            <button id="open-menu" class="p-2 mr-4 rounded-md hover:bg-brand-cream/10 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <h1 class="text-xl font-bold font-heading tracking-wider">Kafe</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <!-- SPA View will be injected here -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
