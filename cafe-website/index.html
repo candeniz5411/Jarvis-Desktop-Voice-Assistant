@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#795548',
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0'
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .font-heading { font-family: 'Playfair Display', serif; }
+            .font-body { font-family: 'Lato', sans-serif; }
+        }
+    </style>
+</head>
+<body class="bg-cream font-body text-brown-900 m-0 p-0 flex flex-col min-h-screen">
+
+    <!-- Header with Hamburger Menu -->
+    <header class="bg-brown-900 text-cream p-4 flex items-center fixed w-full z-20 shadow-md">
+        <button id="menuToggle" class="p-2 focus:outline-none focus:ring-2 focus:ring-cream rounded z-30 relative" aria-label="Toggle Menu">
+            <svg class="w-8 h-8 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="ml-4 flex-grow flex items-center justify-center pr-10">
+            <h1 class="font-heading text-2xl font-bold tracking-wider cursor-pointer" onclick="window.location.hash = ''">My Cafe</h1>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brown-100 text-cream transform -translate-x-full transition-transform duration-300 ease-in-out z-20 shadow-xl overflow-y-auto pt-20 flex flex-col">
+        <ul class="flex-grow">
+            <li class="border-b border-brown-900 border-opacity-30">
+                <a href="#hakkinda" class="block py-4 px-6 hover:bg-brown-900 transition-colors duration-200">Hakkında</a>
+            </li>
+            <li class="border-b border-brown-900 border-opacity-30">
+                <a href="#destek" class="block py-4 px-6 hover:bg-brown-900 transition-colors duration-200">Destek</a>
+            </li>
+            <li class="border-b border-brown-900 border-opacity-30">
+                <a href="#iletisim" class="block py-4 px-6 hover:bg-brown-900 transition-colors duration-200">İletişim</a>
+            </li>
+            <li class="border-b border-brown-900 border-opacity-30">
+                <a href="#subeler" class="block py-4 px-6 hover:bg-brown-900 transition-colors duration-200">Şube Konumları</a>
+            </li>
+            <li class="border-b border-brown-900 border-opacity-30">
+                <a href="#menu" class="block py-4 px-6 hover:bg-brown-900 transition-colors duration-200">Menü İçerikleri</a>
+            </li>
+            <li class="border-b border-brown-900 border-opacity-30">
+                <a href="#fiyatlar" class="block py-4 px-6 hover:bg-brown-900 transition-colors duration-200">Fiyatlar</a>
+            </li>
+        </ul>
+        <div class="p-6 text-sm text-cream opacity-70 border-t border-brown-900 border-opacity-30">
+            &copy; 2024 My Cafe
+        </div>
+    </nav>
+
+    <!-- Main Content Container (SPA) -->
+    <main id="app" class="flex-grow pt-24 px-4 pb-8 max-w-4xl mx-auto w-full">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
