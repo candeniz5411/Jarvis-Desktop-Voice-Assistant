@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            900: '#3E2723',
+                            800: '#4E342E',
+                            100: '#D7CCC8'
+                        },
+                        cream: '#FFFDD0'
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .font-heading {
+                font-family: 'Playfair Display', serif;
+            }
+            .font-body {
+                font-family: 'Lato', sans-serif;
+            }
+        }
+
+        body {
+            @apply font-body bg-cream text-brown-900;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-heading text-brown-900;
+        }
+    </style>
+</head>
+<body class="bg-cream text-brown-900 min-h-screen relative overflow-x-hidden">
+
+    <!-- Pre-declare arbitrary values used in dynamic JS content -->
+    <div class="hidden">
+        <span class="text-[#3E2723] text-[#FFFDD0] bg-[#3E2723] bg-[#FFFDD0]"></span>
+    </div>
+
+    <!-- Header -->
+    <header class="p-4 flex items-center bg-brown-900 text-cream fixed w-full top-0 z-10 shadow-md h-16">
+        <!-- Hamburger Button -->
+        <button id="menu-btn" class="text-cream focus:outline-none focus:ring-2 focus:ring-cream rounded p-1" aria-label="Menüyü aç">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="flex-grow text-center font-heading text-2xl font-bold pr-8">
+            <a href="#/">Kafe</a>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brown-900 text-cream transform -translate-x-full transition-transform duration-300 ease-in-out z-30 shadow-2xl overflow-y-auto">
+        <div class="p-4 flex justify-between items-center border-b border-brown-800 h-16">
+            <span class="font-heading text-xl font-bold">Menü</span>
+            <button id="close-btn" class="text-cream focus:outline-none focus:ring-2 focus:ring-cream rounded p-1" aria-label="Menüyü kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex flex-col p-4 space-y-2">
+            <li><a href="#/" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">Ana Sayfa</a></li>
+            <li><a href="#/hakkinda" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">Hakkında</a></li>
+            <li><a href="#/destek" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">Destek</a></li>
+            <li><a href="#/iletisim" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">İletişim</a></li>
+            <li><a href="#/subeler" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">Şube Konumları</a></li>
+            <li><a href="#/menu-icerikleri" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">Menü İçerikleri</a></li>
+            <li><a href="#/fiyatlar" class="block py-2 px-4 rounded hover:bg-brown-800 transition-colors">Fiyatlar</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="app" class="pt-20 px-4 pb-8 max-w-4xl mx-auto min-h-[calc(100vh-4rem)]">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
