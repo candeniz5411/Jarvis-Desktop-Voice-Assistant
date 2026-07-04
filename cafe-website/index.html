@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#D7CCC8',
+                            800: '#4E342E',
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            @apply bg-cream text-brown-900 font-sans;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-serif;
+        }
+        /* Pre-declare arbitrary utilities for JIT compiler */
+        .hidden-for-jit {
+            @apply text-[#3E2723];
+        }
+    </style>
+</head>
+<body class="bg-cream text-brown-900 font-sans min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="p-4 flex items-center shadow-md bg-white relative z-20">
+        <button id="menu-btn" class="p-2 focus:outline-none focus:bg-gray-200 rounded text-brown-900 hover:text-brown-800">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="ml-4 text-2xl font-serif font-bold cursor-pointer" onclick="window.location.hash='#'">Kafe Logosu</div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity"></div>
+
+    <!-- Sliding Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-2xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-4 border-b flex justify-between items-center bg-brown-900 text-cream">
+            <h2 class="text-xl font-serif">Menü</h2>
+            <button id="close-btn" class="focus:outline-none p-1 rounded hover:bg-brown-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+            <a href="#hakkinda" class="block p-3 rounded hover:bg-brown-100 transition-colors font-medium">Hakkında</a>
+            <a href="#destek" class="block p-3 rounded hover:bg-brown-100 transition-colors font-medium">Destek</a>
+            <a href="#iletisim" class="block p-3 rounded hover:bg-brown-100 transition-colors font-medium">İletişim</a>
+            <a href="#subeler" class="block p-3 rounded hover:bg-brown-100 transition-colors font-medium">Şube Konumları</a>
+            <a href="#menu-icerikleri" class="block p-3 rounded hover:bg-brown-100 transition-colors font-medium">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="block p-3 rounded hover:bg-brown-100 transition-colors font-medium">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 p-6 flex justify-center w-full">
+        <div id="app" class="max-w-4xl w-full bg-white p-8 rounded-lg shadow-sm">
+            <!-- Content will be dynamically loaded here by app.js -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream p-4 text-center mt-auto">
+        &copy; 2023 Kafe. Tüm hakları saklıdır.
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
