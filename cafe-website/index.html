@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            100: '#D7CCC8',
+                            500: '#795548',
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            @apply font-body bg-cream text-brown-900;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-heading text-brown-900;
+        }
+    </style>
+</head>
+<body class="bg-cream text-brown-900 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-brown-900 text-cream p-4 flex items-center fixed w-full z-20 top-0 shadow-md h-16">
+        <button id="menu-btn" class="p-2 mr-4 focus:outline-none hover:bg-brown-500 rounded transition" aria-label="Menü">
+            <!-- Hamburger Icon -->
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z"/>
+            </svg>
+        </button>
+        <div class="flex-1 text-center sm:text-left">
+            <h1 class="text-xl md:text-2xl font-bold cursor-pointer text-cream" onclick="window.location.hash='#'">Kafe Logosu</h1>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-cream shadow-2xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col pt-16 border-r border-brown-100 overflow-y-auto">
+        <div class="p-4 flex justify-between items-center bg-brown-900 text-cream h-16 absolute top-0 w-full">
+            <span class="font-bold text-lg">Menü</span>
+            <button id="close-btn" class="focus:outline-none hover:text-brown-100 transition" aria-label="Kapat">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M6.225 4.811a1 1 0 011.414 0L12 9.172l4.361-4.36a1 1 0 111.414 1.414L13.414 10.586l4.36 4.361a1 1 0 11-1.414 1.414L12 11.999l-4.361 4.362a1 1 0 11-1.414-1.414l4.362-4.361-4.362-4.36a1 1 0 010-1.414z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col py-4">
+            <a href="#hakkinda" class="nav-link px-6 py-3 hover:bg-brown-100 hover:text-brown-900 transition font-semibold">Hakkında</a>
+            <a href="#destek" class="nav-link px-6 py-3 hover:bg-brown-100 hover:text-brown-900 transition font-semibold">Destek</a>
+            <a href="#iletisim" class="nav-link px-6 py-3 hover:bg-brown-100 hover:text-brown-900 transition font-semibold">İletişim</a>
+            <a href="#subeler" class="nav-link px-6 py-3 hover:bg-brown-100 hover:text-brown-900 transition font-semibold">Şube Konumları</a>
+            <a href="#icerikler" class="nav-link px-6 py-3 hover:bg-brown-100 hover:text-brown-900 transition font-semibold">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="nav-link px-6 py-3 hover:bg-brown-100 hover:text-brown-900 transition font-semibold">Fiyatlar</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow pt-16 flex flex-col relative w-full overflow-x-hidden">
+        <div id="app" class="flex-grow flex flex-col w-full h-full p-4 md:p-8">
+            <!-- Dynamic Content Will Be Rendered Here -->
+        </div>
+    </main>
+
+    <footer class="bg-brown-900 text-cream text-center p-4 mt-auto">
+        <p>&copy; 2024 Kafe Web Sitesi. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- Pre-load arbitrary classes for Tailwind JIT -->
+    <div class="hidden text-[#3E2723] bg-[#FFFDD0]"></div>
+
+    <!-- Script -->
+    <script src="./app.js"></script>
+</body>
+</html>
