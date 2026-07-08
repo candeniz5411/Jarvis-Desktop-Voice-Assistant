@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee-brown': '#3E2723',
+                        'coffee-light': '#5D4037',
+                        'coffee-cream': '#FFFDD0',
+                        'coffee-white': '#FFFFFF',
+                        'coffee-border': '#D7CCC8'
+                    },
+                    fontFamily: {
+                        'playfair': ['"Playfair Display"', 'serif'],
+                        'lato': ['Lato', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-lato text-coffee-brown bg-coffee-cream;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                @apply font-playfair;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-coffee-cream flex flex-col">
+
+    <!-- Navbar -->
+    <header class="bg-coffee-white shadow-md fixed w-full top-0 z-40">
+        <div class="px-4 py-4 flex items-center">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="text-coffee-brown focus:outline-none p-2 hover:bg-coffee-cream rounded-md transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <div class="ml-4 font-playfair text-2xl font-bold text-coffee-brown">
+                Kafe Keyfi
+            </div>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+    <!-- Sliding Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-coffee-brown text-coffee-cream shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 flex items-center justify-between border-b border-coffee-light">
+            <h2 class="text-2xl font-playfair font-bold">Menü</h2>
+            <button id="close-btn" class="text-coffee-cream hover:text-coffee-white focus:outline-none p-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-2">
+                <li><a href="#home" class="block px-6 py-3 hover:bg-coffee-light transition-colors sidebar-link">Ana Sayfa</a></li>
+                <li><a href="#about" class="block px-6 py-3 hover:bg-coffee-light transition-colors sidebar-link">Hakkında</a></li>
+                <li><a href="#support" class="block px-6 py-3 hover:bg-coffee-light transition-colors sidebar-link">Destek</a></li>
+                <li><a href="#contact" class="block px-6 py-3 hover:bg-coffee-light transition-colors sidebar-link">İletişim</a></li>
+                <li><a href="#locations" class="block px-6 py-3 hover:bg-coffee-light transition-colors sidebar-link">Şube Konumları</a></li>
+                <li><a href="#menu-items" class="block px-6 py-3 hover:bg-coffee-light transition-colors sidebar-link">Menü İçerikleri</a></li>
+                <li><a href="#prices" class="block px-6 py-3 hover:bg-coffee-light transition-colors sidebar-link">Fiyatlar</a></li>
+            </ul>
+        </nav>
+        <div class="p-6 border-t border-coffee-light text-sm opacity-80 text-center">
+            &copy; 2024 Kafe Keyfi
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow pt-24 pb-12 px-4 md:px-8 max-w-5xl mx-auto w-full" id="app">
+        <!-- Dynamic content will be injected here by app.js -->
+    </main>
+
+    <!-- Pre-declare tailwind classes injected via JS -->
+    <div class="hidden grid-cols-1 md:grid-cols-2 gap-8 bg-coffee-white p-6 rounded-lg shadow-md border-b border-coffee-border pb-4 flex justify-between items-center text-xl"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
