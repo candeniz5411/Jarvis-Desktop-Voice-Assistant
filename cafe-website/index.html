@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brown: {
+                            50: '#efebe9',
+                            100: '#d7ccc8',
+                            200: '#bcaaa4',
+                            300: '#a1887f',
+                            400: '#8d6e63',
+                            500: '#795548',
+                            600: '#6d4c41',
+                            700: '#5d4037',
+                            800: '#4e342e',
+                            900: '#3E2723',
+                        },
+                        cream: '#FFFDD0',
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base styles that need tailwind utilities */
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-cream text-brown-900 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-brown-900 text-cream p-4 flex items-center shadow-md relative z-20">
+        <!-- Hamburger Button -->
+        <button id="menu-btn" class="focus:outline-none mr-4">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <h1 class="text-2xl font-serif font-bold tracking-wider cursor-pointer" onclick="navigateTo('home')">Kafemiz</h1>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-brown-800 text-cream p-6 z-40 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-serif font-bold">Menü</h2>
+            <button id="close-btn" class="focus:outline-none text-cream hover:text-brown-200">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="space-y-4">
+            <li><a href="#" onclick="navigateTo('hakkinda')" class="block text-lg hover:text-brown-200 transition-colors">Hakkında</a></li>
+            <li><a href="#" onclick="navigateTo('destek')" class="block text-lg hover:text-brown-200 transition-colors">Destek</a></li>
+            <li><a href="#" onclick="navigateTo('iletisim')" class="block text-lg hover:text-brown-200 transition-colors">İletişim</a></li>
+            <li><a href="#" onclick="navigateTo('subeler')" class="block text-lg hover:text-brown-200 transition-colors">Şube Konumları</a></li>
+            <li><a href="#" onclick="navigateTo('menu_icerik')" class="block text-lg hover:text-brown-200 transition-colors">Menü İçerikleri</a></li>
+            <li><a href="#" onclick="navigateTo('fiyatlar')" class="block text-lg hover:text-brown-200 transition-colors">Fiyatlar</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-grow p-4 md:p-8 w-full max-w-6xl mx-auto">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-900 text-cream text-center p-4 mt-auto">
+        <p class="text-sm">&copy; 2024 Kafemiz. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
