@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brown-light': '#5D4037',
+                        'brown-base': '#3E2723',
+                        'cream': '#FFFDD0',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Lato', sans-serif;
+            @apply bg-cream text-brown-base;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .nav-link {
+            @apply block py-3 px-6 text-xl hover:bg-brown-light hover:text-cream transition-colors duration-200 cursor-pointer;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col">
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-72 h-full bg-cream shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out border-r border-brown-base/20">
+        <div class="p-6 border-b border-brown-base/20 flex justify-between items-center">
+            <h2 class="text-3xl font-bold text-brown-base">Menü</h2>
+            <button id="close-menu-btn" class="text-brown-base hover:text-brown-light focus:outline-none" aria-label="Menüyü Kapat">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="mt-6 flex flex-col">
+            <a data-link="home" class="nav-link">Ana Sayfa</a>
+            <a data-link="about" class="nav-link">Hakkında</a>
+            <a data-link="support" class="nav-link">Destek</a>
+            <a data-link="contact" class="nav-link">İletişim</a>
+            <a data-link="locations" class="nav-link">Şube Konumları</a>
+            <a data-link="menu" class="nav-link">Menü İçerikleri</a>
+            <a data-link="prices" class="nav-link">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Header -->
+    <header class="bg-cream shadow-md z-30 sticky top-0 border-b border-brown-base/10">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <button id="open-menu-btn" class="text-brown-base hover:text-brown-light focus:outline-none mr-4" aria-label="Menüyü Aç">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <h1 class="text-2xl md:text-3xl font-bold text-brown-base cursor-pointer" id="logo">Kafe Viyana</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="app" class="flex-grow container mx-auto px-4 py-8">
+        <!-- Content gets injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brown-base text-cream py-6 mt-auto">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 Kafe Viyana. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
