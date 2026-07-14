@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            100: '#f5f5dc', // Cream
+                            200: '#e6d3c3',
+                            500: '#8b5a2b', // Light Brown
+                            800: '#4a2f1d', // Dark Brown
+                            900: '#2c1c11', // Very Dark Brown
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Playfair Display"', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .font-heading {
+                font-family: 'Playfair Display', serif;
+            }
+            .font-sans {
+                font-family: 'Lato', sans-serif;
+            }
+        }
+        body {
+            @apply bg-coffee-100 text-coffee-900 font-sans;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-coffee-800 text-white z-40 shadow-md">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <!-- Hamburger Button -->
+            <button id="menu-btn" class="p-2 focus:outline-none focus:ring-2 focus:ring-coffee-500 rounded">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Logo / Title -->
+            <h1 class="text-2xl font-heading font-bold tracking-wide">
+                <a href="#">Kafe Vakti</a>
+            </h1>
+
+            <div class="w-10"></div> <!-- Placeholder for balance -->
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-6">
+            <h2 class="text-xl font-heading font-bold text-coffee-800 mb-6 border-b pb-2">Menü</h2>
+            <ul class="space-y-4">
+                <li><a href="#" class="sidebar-link block text-coffee-800 hover:text-coffee-500 font-medium transition-colors">Ana Sayfa</a></li>
+                <li><a href="#hakkinda" class="sidebar-link block text-coffee-800 hover:text-coffee-500 font-medium transition-colors">Hakkında</a></li>
+                <li><a href="#destek" class="sidebar-link block text-coffee-800 hover:text-coffee-500 font-medium transition-colors">Destek</a></li>
+                <li><a href="#iletisim" class="sidebar-link block text-coffee-800 hover:text-coffee-500 font-medium transition-colors">İletişim</a></li>
+                <li><a href="#subeler" class="sidebar-link block text-coffee-800 hover:text-coffee-500 font-medium transition-colors">Şube Konumları</a></li>
+                <li><a href="#menu" class="sidebar-link block text-coffee-800 hover:text-coffee-500 font-medium transition-colors">Menü İçerikleri</a></li>
+                <li><a href="#fiyatlar" class="sidebar-link block text-coffee-800 hover:text-coffee-500 font-medium transition-colors">Fiyatlar</a></li>
+            </ul>
+        </div>
+        <!-- Close button inside sidebar -->
+        <button id="close-btn" class="absolute top-4 right-4 p-2 text-coffee-800 hover:text-coffee-500 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="app" class="pt-20 min-h-screen">
+        <!-- Content will be injected here by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-900 text-coffee-100 py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Kafe Vakti. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
