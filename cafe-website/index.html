@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            100: '#d7ccc8',
+                            200: '#bcaaa4',
+                            500: '#795548',
+                            700: '#5d4037',
+                            900: '#3e2723',
+                        },
+                        cream: '#fef5e7'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream text-coffee-900 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="w-full p-4 bg-coffee-700 text-white flex items-center justify-between shadow-md relative z-20">
+        <button id="menu-btn" class="focus:outline-none p-2" aria-label="Menü">
+            <svg class="w-8 h-8 fill-current text-cream" viewBox="0 0 24 24">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <div class="text-xl font-bold tracking-wider">
+            <a href="#">COFFEE HOUSE</a>
+        </div>
+        <div class="w-8"></div> <!-- Spacer for centering -->
+    </nav>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden transition-opacity"></div>
+
+    <!-- Sliding Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-coffee-900 text-cream z-40 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-xl">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold">Menü</h2>
+                <button id="close-btn" class="focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <ul class="space-y-4 text-lg">
+                <li><a href="#" class="block hover:text-coffee-200 transition">Ana Sayfa</a></li>
+                <li><a href="#hakkinda" class="block hover:text-coffee-200 transition">Hakkında</a></li>
+                <li><a href="#destek" class="block hover:text-coffee-200 transition">Destek</a></li>
+                <li><a href="#iletisim" class="block hover:text-coffee-200 transition">İletişim</a></li>
+                <li><a href="#subeler" class="block hover:text-coffee-200 transition">Şube Konumları</a></li>
+                <li><a href="#icerikler" class="block hover:text-coffee-200 transition">Menü İçerikleri</a></li>
+                <li><a href="#fiyatlar" class="block hover:text-coffee-200 transition">Fiyatlar</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="w-full min-h-screen p-6 flex justify-center">
+        <div id="app" class="max-w-4xl w-full bg-white rounded-lg shadow-lg p-6 md:p-10 my-4">
+            <!-- Dynamic content will be loaded here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full p-4 bg-coffee-900 text-cream text-center text-sm">
+        &copy; 2024 Coffee House. Tüm hakları saklıdır.
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
