@@ -1,0 +1,4 @@
+127.0.0.1 - - [17/Aug/2026 19:21:08] "HEAD /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [17/Aug/2026 19:22:40] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [17/Aug/2026 19:22:40] "GET /Images/coffee.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [17/Aug/2026 19:22:40] "GET /Images/logo.jpg HTTP/1.1" 200 -
