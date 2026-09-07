@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a37c64',
+                            600: '#8c6b56',
+                            700: '#735847',
+                            800: '#5c4639',
+                            900: '#403128',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .section-container {
+                @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12;
+            }
+        }
+    </style>
+</head>
+<body class="bg-brand-50 text-brand-900 font-sans min-h-screen flex flex-col">
+    <header class="bg-white shadow-sm z-30 sticky top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <button id="menu-toggle" class="text-brand-700 hover:text-brand-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-500 p-2 rounded-md" aria-label="Menüyü Aç">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    <a href="#ana-sayfa" class="ml-4 text-xl font-bold text-brand-800 tracking-wide">KafeLogo</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-brand-900 bg-opacity-50 z-40 hidden transition-opacity opacity-0 duration-300"></div>
+
+    <!-- Sidebar Menu -->
+    <nav id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-white z-50 transform -translate-x-full transition-transform duration-300 ease-in-out shadow-xl flex flex-col">
+        <div class="flex items-center justify-between p-4 border-b border-brand-100">
+            <span class="text-lg font-semibold text-brand-800">Menü</span>
+            <button id="close-sidebar" class="text-brand-500 hover:text-brand-800 focus:outline-none p-1 rounded-md" aria-label="Menüyü Kapat">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1 px-3">
+                <li><a href="#ana-sayfa" class="block px-3 py-2 rounded-md text-base font-medium text-brand-700 hover:text-brand-900 hover:bg-brand-50">Ana Sayfa</a></li>
+                <li><a href="#hakkinda" class="block px-3 py-2 rounded-md text-base font-medium text-brand-700 hover:text-brand-900 hover:bg-brand-50">Hakkında</a></li>
+                <li><a href="#destek" class="block px-3 py-2 rounded-md text-base font-medium text-brand-700 hover:text-brand-900 hover:bg-brand-50">Destek</a></li>
+                <li><a href="#iletisim" class="block px-3 py-2 rounded-md text-base font-medium text-brand-700 hover:text-brand-900 hover:bg-brand-50">İletişim</a></li>
+                <li><a href="#sube-konumlari" class="block px-3 py-2 rounded-md text-base font-medium text-brand-700 hover:text-brand-900 hover:bg-brand-50">Şube Konumları</a></li>
+                <li><a href="#menu-icerikleri" class="block px-3 py-2 rounded-md text-base font-medium text-brand-700 hover:text-brand-900 hover:bg-brand-50">Menü İçerikleri</a></li>
+                <li><a href="#fiyatlar" class="block px-3 py-2 rounded-md text-base font-medium text-brand-700 hover:text-brand-900 hover:bg-brand-50">Fiyatlar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content" class="flex-grow">
+
+        <!-- Ana Sayfa Section -->
+        <section id="ana-sayfa-section" class="page-section">
+            <div class="relative bg-brand-900 text-white overflow-hidden">
+                <div class="absolute inset-0">
+                    <img src="./Images/coffee.jpg" alt="Kafe Arka Plan" class="w-full h-full object-cover opacity-40">
+                </div>
+                <div class="relative section-container flex flex-col items-center justify-center min-h-[60vh] text-center">
+                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-brand-100 drop-shadow-md">KafeLogo</h1>
+                    <p class="mt-4 max-w-2xl text-xl md:text-2xl text-brand-50 drop-shadow">Sıcak bir kahve, tatlı bir anı. Hoş geldiniz!</p>
+                    <a href="#menu-icerikleri" class="mt-8 bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300">Menüyü İncele</a>
+                </div>
+            </div>
+            <div class="section-container text-center">
+                <h2 class="text-3xl font-bold text-brand-800 mb-6">Kahve Tutkumuz</h2>
+                <p class="text-lg text-brand-700 max-w-3xl mx-auto">En iyi çekirdekleri özenle seçiyor, ustalıkla kavuruyor ve sizlere sunuyoruz. Modern ve rahat ortamımızda günün yorgunluğunu atın.</p>
+            </div>
+        </section>
+
+        <!-- Hakkında Section -->
+        <section id="hakkinda-section" class="page-section hidden section-container text-center">
+            <h2 class="text-3xl font-bold text-brand-800 mb-6">Hakkımızda</h2>
+            <p class="text-lg text-brand-700 max-w-2xl mx-auto">Kaliteli kahve ve sıcak bir ortam sunmak amacıyla yola çıktık. Misafirlerimize unutulmaz tatlar sunmayı hedefliyoruz.</p>
+        </section>
+
+        <!-- Destek Section -->
+        <section id="destek-section" class="page-section hidden section-container text-center">
+            <h2 class="text-3xl font-bold text-brand-800 mb-6">Destek</h2>
+            <p class="text-lg text-brand-700 max-w-2xl mx-auto">Müşteri memnuniyeti bizim için ön planda. Her türlü sorunuz ve öneriniz için buradayız.</p>
+        </section>
+
+        <!-- İletişim Section -->
+        <section id="iletisim-section" class="page-section hidden section-container text-center">
+            <h2 class="text-3xl font-bold text-brand-800 mb-6">İletişim</h2>
+            <p class="text-lg text-brand-700 max-w-2xl mx-auto mb-4">Adres: Kahve Sokak No:12, Lezzet Mahallesi<br>Telefon: 0555 123 45 67<br>E-posta: info@kafelogo.com</p>
+        </section>
+
+        <!-- Şube Konumları Section -->
+        <section id="sube-konumlari-section" class="page-section hidden section-container text-center">
+            <h2 class="text-3xl font-bold text-brand-800 mb-6">Şube Konumlarımız</h2>
+            <ul class="text-lg text-brand-700 max-w-2xl mx-auto space-y-2">
+                <li>📍 Merkez Şube - Lezzet Mahallesi</li>
+                <li>📍 Sahil Şube - Kordon Boyu</li>
+                <li>📍 Kampüs Şube - Üniversite Caddesi</li>
+            </ul>
+        </section>
+
+        <!-- Menü İçerikleri Section -->
+        <section id="menu-icerikleri-section" class="page-section hidden section-container">
+            <h2 class="text-4xl font-bold text-brand-800 mb-10 text-center">Menü İçerikleri</h2>
+
+            <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+                <div class="p-6 sm:p-10">
+                    <ul class="divide-y divide-brand-100">
+                        <li class="py-4 flex justify-between items-center">
+                            <span class="text-xl font-medium text-brand-900">Espresso</span>
+                            <span class="text-lg font-bold text-brand-600">45₺</span>
+                        </li>
+                        <li class="py-4 flex justify-between items-center">
+                            <span class="text-xl font-medium text-brand-900">Cappuccino</span>
+                            <span class="text-lg font-bold text-brand-600">55₺</span>
+                        </li>
+                        <li class="py-4 flex justify-between items-center">
+                            <span class="text-xl font-medium text-brand-900">Latte</span>
+                            <span class="text-lg font-bold text-brand-600">60₺</span>
+                        </li>
+                        <li class="py-4 flex justify-between items-center">
+                            <span class="text-xl font-medium text-brand-900">Türk Kahvesi</span>
+                            <span class="text-lg font-bold text-brand-600">40₺</span>
+                        </li>
+                        <li class="py-4 flex justify-between items-center">
+                            <span class="text-xl font-medium text-brand-900">Çay</span>
+                            <span class="text-lg font-bold text-brand-600">25₺</span>
+                        </li>
+                        <li class="py-4 flex justify-between items-center">
+                            <span class="text-xl font-medium text-brand-900">Cheesecake</span>
+                            <span class="text-lg font-bold text-brand-600">70₺</span>
+                        </li>
+                        <li class="py-4 flex justify-between items-center">
+                            <span class="text-xl font-medium text-brand-900">Kruvasan</span>
+                            <span class="text-lg font-bold text-brand-600">50₺</span>
+                        </li>
+                        <li class="py-4 flex justify-between items-center">
+                            <span class="text-xl font-medium text-brand-900">Sandviç</span>
+                            <span class="text-lg font-bold text-brand-600">80₺</span>
+                        </li>
+                        <li class="py-4 flex justify-between items-center">
+                            <span class="text-xl font-medium text-brand-900">Soğuk Kahve</span>
+                            <span class="text-lg font-bold text-brand-600">65₺</span>
+                        </li>
+                        <li class="py-4 flex justify-between items-center">
+                            <span class="text-xl font-medium text-brand-900">Limonata</span>
+                            <span class="text-lg font-bold text-brand-600">35₺</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fiyatlar Section -->
+        <section id="fiyatlar-section" class="page-section hidden section-container text-center">
+            <h2 class="text-3xl font-bold text-brand-800 mb-6">Fiyatlar</h2>
+            <p class="text-lg text-brand-700 max-w-2xl mx-auto">Fiyatlarımız güncel maliyetlere göre düzenlenmiş olup, en iyi kaliteyi en uygun fiyata sunmayı hedefliyoruz. Detaylı bilgi için <a href="#menu-icerikleri" class="text-brand-500 underline hover:text-brand-700">Menü İçerikleri</a> sayfamızı inceleyebilirsiniz.</p>
+        </section>
+
+    </main>
+
+    <footer class="bg-brand-900 text-brand-100 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; 2024 Kafe. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const closeSidebar = document.getElementById('close-sidebar');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
+            const navLinks = sidebar.querySelectorAll('a');
+
+            function openSidebar() {
+                sidebarOverlay.classList.remove('hidden');
+                setTimeout(() => sidebarOverlay.classList.remove('opacity-0'), 10);
+                sidebar.classList.remove('-translate-x-full');
+            }
+
+            function hideSidebar() {
+                sidebarOverlay.classList.add('opacity-0');
+                sidebar.classList.add('-translate-x-full');
+                setTimeout(() => sidebarOverlay.classList.add('hidden'), 300);
+            }
+
+            menuToggle.addEventListener('click', openSidebar);
+            closeSidebar.addEventListener('click', hideSidebar);
+            sidebarOverlay.addEventListener('click', hideSidebar);
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', hideSidebar);
+            });
+
+            // Routing
+            const sections = document.querySelectorAll('.page-section');
+
+            function handleRouting() {
+                let hash = window.location.hash || '#ana-sayfa';
+
+                // Hide all sections
+                sections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+
+                // Show target section
+                const targetSection = document.getElementById(hash.substring(1) + '-section');
+                if (targetSection) {
+                    targetSection.classList.remove('hidden');
+                } else {
+                    // Fallback to home
+                    const homeSection = document.getElementById('ana-sayfa-section');
+                    if(homeSection) homeSection.classList.remove('hidden');
+                }
+            }
+
+            window.addEventListener('hashchange', handleRouting);
+
+            // Initial route check (requires sections to be in DOM first)
+            handleRouting();
+        });
+    </script>
+</body>
+</html>
