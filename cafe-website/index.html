@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cafe-brown': '#5c4033',
+                        'cafe-light': '#fdfbf7',
+                        'cafe-cream': '#f5deb3',
+                        'cafe-dark': '#3e2723'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply block py-3 px-6 text-cafe-brown hover:bg-cafe-brown hover:text-white transition-colors duration-200 text-lg font-medium;
+            }
+            .section-content {
+                @apply hidden p-8 bg-white rounded-lg shadow-md max-w-4xl mx-auto my-8;
+            }
+            .section-content.active {
+                @apply block;
+            }
+            .menu-item {
+                @apply flex justify-between items-center py-4 border-b border-cafe-cream last:border-b-0;
+            }
+            .menu-name {
+                @apply text-xl text-cafe-brown font-semibold;
+            }
+            .menu-price {
+                @apply text-xl text-cafe-dark font-bold;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fdfbf7;
+        }
+
+        /* Sidebar transitions */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(-100%);
+        }
+
+        #sidebar.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-cafe-light text-gray-800 min-h-screen relative overflow-x-hidden">
+
+    <!-- Top Navigation -->
+    <header class="bg-cafe-brown text-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <button id="menu-btn" class="p-2 focus:outline-none focus:bg-cafe-dark rounded hover:bg-cafe-dark transition-colors" aria-label="Menü">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <div class="text-2xl font-bold tracking-wider">
+                Kahve Durağı
+            </div>
+            <div class="w-8 h-8"></div> <!-- Spacer -->
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-cafe-cream shadow-2xl z-50 flex flex-col">
+        <div class="p-4 bg-cafe-brown text-white flex justify-between items-center h-16">
+            <span class="text-xl font-bold">Menü</span>
+            <button id="close-btn" class="p-1 hover:bg-cafe-dark rounded transition-colors focus:outline-none" aria-label="Kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex-grow overflow-y-auto py-4" id="sidebar-nav">
+            <a href="#ana-sayfa" class="nav-link border-l-4 border-transparent hover:border-cafe-dark">Ana Sayfa</a>
+            <a href="#hakkinda" class="nav-link border-l-4 border-transparent hover:border-cafe-dark">Hakkında</a>
+            <a href="#destek" class="nav-link border-l-4 border-transparent hover:border-cafe-dark">Destek</a>
+            <a href="#iletisim" class="nav-link border-l-4 border-transparent hover:border-cafe-dark">İletişim</a>
+            <a href="#sube-konumlari" class="nav-link border-l-4 border-transparent hover:border-cafe-dark">Şube Konumları</a>
+            <a href="#menu-icerikleri" class="nav-link border-l-4 border-transparent hover:border-cafe-dark">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="nav-link border-l-4 border-transparent hover:border-cafe-dark">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-4 py-8" id="main-content">
+        <!-- Ana Sayfa Section -->
+        <section id="ana-sayfa-section" class="section-content active text-center">
+            <img src="./Images/logo.jpg" alt="Kafe Logosu" class="w-32 h-32 mx-auto rounded-full object-cover border-4 border-cafe-brown shadow-lg mb-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-cafe-brown mb-4">Kahve Durağına Hoş Geldiniz</h1>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">En taze çekirdeklerden özenle hazırlanan kahvelerimiz ve enfes tatlılarımızla size unutulmaz bir deneyim sunuyoruz.</p>
+            <img src="./Images/coffee.jpg" alt="Taze Kahve" class="w-full h-64 md:h-96 object-cover rounded-xl shadow-xl">
+        </section>
+
+
+        <!-- Hakkında Section -->
+        <section id="hakkinda-section" class="section-content">
+            <h2 class="text-3xl font-bold text-cafe-brown mb-6 border-b-2 border-cafe-cream pb-2">Hakkımızda</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">Kahve Durağı, şehrin kalbinde, kahve tutkunları için özenle tasarlanmış bir kaçış noktasıdır. Yılların getirdiği tecrübe ile en kaliteli kahve çekirdeklerini sizin için seçiyor ve ustalıkla demliyoruz.</p>
+            <p class="text-gray-700 leading-relaxed">Amacımız, sadece kahve içilen bir mekan olmak değil, aynı zamanda dostlukların pekiştiği, sıcak ve samimi bir ortam sunmaktır.</p>
+        </section>
+
+        <!-- Destek Section -->
+        <section id="destek-section" class="section-content">
+            <h2 class="text-3xl font-bold text-cafe-brown mb-6 border-b-2 border-cafe-cream pb-2">Destek</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">Müşteri memnuniyeti bizim için her şeyden önemlidir. Hizmetlerimizle ilgili her türlü soru, görüş ve öneriniz için bize ulaşabilirsiniz.</p>
+            <ul class="list-disc pl-6 text-gray-700">
+                <li class="mb-2">Sıkça Sorulan Sorular</li>
+                <li class="mb-2">İade ve İptal Koşulları</li>
+                <li class="mb-2">Gizlilik Politikası</li>
+            </ul>
+        </section>
+
+        <!-- İletişim Section -->
+        <section id="iletisim-section" class="section-content">
+            <h2 class="text-3xl font-bold text-cafe-brown mb-6 border-b-2 border-cafe-cream pb-2">İletişim</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-cafe-dark mb-4">Bize Ulaşın</h3>
+                    <p class="text-gray-700 mb-2"><strong>Telefon:</strong> 0 (555) 123 45 67</p>
+                    <p class="text-gray-700 mb-2"><strong>E-posta:</strong> info@kahveduragi.com</p>
+                    <p class="text-gray-700 mb-2"><strong>Adres:</strong> Kahve Sokak No: 42, Lezzet Mahallesi</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Şube Konumları Section -->
+        <section id="sube-konumlari-section" class="section-content">
+            <h2 class="text-3xl font-bold text-cafe-brown mb-6 border-b-2 border-cafe-cream pb-2">Şubelerimiz</h2>
+            <div class="space-y-6">
+                <div class="bg-cafe-light p-4 rounded border border-cafe-cream">
+                    <h3 class="text-xl font-bold text-cafe-dark">Merkez Şube</h3>
+                    <p class="text-gray-600">Lezzet Mahallesi, Kahve Sokak No: 42</p>
+                </div>
+                <div class="bg-cafe-light p-4 rounded border border-cafe-cream">
+                    <h3 class="text-xl font-bold text-cafe-dark">Sahil Şubesi</h3>
+                    <p class="text-gray-600">Mavi Bulvar, Yalı Caddesi No: 15</p>
+                </div>
+                <div class="bg-cafe-light p-4 rounded border border-cafe-cream">
+                    <h3 class="text-xl font-bold text-cafe-dark">Kampüs Şubesi</h3>
+                    <p class="text-gray-600">Üniversite Yolu, Öğrenci Sokak No: 8</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menü İçerikleri Section -->
+        <section id="menu-icerikleri-section" class="section-content">
+            <h2 class="text-3xl font-bold text-cafe-brown mb-6 border-b-2 border-cafe-cream pb-2">Menümüz</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-cafe-dark mb-4 pb-2 border-b border-gray-200">Sıcak Kahveler</h3>
+                    <div class="space-y-2">
+                        <div class="menu-item"><span class="menu-name">Espresso</span></div>
+                        <div class="menu-item"><span class="menu-name">Cappuccino</span></div>
+                        <div class="menu-item"><span class="menu-name">Latte</span></div>
+                        <div class="menu-item"><span class="menu-name">Türk Kahvesi</span></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-cafe-dark mb-4 pb-2 border-b border-gray-200">Soğuk & Diğer</h3>
+                    <div class="space-y-2">
+                        <div class="menu-item"><span class="menu-name">Soğuk Kahve</span></div>
+                        <div class="menu-item"><span class="menu-name">Limonata</span></div>
+                        <div class="menu-item"><span class="menu-name">Çay</span></div>
+                    </div>
+                </div>
+                <div class="md:col-span-2 mt-4">
+                    <h3 class="text-2xl font-bold text-cafe-dark mb-4 pb-2 border-b border-gray-200">Tatlı & Atıştırmalık</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+                        <div class="menu-item"><span class="menu-name">Cheesecake</span></div>
+                        <div class="menu-item"><span class="menu-name">Kruvasan</span></div>
+                        <div class="menu-item"><span class="menu-name">Sandviç</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fiyatlar Section -->
+        <section id="fiyatlar-section" class="section-content">
+            <h2 class="text-3xl font-bold text-cafe-brown mb-6 border-b-2 border-cafe-cream pb-2">Fiyat Listesi</h2>
+            <div class="max-w-2xl mx-auto bg-cafe-light p-6 rounded-lg shadow-inner">
+                <div class="menu-item">
+                    <span class="menu-name">Espresso</span>
+                    <span class="menu-price">45₺</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Cappuccino</span>
+                    <span class="menu-price">55₺</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Latte</span>
+                    <span class="menu-price">60₺</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Türk Kahvesi</span>
+                    <span class="menu-price">40₺</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Çay</span>
+                    <span class="menu-price">25₺</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Soğuk Kahve</span>
+                    <span class="menu-price">65₺</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Limonata</span>
+                    <span class="menu-price">35₺</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Cheesecake</span>
+                    <span class="menu-price">70₺</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Kruvasan</span>
+                    <span class="menu-price">50₺</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-name">Sandviç</span>
+                    <span class="menu-price">80₺</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section-content');
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            sidebarOverlay.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.add('hidden');
+        }
+
+        menuBtn.addEventListener('click', openSidebar);
+        closeBtn.addEventListener('click', closeSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        function handleRouting() {
+            let hash = window.location.hash || '#ana-sayfa';
+
+            // Hide all sections
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Show active section
+            const activeSectionId = hash.substring(1) + '-section';
+            const activeSection = document.getElementById(activeSectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            } else {
+                document.getElementById('ana-sayfa-section').classList.add('active');
+            }
+
+            // Close sidebar on mobile after clicking a link
+            if (window.innerWidth < 768) {
+                closeSidebar();
+            }
+        }
+
+        window.addEventListener('hashchange', handleRouting);
+        window.addEventListener('load', handleRouting);
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
