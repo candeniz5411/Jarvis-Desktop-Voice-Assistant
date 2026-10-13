@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            coffee: '#4A3B32',    /* Dark brown */
+                            latte: '#A68A6D',     /* Light brown */
+                            cream: '#F5F5DC',     /* Cream */
+                            white: '#FFFFFF',
+                            text: '#2C211B'       /* Very dark brown for text */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .section-hidden {
+                @apply hidden;
+            }
+        }
+        body {
+            @apply bg-brand-cream text-brand-text font-sans antialiased;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Hamburger Menu -->
+    <header class="fixed top-0 left-0 w-full bg-brand-coffee text-brand-cream z-50 shadow-md h-16 flex items-center px-4">
+        <button id="menu-toggle" class="p-2 focus:outline-none hover:bg-brand-latte rounded transition-colors" aria-label="Menüyü aç">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <h1 class="ml-4 text-xl font-bold tracking-wide">Kafe Logo</h1>
+    </header>
+
+    <!-- Sidebar / Off-canvas Menu -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-brand-white shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="h-16 flex items-center justify-between px-4 bg-brand-coffee text-brand-cream">
+            <span class="text-lg font-bold">Menü</span>
+            <button id="menu-close" class="p-2 focus:outline-none hover:bg-brand-latte rounded transition-colors" aria-label="Menüyü kapat">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="mt-4 px-4">
+            <ul class="space-y-2">
+                <li><a href="#ana-sayfa" class="block px-4 py-2 rounded hover:bg-brand-cream hover:text-brand-coffee transition-colors">Ana Sayfa</a></li>
+                <li><a href="#hakkinda" class="block px-4 py-2 rounded hover:bg-brand-cream hover:text-brand-coffee transition-colors">Hakkında</a></li>
+                <li><a href="#destek" class="block px-4 py-2 rounded hover:bg-brand-cream hover:text-brand-coffee transition-colors">Destek</a></li>
+                <li><a href="#iletisim" class="block px-4 py-2 rounded hover:bg-brand-cream hover:text-brand-coffee transition-colors">İletişim</a></li>
+                <li><a href="#sube-konumlari" class="block px-4 py-2 rounded hover:bg-brand-cream hover:text-brand-coffee transition-colors">Şube Konumları</a></li>
+                <li><a href="#menu-icerikleri" class="block px-4 py-2 rounded hover:bg-brand-cream hover:text-brand-coffee transition-colors">Menü İçerikleri</a></li>
+                <li><a href="#fiyatlar" class="block px-4 py-2 rounded hover:bg-brand-cream hover:text-brand-coffee transition-colors">Fiyatlar</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Content Wrapper -->
+    <main id="main-content" class="pt-16 min-h-screen">
+        <!-- Ana Sayfa Section -->
+        <section id="ana-sayfa" class="p-8 flex flex-col items-center justify-center text-center">
+            <h2 class="text-4xl font-bold text-brand-coffee mb-4">Hoş Geldiniz!</h2>
+            <p class="text-lg text-brand-text mb-8 max-w-2xl">En taze kahve çekirdekleri ve enfes tatlılarımızla size sıcak bir ortam sunuyoruz. Günün yorgunluğunu atmak için doğru yerdesiniz.</p>
+            <div class="w-full max-w-4xl overflow-hidden rounded-lg shadow-lg">
+                <img src="./Images/coffee.jpg" alt="Taze Kahve" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+        </section>
+
+        <!-- Menü İçerikleri Section -->
+        <section id="menu-icerikleri" class="p-8 max-w-5xl mx-auto section-hidden">
+            <h2 class="text-3xl font-bold text-brand-coffee mb-8 text-center border-b-2 border-brand-latte pb-4">Menü İçerikleri</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- İçecekler -->
+                <div class="bg-brand-white p-6 rounded-lg shadow-md border-t-4 border-brand-coffee">
+                    <h3 class="text-2xl font-bold text-brand-coffee mb-4">İçecekler</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center border-b border-brand-cream pb-2">
+                            <span class="text-lg font-medium text-brand-text">Espresso</span>
+                            <span class="text-lg font-bold text-brand-latte">45₺</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-brand-cream pb-2">
+                            <span class="text-lg font-medium text-brand-text">Cappuccino</span>
+                            <span class="text-lg font-bold text-brand-latte">55₺</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-brand-cream pb-2">
+                            <span class="text-lg font-medium text-brand-text">Latte</span>
+                            <span class="text-lg font-bold text-brand-latte">60₺</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-brand-cream pb-2">
+                            <span class="text-lg font-medium text-brand-text">Türk Kahvesi</span>
+                            <span class="text-lg font-bold text-brand-latte">40₺</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-brand-cream pb-2">
+                            <span class="text-lg font-medium text-brand-text">Çay</span>
+                            <span class="text-lg font-bold text-brand-latte">25₺</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-brand-cream pb-2">
+                            <span class="text-lg font-medium text-brand-text">Soğuk Kahve</span>
+                            <span class="text-lg font-bold text-brand-latte">65₺</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-brand-cream pb-2">
+                            <span class="text-lg font-medium text-brand-text">Limonata</span>
+                            <span class="text-lg font-bold text-brand-latte">35₺</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Yiyecekler -->
+                <div class="bg-brand-white p-6 rounded-lg shadow-md border-t-4 border-brand-coffee">
+                    <h3 class="text-2xl font-bold text-brand-coffee mb-4">Yiyecekler & Tatlılar</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center border-b border-brand-cream pb-2">
+                            <span class="text-lg font-medium text-brand-text">Cheesecake</span>
+                            <span class="text-lg font-bold text-brand-latte">70₺</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-brand-cream pb-2">
+                            <span class="text-lg font-medium text-brand-text">Kruvasan</span>
+                            <span class="text-lg font-bold text-brand-latte">50₺</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-brand-cream pb-2">
+                            <span class="text-lg font-medium text-brand-text">Sandviç</span>
+                            <span class="text-lg font-bold text-brand-latte">80₺</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hakkında Section -->
+        <section id="hakkinda" class="p-8 max-w-4xl mx-auto text-center section-hidden">
+            <h2 class="text-3xl font-bold text-brand-coffee mb-4">Hakkında</h2>
+            <p class="text-lg text-brand-text">Biz kim miyiz? 2023 yılından bu yana sizlere en kaliteli kahveyi sunmak için çalışan bir ekibiz.</p>
+        </section>
+
+        <!-- Destek Section -->
+        <section id="destek" class="p-8 max-w-4xl mx-auto text-center section-hidden">
+            <h2 class="text-3xl font-bold text-brand-coffee mb-4">Destek</h2>
+            <p class="text-lg text-brand-text">Yardıma mı ihtiyacınız var? Sık sorulan sorular ve destek hattımız yakında burada olacak.</p>
+        </section>
+
+        <!-- İletişim Section -->
+        <section id="iletisim" class="p-8 max-w-4xl mx-auto text-center section-hidden">
+            <h2 class="text-3xl font-bold text-brand-coffee mb-4">İletişim</h2>
+            <p class="text-lg text-brand-text">Bize ulaşmak için info@kafewebsitesi.com adresine e-posta gönderebilirsiniz.</p>
+        </section>
+
+        <!-- Şube Konumları Section -->
+        <section id="sube-konumlari" class="p-8 max-w-4xl mx-auto text-center section-hidden">
+            <h2 class="text-3xl font-bold text-brand-coffee mb-4">Şube Konumları</h2>
+            <p class="text-lg text-brand-text">Şubelerimiz İstanbul, Ankara ve İzmir'de bulunmaktadır.</p>
+        </section>
+
+        <!-- Fiyatlar Section -->
+        <section id="fiyatlar" class="p-8 max-w-4xl mx-auto text-center section-hidden">
+            <h2 class="text-3xl font-bold text-brand-coffee mb-4">Fiyatlar</h2>
+            <p class="text-lg text-brand-text">Fiyat listemizi "Menü İçerikleri" sayfasından detaylı olarak inceleyebilirsiniz.</p>
+        </section>
+    </main>
+
+    <script>
+        // Sidebar Toggle Logic
+        const menuToggle = document.getElementById("menu-toggle");
+        const menuClose = document.getElementById("menu-close");
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("sidebar-overlay");
+        const navLinks = document.querySelectorAll("#sidebar nav a");
+
+        function openSidebar() {
+            sidebar.classList.remove("-translate-x-full");
+            overlay.classList.remove("hidden");
+        }
+
+        function closeSidebar() {
+            sidebar.classList.add("-translate-x-full");
+            overlay.classList.add("hidden");
+        }
+
+        menuToggle.addEventListener("click", openSidebar);
+        menuClose.addEventListener("click", closeSidebar);
+        overlay.addEventListener("click", closeSidebar);
+
+        // Close sidebar on link click (especially useful for SPA)
+        navLinks.forEach(link => {
+            link.addEventListener("click", closeSidebar);
+        });
+
+        // SPA Routing Logic
+        function handleRouting() {
+            const hash = window.location.hash || '#ana-sayfa';
+            const sections = document.querySelectorAll('main section');
+
+            sections.forEach(section => {
+                if (section.id === hash.substring(1)) {
+                    section.classList.remove('section-hidden');
+                } else {
+                    section.classList.add('section-hidden');
+                }
+            });
+
+            // Scroll to top on route change
+            window.scrollTo(0, 0);
+        }
+
+        window.addEventListener('hashchange', handleRouting);
+        window.addEventListener('load', handleRouting);
+    </script>
+</body>
+</html>
