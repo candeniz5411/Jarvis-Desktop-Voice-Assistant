@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            light: '#a1887f',
+                            DEFAULT: '#5d4037',
+                            dark: '#3e2723',
+                        },
+                        cream: '#fff8e1',
+                        white: '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar-open {
+            transform: translateX(0);
+        }
+        .sidebar-closed {
+            transform: translateX(-100%);
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-cream text-coffee-dark font-sans h-screen flex overflow-hidden">
+
+    <!-- Sidebar Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar sidebar-closed fixed inset-y-0 left-0 z-50 w-64 bg-coffee-dark text-cream shadow-xl">
+        <div class="flex items-center justify-between p-4 border-b border-coffee">
+            <h2 class="text-2xl font-bold">Menü</h2>
+            <button onclick="toggleSidebar()" class="text-cream hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="mt-6 px-4 flex flex-col space-y-2">
+            <a href="#home" class="block py-2 px-4 rounded hover:bg-coffee hover:text-white transition" onclick="toggleSidebar()">Ana Sayfa</a>
+            <a href="#hakkinda" class="block py-2 px-4 rounded hover:bg-coffee hover:text-white transition" onclick="toggleSidebar()">Hakkında</a>
+            <a href="#destek" class="block py-2 px-4 rounded hover:bg-coffee hover:text-white transition" onclick="toggleSidebar()">Destek</a>
+            <a href="#iletisim" class="block py-2 px-4 rounded hover:bg-coffee hover:text-white transition" onclick="toggleSidebar()">İletişim</a>
+            <a href="#sube-konumlari" class="block py-2 px-4 rounded hover:bg-coffee hover:text-white transition" onclick="toggleSidebar()">Şube Konumları</a>
+            <a href="#menu-icerikleri" class="block py-2 px-4 rounded hover:bg-coffee hover:text-white transition" onclick="toggleSidebar()">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="block py-2 px-4 rounded hover:bg-coffee hover:text-white transition" onclick="toggleSidebar()">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full bg-cream overflow-y-auto w-full">
+        <!-- Header -->
+        <header class="bg-white shadow-md p-4 sticky top-0 z-30 flex items-center">
+            <!-- Hamburger Menu Button -->
+            <button onclick="toggleSidebar()" class="text-coffee-dark hover:text-coffee focus:outline-none mr-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <h1 class="text-2xl font-bold text-coffee-dark">KafeLog</h1>
+        </header>
+
+        <!-- Sections Content -->
+        <main id="main-content" class="p-6 md:p-12 w-full max-w-5xl mx-auto flex-1 bg-white shadow-lg my-6 rounded-lg relative">
+            <!-- Ana Sayfa Section -->
+            <section id="home-section" class="section active text-center">
+                <div class="mb-8 flex justify-center">
+                    <svg class="w-24 h-24 text-coffee" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M4 19h16v2H4zM20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 5h-2V5h2v3z"/>
+                    </svg>
+                </div>
+                <h2 class="text-4xl font-bold mb-4 text-coffee-dark">KafeLog'a Hoş Geldiniz</h2>
+                <p class="text-lg text-gray-700 mb-8">Günün yorgunluğunu sıcacık bir kahveyle atın. Size özel lezzetlerimizle buradayız.</p>
+                <img src="coffee.jpg" alt="Taze Kahve" class="rounded-lg shadow-md mx-auto max-w-full h-auto object-cover" style="max-height: 400px;">
+            </section>
+
+            <!-- Hakkında Section -->
+            <section id="hakkinda-section" class="section">
+                <h2 class="text-3xl font-bold mb-6 border-b-2 border-coffee-light pb-2">Hakkımızda</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">KafeLog olarak, 2010 yılından beri kahve tutkunlarına en kaliteli çekirdeklerden özenle hazırlanan kahveleri sunmaktan gurur duyuyoruz. Amacımız sadece bir kahve dükkanı olmak değil, aynı zamanda dostlarınızla keyifli vakit geçirebileceğiniz sıcak bir buluşma noktası olmaktır.</p>
+                <p class="text-gray-700 leading-relaxed">Uzman baristalarımız ve taze günlük tatlılarımızla sizleri ağırlamaktan mutluluk duyuyoruz.</p>
+            </section>
+
+            <!-- Destek Section -->
+            <section id="destek-section" class="section">
+                <h2 class="text-3xl font-bold mb-6 border-b-2 border-coffee-light pb-2">Destek</h2>
+                <p class="text-gray-700 mb-4">Müşteri memnuniyeti bizim için ön plandadır. Sorularınız, önerileriniz veya şikayetleriniz için aşağıdaki iletişim yollarından bize ulaşabilirsiniz.</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>Sıkça Sorulan Sorular (SSS)</li>
+                    <li>Geri Bildirim Formu</li>
+                    <li>7/24 Canlı Destek (Yakında)</li>
+                </ul>
+            </section>
+
+            <!-- İletişim Section -->
+            <section id="iletisim-section" class="section">
+                <h2 class="text-3xl font-bold mb-6 border-b-2 border-coffee-light pb-2">İletişim</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Bize Ulaşın</h3>
+                        <p class="text-gray-700 mb-2"><strong>Adres:</strong> Kahve Sokak No: 12, Lezzet Mahallesi, İstanbul</p>
+                        <p class="text-gray-700 mb-2"><strong>Telefon:</strong> +90 555 123 45 67</p>
+                        <p class="text-gray-700"><strong>E-posta:</strong> merhaba@kafelog.com</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Çalışma Saatleri</h3>
+                        <p class="text-gray-700 mb-1">Pazartesi - Cuma: 07:00 - 22:00</p>
+                        <p class="text-gray-700 mb-1">Cumartesi: 08:00 - 23:00</p>
+                        <p class="text-gray-700">Pazar: 09:00 - 21:00</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Şube Konumları Section -->
+            <section id="sube-konumlari-section" class="section">
+                <h2 class="text-3xl font-bold mb-6 border-b-2 border-coffee-light pb-2">Şube Konumları</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-cream p-4 rounded shadow">
+                        <h3 class="text-xl font-bold text-coffee mb-2">Merkez Şube</h3>
+                        <p class="text-gray-700">Lezzet Mahallesi, Kahve Sokak No: 12, İstanbul</p>
+                    </div>
+                    <div class="bg-cream p-4 rounded shadow">
+                        <h3 class="text-xl font-bold text-coffee mb-2">Kadıköy Şubesi</h3>
+                        <p class="text-gray-700">Moda Caddesi No: 45, Kadıköy, İstanbul</p>
+                    </div>
+                    <div class="bg-cream p-4 rounded shadow">
+                        <h3 class="text-xl font-bold text-coffee mb-2">Beşiktaş Şubesi</h3>
+                        <p class="text-gray-700">Çarşı İçi, Kartal Sokak No: 8, Beşiktaş, İstanbul</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menü İçerikleri Section -->
+            <section id="menu-icerikleri-section" class="section">
+                <h2 class="text-3xl font-bold mb-6 border-b-2 border-coffee-light pb-2">Menü İçerikleri</h2>
+                <p class="text-gray-700 mb-6">Özenle seçilmiş kahvelerimiz ve taze atıştırmalıklarımızla lezzet şölenine davetlisiniz.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-cream p-4 rounded-lg shadow border border-coffee-light">
+                        <h4 class="font-bold text-coffee-dark text-lg">Espresso</h4>
+                        <p class="text-sm text-gray-600">Yoğun ve güçlü kahve deneyimi.</p>
+                    </div>
+                    <div class="bg-cream p-4 rounded-lg shadow border border-coffee-light">
+                        <h4 class="font-bold text-coffee-dark text-lg">Cappuccino</h4>
+                        <p class="text-sm text-gray-600">Espresso, sıcak süt ve bol köpük.</p>
+                    </div>
+                    <div class="bg-cream p-4 rounded-lg shadow border border-coffee-light">
+                        <h4 class="font-bold text-coffee-dark text-lg">Latte</h4>
+                        <p class="text-sm text-gray-600">Espresso ve bol sıcak süt, hafif lezzet.</p>
+                    </div>
+                    <div class="bg-cream p-4 rounded-lg shadow border border-coffee-light">
+                        <h4 class="font-bold text-coffee-dark text-lg">Türk Kahvesi</h4>
+                        <p class="text-sm text-gray-600">Geleneksel usulle hazırlanmış taze kahve.</p>
+                    </div>
+                    <div class="bg-cream p-4 rounded-lg shadow border border-coffee-light">
+                        <h4 class="font-bold text-coffee-dark text-lg">Çay</h4>
+                        <p class="text-sm text-gray-600">Taze demlenmiş klasik siyah çay.</p>
+                    </div>
+                    <div class="bg-cream p-4 rounded-lg shadow border border-coffee-light">
+                        <h4 class="font-bold text-coffee-dark text-lg">Cheesecake</h4>
+                        <p class="text-sm text-gray-600">Mevsim meyveleriyle süslenmiş taze cheesecake.</p>
+                    </div>
+                    <div class="bg-cream p-4 rounded-lg shadow border border-coffee-light">
+                        <h4 class="font-bold text-coffee-dark text-lg">Kruvasan</h4>
+                        <p class="text-sm text-gray-600">Tereyağlı, çıtır Fransız klasiği.</p>
+                    </div>
+                    <div class="bg-cream p-4 rounded-lg shadow border border-coffee-light">
+                        <h4 class="font-bold text-coffee-dark text-lg">Sandviç</h4>
+                        <p class="text-sm text-gray-600">Taze malzemelerle günlük hazırlanan doyurucu sandviç.</p>
+                    </div>
+                    <div class="bg-cream p-4 rounded-lg shadow border border-coffee-light">
+                        <h4 class="font-bold text-coffee-dark text-lg">Soğuk Kahve</h4>
+                        <p class="text-sm text-gray-600">Buz gibi ferahlatıcı soğuk demleme.</p>
+                    </div>
+                    <div class="bg-cream p-4 rounded-lg shadow border border-coffee-light">
+                        <h4 class="font-bold text-coffee-dark text-lg">Limonata</h4>
+                        <p class="text-sm text-gray-600">Taze sıkılmış limonlardan ev yapımı limonata.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fiyatlar Section -->
+            <section id="fiyatlar-section" class="section">
+                <h2 class="text-3xl font-bold mb-6 border-b-2 border-coffee-light pb-2">Fiyat Listesi</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-coffee text-white">
+                                <th class="py-3 px-4 rounded-tl-lg">Ürün</th>
+                                <th class="py-3 px-4 rounded-tr-lg text-right">Fiyat (₺)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700 divide-y divide-gray-200">
+                            <tr class="hover:bg-cream transition">
+                                <td class="py-3 px-4">Espresso</td>
+                                <td class="py-3 px-4 text-right font-semibold">45₺</td>
+                            </tr>
+                            <tr class="hover:bg-cream transition">
+                                <td class="py-3 px-4">Cappuccino</td>
+                                <td class="py-3 px-4 text-right font-semibold">55₺</td>
+                            </tr>
+                            <tr class="hover:bg-cream transition">
+                                <td class="py-3 px-4">Latte</td>
+                                <td class="py-3 px-4 text-right font-semibold">60₺</td>
+                            </tr>
+                            <tr class="hover:bg-cream transition">
+                                <td class="py-3 px-4">Türk Kahvesi</td>
+                                <td class="py-3 px-4 text-right font-semibold">40₺</td>
+                            </tr>
+                            <tr class="hover:bg-cream transition">
+                                <td class="py-3 px-4">Çay</td>
+                                <td class="py-3 px-4 text-right font-semibold">25₺</td>
+                            </tr>
+                            <tr class="hover:bg-cream transition">
+                                <td class="py-3 px-4">Cheesecake</td>
+                                <td class="py-3 px-4 text-right font-semibold">70₺</td>
+                            </tr>
+                            <tr class="hover:bg-cream transition">
+                                <td class="py-3 px-4">Kruvasan</td>
+                                <td class="py-3 px-4 text-right font-semibold">50₺</td>
+                            </tr>
+                            <tr class="hover:bg-cream transition">
+                                <td class="py-3 px-4">Sandviç</td>
+                                <td class="py-3 px-4 text-right font-semibold">80₺</td>
+                            </tr>
+                            <tr class="hover:bg-cream transition">
+                                <td class="py-3 px-4">Soğuk Kahve</td>
+                                <td class="py-3 px-4 text-right font-semibold">65₺</td>
+                            </tr>
+                            <tr class="hover:bg-cream transition">
+                                <td class="py-3 px-4">Limonata</td>
+                                <td class="py-3 px-4 text-right font-semibold">35₺</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-coffee-dark text-cream text-center p-4">
+            <p>&copy; 2024 Kafe Web Sitesi. Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            if (sidebar.classList.contains('sidebar-closed')) {
+                sidebar.classList.remove('sidebar-closed');
+                sidebar.classList.add('sidebar-open');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.remove('sidebar-open');
+                sidebar.classList.add('sidebar-closed');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function handleRouting() {
+            const hash = window.location.hash || '#home';
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Convert hash to section ID
+            const targetId = hash.replace('#', '') + '-section';
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                targetSection.classList.add('active');
+            } else {
+                // Default to home if not found
+                const homeSection = document.getElementById('home-section');
+                if (homeSection) homeSection.classList.add('active');
+            }
+        }
+
+        window.addEventListener('hashchange', handleRouting);
+        window.addEventListener('DOMContentLoaded', handleRouting);
+    </script>
+</body>
+</html>
