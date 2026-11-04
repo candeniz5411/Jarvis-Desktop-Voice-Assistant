@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Portalı</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cafe: {
+                            light: '#fdfbf7', // Krem
+                            DEFAULT: '#8b5a2b', // Kahverengi ton
+                            dark: '#4a331c', // Koyu kahve
+                            accent: '#d4a373' // Açık kahve tonu
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: theme('colors.cafe.light');
+            color: theme('colors.cafe.dark');
+        }
+
+        .section {
+            display: none;
+            padding: 2rem;
+            min-height: calc(100vh - 64px);
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        #side-panel {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #side-panel.open {
+            transform: translateX(0);
+        }
+
+        /* Hamburger menu transition */
+        .hamburger-line {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-open .line-1 {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-open .line-2 {
+            opacity: 0;
+        }
+
+        .menu-open .line-3 {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+    </style>
+</head>
+<body class="bg-cafe-light font-sans antialiased text-cafe-dark">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white shadow-md z-[60] h-16 flex items-center px-4 md:px-8 justify-between">
+        <div class="flex items-center">
+            <!-- Hamburger Button -->
+            <button id="hamburger-btn" class="flex flex-col justify-center items-center w-8 h-8 focus:outline-none z-50 mr-4" aria-label="Menu">
+                <span class="hamburger-line line-1 w-6 h-0.5 bg-cafe-dark mb-1.5 rounded"></span>
+                <span class="hamburger-line line-2 w-6 h-0.5 bg-cafe-dark mb-1.5 rounded"></span>
+                <span class="hamburger-line line-3 w-6 h-0.5 bg-cafe-dark rounded"></span>
+            </button>
+            <h1 class="text-xl font-bold text-cafe-dark tracking-wide">Kafe Portalı</h1>
+        </div>
+    </header>
+
+    <!-- Side Panel Overlay -->
+    <div id="panel-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity"></div>
+
+    <!-- Side Panel -->
+    <aside id="side-panel" class="fixed top-0 left-0 h-full w-64 bg-cafe-dark text-cafe-light z-50 shadow-2xl pt-20 overflow-y-auto">
+        <nav class="flex flex-col space-y-2 px-4 pb-8">
+            <a href="#home" class="nav-link block py-3 px-4 rounded hover:bg-cafe hover:text-white transition duration-200">Ana Sayfa</a>
+            <a href="#hakkinda" class="nav-link block py-3 px-4 rounded hover:bg-cafe hover:text-white transition duration-200">Hakkında</a>
+            <a href="#destek" class="nav-link block py-3 px-4 rounded hover:bg-cafe hover:text-white transition duration-200">Destek</a>
+            <a href="#iletisim" class="nav-link block py-3 px-4 rounded hover:bg-cafe hover:text-white transition duration-200">İletişim</a>
+            <a href="#sube-konumlari" class="nav-link block py-3 px-4 rounded hover:bg-cafe hover:text-white transition duration-200">Şube Konumları</a>
+            <a href="#menu-icerikleri" class="nav-link block py-3 px-4 rounded hover:bg-cafe hover:text-white transition duration-200">Menü İçerikleri</a>
+            <a href="#fiyatlar" class="nav-link block py-3 px-4 rounded hover:bg-cafe hover:text-white transition duration-200">Fiyatlar</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content" class="pt-16 max-w-5xl mx-auto">
+
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="flex flex-col items-center justify-center text-center mt-8">
+                <div class="w-32 h-32 bg-cafe rounded-full flex items-center justify-center mb-6 shadow-lg">
+                    <span class="text-white text-4xl font-bold">K</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-cafe-dark mb-4">Kafe Portalı'na Hoş Geldiniz</h2>
+                <p class="text-lg text-cafe-accent mb-8 max-w-2xl mx-auto">En taze kahveler ve lezzetli atıştırmalıklarla dolu dünyamızı keşfedin. Modern ve minimalist tasarımımızla sizlere en iyi deneyimi sunuyoruz.</p>
+                <div class="w-full max-w-3xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=600&auto=format&fit=crop" alt="Kahve" class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Hakkında Section -->
+        <section id="hakkinda" class="section">
+            <h2 class="text-3xl font-bold border-b-2 border-cafe-accent pb-2 mb-6">Hakkında</h2>
+            <p class="text-lg leading-relaxed">Kafe Portalı, kahve tutkusunu en saf haliyle misafirlerine sunmak için kurulmuştur. Özenle seçilmiş çekirdeklerimiz ve yetenekli baristalarımız ile her yudumda mükemmelliği hedefliyoruz. Minimalist ve modern mekanımızda günün yorgunluğunu atabilir, lezzetli tatlılarımızla kendinizi şımartabilirsiniz.</p>
+        </section>
+
+        <!-- Destek Section -->
+        <section id="destek" class="section">
+            <h2 class="text-3xl font-bold border-b-2 border-cafe-accent pb-2 mb-6">Destek</h2>
+            <p class="text-lg leading-relaxed">Sorularınız veya geri bildirimleriniz bizim için değerlidir. Müşteri hizmetleri ekibimize haftanın 7 günü 09:00 - 18:00 saatleri arasında ulaşabilirsiniz.</p>
+            <div class="mt-6 p-4 bg-white rounded-lg shadow">
+                <h3 class="font-bold text-cafe-dark mb-2">Sıkça Sorulan Sorular</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>Siparişimi nasıl iptal edebilirim?</li>
+                    <li>Online sipariş veriyor musunuz?</li>
+                    <li>Vegan seçenekleriniz mevcut mu?</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- İletişim Section -->
+        <section id="iletisim" class="section">
+            <h2 class="text-3xl font-bold border-b-2 border-cafe-accent pb-2 mb-6">İletişim</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-bold text-xl mb-4">Bize Ulaşın</h3>
+                    <p class="mb-2"><strong>Adres:</strong> Kahve Sokak No:1, Moda, Kadıköy / İstanbul</p>
+                    <p class="mb-2"><strong>Telefon:</strong> 0216 123 45 67</p>
+                    <p class="mb-2"><strong>E-posta:</strong> info@kafeportali.com</p>
+                </div>
+                <form class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold mb-2">Adınız</label>
+                        <input type="text" class="w-full px-3 py-2 border rounded focus:outline-none focus:border-cafe" placeholder="Adınız">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold mb-2">Mesajınız</label>
+                        <textarea class="w-full px-3 py-2 border rounded focus:outline-none focus:border-cafe" rows="4" placeholder="Mesajınız"></textarea>
+                    </div>
+                    <button type="button" class="bg-cafe hover:bg-cafe-dark text-white font-bold py-2 px-4 rounded transition duration-200">Gönder</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Şube Konumları Section -->
+        <section id="sube-konumlari" class="section">
+            <h2 class="text-3xl font-bold border-b-2 border-cafe-accent pb-2 mb-6">Şube Konumları</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-200">
+                    <h3 class="font-bold text-xl mb-2 text-cafe">Moda Şubesi (Merkez)</h3>
+                    <p class="text-gray-600">Kahve Sokak No:1, Kadıköy</p>
+                    <p class="text-sm mt-2 text-gray-500">Çalışma Saatleri: 08:00 - 22:00</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-200">
+                    <h3 class="font-bold text-xl mb-2 text-cafe">Nişantaşı Şubesi</h3>
+                    <p class="text-gray-600">Valikonağı Cad. No:45, Şişli</p>
+                    <p class="text-sm mt-2 text-gray-500">Çalışma Saatleri: 07:30 - 23:00</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-200">
+                    <h3 class="font-bold text-xl mb-2 text-cafe">Karaköy Şubesi</h3>
+                    <p class="text-gray-600">Kemankeş Cad. No:12, Beyoğlu</p>
+                    <p class="text-sm mt-2 text-gray-500">Çalışma Saatleri: 09:00 - 24:00</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menü İçerikleri Section -->
+        <section id="menu-icerikleri" class="section">
+            <h2 class="text-3xl font-bold border-b-2 border-cafe-accent pb-2 mb-6">Menü İçerikleri</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- İçecekler -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-cafe-dark flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M9 21V3m0 18a2 2 0 01-2 2H5a2 2 0 01-2-2v-3a2 2 0 012-2h2a2 2 0 012 2v3z"></path></svg>
+                        İçecekler
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center bg-white p-4 rounded shadow">
+                            <span class="font-medium text-lg">Espresso</span>
+                            <span class="font-bold text-cafe">45₺</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-white p-4 rounded shadow">
+                            <span class="font-medium text-lg">Cappuccino</span>
+                            <span class="font-bold text-cafe">55₺</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-white p-4 rounded shadow">
+                            <span class="font-medium text-lg">Latte</span>
+                            <span class="font-bold text-cafe">60₺</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-white p-4 rounded shadow">
+                            <span class="font-medium text-lg">Türk Kahvesi</span>
+                            <span class="font-bold text-cafe">40₺</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-white p-4 rounded shadow">
+                            <span class="font-medium text-lg">Çay</span>
+                            <span class="font-bold text-cafe">25₺</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-white p-4 rounded shadow">
+                            <span class="font-medium text-lg">Soğuk Kahve</span>
+                            <span class="font-bold text-cafe">65₺</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-white p-4 rounded shadow">
+                            <span class="font-medium text-lg">Limonata</span>
+                            <span class="font-bold text-cafe">35₺</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Yiyecekler -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-cafe-dark flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        Yiyecekler
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center bg-white p-4 rounded shadow">
+                            <span class="font-medium text-lg">Cheesecake</span>
+                            <span class="font-bold text-cafe">70₺</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-white p-4 rounded shadow">
+                            <span class="font-medium text-lg">Kruvasan</span>
+                            <span class="font-bold text-cafe">50₺</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-white p-4 rounded shadow">
+                            <span class="font-medium text-lg">Sandviç</span>
+                            <span class="font-bold text-cafe">80₺</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fiyatlar Section -->
+        <section id="fiyatlar" class="section">
+            <h2 class="text-3xl font-bold border-b-2 border-cafe-accent pb-2 mb-6">Fiyat Listesi Özeti</h2>
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full leading-normal">
+                        <thead>
+                            <tr>
+                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-cafe text-left text-xs font-semibold text-white uppercase tracking-wider">Ürün</th>
+                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-cafe text-left text-xs font-semibold text-white uppercase tracking-wider">Kategori</th>
+                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-cafe text-left text-xs font-semibold text-white uppercase tracking-wider">Fiyat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="px-5 py-4 border-b border-gray-200 text-sm">Espresso</td><td class="px-5 py-4 border-b border-gray-200 text-sm">Sıcak İçecek</td><td class="px-5 py-4 border-b border-gray-200 text-sm font-bold text-cafe">45₺</td></tr>
+                            <tr><td class="px-5 py-4 border-b border-gray-200 text-sm bg-gray-50">Cappuccino</td><td class="px-5 py-4 border-b border-gray-200 text-sm bg-gray-50">Sıcak İçecek</td><td class="px-5 py-4 border-b border-gray-200 text-sm font-bold text-cafe bg-gray-50">55₺</td></tr>
+                            <tr><td class="px-5 py-4 border-b border-gray-200 text-sm">Latte</td><td class="px-5 py-4 border-b border-gray-200 text-sm">Sıcak İçecek</td><td class="px-5 py-4 border-b border-gray-200 text-sm font-bold text-cafe">60₺</td></tr>
+                            <tr><td class="px-5 py-4 border-b border-gray-200 text-sm bg-gray-50">Türk Kahvesi</td><td class="px-5 py-4 border-b border-gray-200 text-sm bg-gray-50">Sıcak İçecek</td><td class="px-5 py-4 border-b border-gray-200 text-sm font-bold text-cafe bg-gray-50">40₺</td></tr>
+                            <tr><td class="px-5 py-4 border-b border-gray-200 text-sm">Çay</td><td class="px-5 py-4 border-b border-gray-200 text-sm">Sıcak İçecek</td><td class="px-5 py-4 border-b border-gray-200 text-sm font-bold text-cafe">25₺</td></tr>
+                            <tr><td class="px-5 py-4 border-b border-gray-200 text-sm bg-gray-50">Soğuk Kahve</td><td class="px-5 py-4 border-b border-gray-200 text-sm bg-gray-50">Soğuk İçecek</td><td class="px-5 py-4 border-b border-gray-200 text-sm font-bold text-cafe bg-gray-50">65₺</td></tr>
+                            <tr><td class="px-5 py-4 border-b border-gray-200 text-sm">Limonata</td><td class="px-5 py-4 border-b border-gray-200 text-sm">Soğuk İçecek</td><td class="px-5 py-4 border-b border-gray-200 text-sm font-bold text-cafe">35₺</td></tr>
+                            <tr><td class="px-5 py-4 border-b border-gray-200 text-sm bg-gray-50">Cheesecake</td><td class="px-5 py-4 border-b border-gray-200 text-sm bg-gray-50">Tatlı</td><td class="px-5 py-4 border-b border-gray-200 text-sm font-bold text-cafe bg-gray-50">70₺</td></tr>
+                            <tr><td class="px-5 py-4 border-b border-gray-200 text-sm">Kruvasan</td><td class="px-5 py-4 border-b border-gray-200 text-sm">Atıştırmalık</td><td class="px-5 py-4 border-b border-gray-200 text-sm font-bold text-cafe">50₺</td></tr>
+                            <tr><td class="px-5 py-4 border-b border-gray-200 text-sm bg-gray-50">Sandviç</td><td class="px-5 py-4 border-b border-gray-200 text-sm bg-gray-50">Yiyecek</td><td class="px-5 py-4 border-b border-gray-200 text-sm font-bold text-cafe bg-gray-50">80₺</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
