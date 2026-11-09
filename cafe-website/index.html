@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafe Web Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cafe-brown': '#5c4033',
+                        'cafe-cream': '#fdfbf7',
+                        'cafe-light-brown': '#8b5a2b'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply block py-3 px-4 text-cafe-brown hover:bg-cafe-brown hover:text-cafe-cream transition-colors duration-200 text-lg;
+            }
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbf7;
+        }
+    </style>
+</head>
+<body class="bg-cafe-cream text-cafe-brown min-h-screen flex flex-col font-sans">
+    <!-- Header -->
+    <header class="sticky top-0 z-[60] bg-white shadow-md py-4 px-6 flex items-center justify-between">
+        <button id="menu-btn" class="text-cafe-brown focus:outline-none focus:ring-2 focus:ring-cafe-brown rounded">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <div class="text-2xl font-bold text-cafe-brown tracking-wider">KAFE VİTA</div>
+        <div class="w-8"></div> <!-- Spacer for centering -->
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[40] hidden transition-opacity duration-300"></div>
+
+    <!-- Sidebar Panel -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-2xl z-[50] transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col pt-20">
+        <a href="#" class="nav-link menu-item">Ana Sayfa</a>
+        <a href="#hakkinda" class="nav-link menu-item">Hakkında</a>
+        <a href="#destek" class="nav-link menu-item">Destek</a>
+        <a href="#iletisim" class="nav-link menu-item">İletişim</a>
+        <a href="#sube-konumlari" class="nav-link menu-item">Şube Konumları</a>
+        <a href="#menu-icerikleri" class="nav-link menu-item">Menü İçerikleri</a>
+        <a href="#fiyatlar" class="nav-link menu-item">Fiyatlar</a>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="app-content" class="flex-grow flex flex-col pt-8 pb-16 px-4 md:px-8 max-w-6xl mx-auto w-full">
+        <!-- Content gets injected here -->
+    </main>
+
+    <script>
+        // Content rendering map
+        const routes = {
+            '': renderHome,
+            '#hakkinda': renderHakkinda,
+            '#destek': renderDestek,
+            '#iletisim': renderIletisim,
+            '#sube-konumlari': renderSubeKonumlari,
+            '#menu-icerikleri': renderMenuIcerikleri,
+            '#fiyatlar': renderFiyatlar
+        };
+
+        const appContent = document.getElementById('app-content');
+
+        function renderHome() {
+            appContent.innerHTML = `
+                <div class="text-center flex-grow flex flex-col justify-center">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Kafe Vita'ya Hoş Geldiniz</h1>
+                    <p class="text-lg md:text-xl text-cafe-light-brown mb-8">Modern, minimalist ve huzurlu bir kahve deneyimi.</p>
+                    <div class="rounded-2xl overflow-hidden shadow-xl max-w-4xl mx-auto w-full">
+                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&q=80" alt="Kahve Deneyimi" class="w-full h-auto object-cover max-h-[500px]" />
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderHakkinda() {
+            appContent.innerHTML = `<h2 class="text-3xl font-bold mb-4 border-b-2 border-cafe-brown pb-2">Hakkında</h2><p class="text-lg">Kafe Vita, kahve tutkusunu modern ve minimalist bir atmosferde sunmak için kuruldu. En kaliteli çekirdekleri özenle seçiyor ve sizlere unutulmaz bir deneyim yaşatmayı hedefliyoruz.</p>`;
+        }
+
+        function renderDestek() {
+            appContent.innerHTML = `<h2 class="text-3xl font-bold mb-4 border-b-2 border-cafe-brown pb-2">Destek</h2><p class="text-lg">Sıkça sorulan sorular, iade politikamız ve diğer destek konuları için bize ulaşabilirsiniz.</p>`;
+        }
+
+        function renderIletisim() {
+            appContent.innerHTML = `
+                <h2 class="text-3xl font-bold mb-4 border-b-2 border-cafe-brown pb-2">İletişim</h2>
+                <div class="text-lg space-y-2">
+                    <p><strong>Adres:</strong> Kahve Sokak No:12, Kadıköy, İstanbul</p>
+                    <p><strong>Telefon:</strong> 0(212) 555 12 34</p>
+                    <p><strong>E-posta:</strong> merhaba@kafevita.com</p>
+                </div>
+            `;
+        }
+
+        function renderSubeKonumlari() {
+            appContent.innerHTML = `
+                <h2 class="text-3xl font-bold mb-4 border-b-2 border-cafe-brown pb-2">Şube Konumları</h2>
+                <ul class="list-disc list-inside text-lg space-y-2">
+                    <li>Kadıköy Merkez Şube</li>
+                    <li>Beşiktaş Şube</li>
+                    <li>Karaköy Şube</li>
+                </ul>
+            `;
+        }
+
+        function renderMenuIcerikleri() {
+            appContent.innerHTML = `
+                <h2 class="text-3xl font-bold mb-4 border-b-2 border-cafe-brown pb-2">Menü İçerikleri</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                    <div class="bg-white p-4 rounded shadow">
+                        <h3 class="font-bold text-xl mb-2 border-b border-gray-200 pb-1">Kahveler</h3>
+                        <ul class="space-y-1">
+                            <li>Espresso</li>
+                            <li>Cappuccino</li>
+                            <li>Latte</li>
+                            <li>Türk Kahvesi</li>
+                            <li>Soğuk Kahve</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow">
+                        <h3 class="font-bold text-xl mb-2 border-b border-gray-200 pb-1">Diğer İçecekler & Yiyecekler</h3>
+                        <ul class="space-y-1">
+                            <li>Çay</li>
+                            <li>Limonata</li>
+                            <li>Cheesecake</li>
+                            <li>Kruvasan</li>
+                            <li>Sandviç</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderFiyatlar() {
+            appContent.innerHTML = `
+                <h2 class="text-3xl font-bold mb-6 border-b-2 border-cafe-brown pb-2">Fiyatlar</h2>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden max-w-2xl mx-auto w-full">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-cafe-brown text-cafe-cream">
+                                <th class="py-3 px-4 font-semibold text-lg">Ürün</th>
+                                <th class="py-3 px-4 font-semibold text-lg text-right">Fiyat</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-lg">
+                            <tr class="border-b border-gray-200 hover:bg-gray-50"><td class="py-3 px-4">Espresso</td><td class="py-3 px-4 text-right">45₺</td></tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-50"><td class="py-3 px-4">Cappuccino</td><td class="py-3 px-4 text-right">55₺</td></tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-50"><td class="py-3 px-4">Latte</td><td class="py-3 px-4 text-right">60₺</td></tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-50"><td class="py-3 px-4">Türk Kahvesi</td><td class="py-3 px-4 text-right">40₺</td></tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-50"><td class="py-3 px-4">Çay</td><td class="py-3 px-4 text-right">25₺</td></tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-50"><td class="py-3 px-4">Cheesecake</td><td class="py-3 px-4 text-right">70₺</td></tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-50"><td class="py-3 px-4">Kruvasan</td><td class="py-3 px-4 text-right">50₺</td></tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-50"><td class="py-3 px-4">Sandviç</td><td class="py-3 px-4 text-right">80₺</td></tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-50"><td class="py-3 px-4">Soğuk Kahve</td><td class="py-3 px-4 text-right">65₺</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4">Limonata</td><td class="py-3 px-4 text-right">35₺</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        // Router function
+        function router() {
+            let hash = window.location.hash;
+            if (routes[hash]) {
+                routes[hash]();
+            } else {
+                renderHome(); // default route
+            }
+            window.scrollTo(0,0);
+        }
+
+        // Listen for hash changes
+        window.addEventListener('hashchange', router);
+
+        // Initial load
+        window.addEventListener('DOMContentLoaded', router);
+
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        menuBtn.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+
+        // Close sidebar when a menu item is clicked
+        menuItems.forEach(item => {
+            item.addEventListener('click', toggleSidebar);
+        });
+    </script>
+</body>
+</html>
